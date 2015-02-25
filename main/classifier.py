@@ -1,5 +1,5 @@
-tokenizer = nltk.data.load('tokenizers/punkt/portuguese.pickle')
 import nltk
+tokenizer = nltk.data.load('tokenizers/punkt/portuguese.pickle')
 from nltk.tokenize import word_tokenize
 
 def words_in_doc(content):
