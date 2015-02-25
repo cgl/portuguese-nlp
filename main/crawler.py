@@ -29,10 +29,9 @@ def crawl(filename,pages):
             print(url)
             traceback.print_exc()
 
-
 def parse_html(page):
     try:
-        content = page.findAll("td")[-2].findAll("p")[-1]
+        content = page.findAll("td")[-2]
     except IndexError:
         try:
             content = page.find("div", {"id": "articleNew"})
