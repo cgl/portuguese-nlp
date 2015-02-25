@@ -25,9 +25,10 @@ def crawl(filename,pages):
                 pages.append(page)
             else:
                 print("Empty page: %s" % url)
-        except HTTPError:
+        except:
             print(url)
             traceback.print_exc()
+
 
 def parse_html(page):
     try:
