@@ -16,6 +16,7 @@ def document_features(document):
         features['contains(%s)' % word] = (word in document_words)
     return features
 
+"""
 pages_pos = [] ; crawler.crawl("data/relevant.txt",pages_pos)
 pages_neg = [] ; crawler.crawl("data/irrelevant.txt",pages_neg)
 training_pos = [] ; test_pos = [] ; crawler.parse_pages(pages_pos, training_pos,test_pos, 'pos')
@@ -34,3 +35,4 @@ word_features = all_words.keys()[:2000]
 featuresets = [(document_features(d), c) for (d,c) in documents]
 train_set, test_set = featuresets[100:], featuresets[:100]
 classifier = nltk.NaiveBayesClassifier.train(train_set)
+"""
