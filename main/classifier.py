@@ -36,7 +36,7 @@ def get_sets(pages_pos,pages_neg):
     crawler.parse_pages(pages_neg, training,test, 'neg')
     return training,test
 
-def train(training,test):
+def train(training,test,n):
     documents = [(words_in_doc(doc[0]),doc[1])
                  for docs in [training,test]
                  for doc in docs if doc[0]]
@@ -50,7 +50,7 @@ def train(training,test):
     word_features = all_words.keys()[:2000]
 
     featuresets = [(document_features(d,word_features), c) for (d,c) in documents if d]
-    train_set, test_set = featuresets[100:], featuresets[:100]
+    train_set, test_set = featuresets[n:], featuresets[:n]
     classifier = nltk.NaiveBayesClassifier.train(train_set)
     print(nltk.classify.accuracy(classifier, test_set))
     return classifier
