@@ -1,4 +1,4 @@
-import nltk,random
+import nltk,random,pickle
 tokenizer = nltk.data.load('tokenizers/punkt/portuguese.pickle')
 from nltk.tokenize import word_tokenize
 import crawler
@@ -18,14 +18,18 @@ def document_features(document):
         features['contains(%s)' % word] = (word in document_words)
     return features
 
-def get_pages():
+def crawl_pages():
     pages_pos = [] ; crawler.crawl("data/relevant.txt",pages_pos)
     pages_neg = [] ; crawler.crawl("data/irrelevant.txt",pages_neg)
 
-    import pickle
     with open("data/pages_neg.pickle","wb") as n_out , open("data/pages_pos.pickle","wb") as p_out:
         pickle.dump(pages_neg,n_out)
         pickle.dump(pages_pos,p_out)
+
+def get_pages():
+    pages_neg = pickle.load(open("data/pages_neg.pickle",'rb'))
+    pages_pos = pickle.load(open("data/pages_pos.pickle",'rb'))
+    return pages_pos,pages_neg
 
 def train(pages_pos,pages_neg):
     training = [] ; test = [] ; crawler.parse_pages(pages_pos, training,test, 'pos')
