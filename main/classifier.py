@@ -31,21 +31,25 @@ def get_pages():
     pages_pos = pickle.load(open("data/pages_pos.pickle",'rb'))
     return pages_pos,pages_neg
 
-def train(pages_pos,pages_neg):
+def get_sets(pages_pos,pages_neg):
     training = [] ; test = [] ; crawler.parse_pages(pages_pos, training,test, 'pos')
     crawler.parse_pages(pages_neg, training,test, 'neg')
+    return training,test
 
+def train(training,test):
     documents = [(words_in_doc(doc[0]),doc[1])
                  for docs in [training,test]
                  for doc in docs if doc[0]]
 
     word_lists = [words_in_doc(doc[0])
                   for docs in [training,test]
-                  for doc in docs if doc]
+                  for doc in docs if doc[0]]
+
+    word_lists = [ words for words,label in documents]
     all_words = nltk.FreqDist(w.lower() for word_list in word_lists if word_list for w in word_list)
     word_features = all_words.keys()[:2000]
 
-    featuresets = [(document_features(d), c) for (d,c) in documents if d]
+    featuresets = [(document_features(d,word_features), c) for (d,c) in documents if d]
     train_set, test_set = featuresets[100:], featuresets[:100]
     classifier = nltk.NaiveBayesClassifier.train(train_set)
     return classifier
