@@ -11,7 +11,7 @@ def words_in_doc(content):
         words = word_tokenize(sent)
         return words #[word for word in words if word not in STOPWORDS]
 
-def document_features(document):
+def document_features(document,word_features):
     document_words = set(document)
     features = {}
     for word in word_features:
@@ -37,7 +37,7 @@ def train(pages_pos,pages_neg):
 
     documents = [(words_in_doc(doc[0]),doc[1])
                  for docs in [training,test]
-                 for doc in docs if doc]
+                 for doc in docs if doc[0]]
 
     word_lists = [words_in_doc(doc[0])
                   for docs in [training,test]
