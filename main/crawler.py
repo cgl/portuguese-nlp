@@ -20,18 +20,28 @@ def crawl(filename,pages):
     for url in url_gen:
         try:
             response = urlopen(url)
-            page = BeautifulSoup(response.read())
-            if page:
-                pages.append(page)
+            if response.code == 200:
+                page = BeautifulSoup(response.read())
+                if page:
+                    pages.append(page)
+                else:
+                    print("Empty page: %s" % url)
             else:
-                print("Empty page: %s" % url)
+                print(url)
+                print("code %d" % response.code)
         except:
             print(url)
             traceback.print_exc()
 
 def parse_html(page):
     try:
-        content = page.findAll("td")[-2]
+        tds = page.findAll("td")
+        content = tds[-2]
+        for td_ind in range(1,len(tds)):
+            content = tds[-1*td_ind]
+            if content.find("b"):
+                print(-1*td_ind)
+                break
     except IndexError:
         try:
             content = page.find("div", {"id": "articleNew"})
