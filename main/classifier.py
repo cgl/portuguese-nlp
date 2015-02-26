@@ -52,4 +52,5 @@ def train(training,test):
     featuresets = [(document_features(d,word_features), c) for (d,c) in documents if d]
     train_set, test_set = featuresets[100:], featuresets[:100]
     classifier = nltk.NaiveBayesClassifier.train(train_set)
+    print(nltk.classify.accuracy(classifier, test_set))
     return classifier
