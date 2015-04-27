@@ -26,6 +26,7 @@ def parsed_run(url_gen,label,folder):
 
 #  writes raw html pages to files
 def run_raw(url_gen,label,folder):
+    sys.stdout.write("Working on class [%s]...\n" %label)
     pages = []
     crawl(url_gen,pages)
     write_to_file(pages,folder+"/raw/class_"+label)
@@ -33,16 +34,19 @@ def run_raw(url_gen,label,folder):
 
 import sys,os,io
 def write_to_file(list_pages,directory):
+    sys.stdout.write("Starting [Writing to File]...\n")
     if not os.path.exists(directory):
         os.makedirs(directory)
-    for ind,page in enumerate(list_pages[:3]):
+    for ind,page in enumerate(list_pages):
         with io.open(os.path.join(directory,str(ind)+".txt"), 'w') as outfile:
             if type(page) is tuple:
                 page = page[0]
             outfile.write(page.renderContents().decode('utf-8'))
+    sys.stdout.write("Completed [Writing to File]...\n")
 
 #url_gen = read_file_gen(filename)
 def crawl(url_gen,pages):
+    sys.stdout.write("Starting [Crawling]...\n")
     for url in url_gen:
         try:
             response = urlopen(url.strip())
@@ -52,13 +56,16 @@ def crawl(url_gen,pages):
                     page = BeautifulSoup("Empty page at <a href='%s'>%s</a>" %(url,url))
                     sys.stdout.write("Empty page at %s\n" % url)
             else:
-                page = BeautifulSoup("HTTP Error 404: Not Found at <a href='%s'>%s</a>" %(url,url))
-                sys.stdout.write("HTTP Error 404: Not Found at %s\n" % url)
-                #print("code %d" % response.code)
-            pages.append(page)
-        except:
-            print(url)
-            traceback.print_tb() #print_exc()
+                page = BeautifulSoup("HTTP Code %i received at <a href='%s'>%s</a>" %(response.code,url,url))
+                sys.stdout.write("HTTP Code %i received at <a href='%s'>%s</a>" %(response.code,url,url))
+        except HTTPError:
+            #traceback.print_exc()
+            #traceback.print_tb(sys.exc_traceback, limit=1, file=sys.stdout)
+            formatted_lines = traceback.format_exc().splitlines()
+            print("%s at %s" %(formatted_lines[-1],url.strip()))
+            page = BeautifulSoup("HTTP Error 404: Not Found at <a href='%s'>%s</a>" %(url,url))
+        pages.append(page)
+    sys.stdout.write("Completed [Crawling]...\n")
 
 def parse_html(page):
     try:
@@ -96,12 +103,12 @@ import argparse
 def main():
     parser = argparse.ArgumentParser(description = "Analysis scripts for LexNorm in W-NUT 2015")
     parser.add_argument("--class1", required = True, type=read_file_gen, help = "A text file: Urls of the True class files")
-    parser.add_argument("--class2", required = True, type=read_file_gen, help = "A text file: Urls of the True class files")
+    parser.add_argument("--class2", required = True, type=read_file_gen, help = "A text file: Urls of the False class files")
     parser.add_argument("--output_dir", required = False, default="data" ,type=str , help = "Output Dir")
     args = parser.parse_args()
     #print(args.class1)
-    run_raw(args.class1,"class1",args.output_dir)
-    run_raw(args.class2,"class2",args.output_dir)
+    run_raw(args.class1,"rel",args.output_dir)
+    run_raw(args.class2,"irr",args.output_dir)
 
 if __name__ == "__main__":
     main()
