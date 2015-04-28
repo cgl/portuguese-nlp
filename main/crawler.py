@@ -1,5 +1,6 @@
 from BeautifulSoup import BeautifulSoup
-import codecs,traceback
+import codecs,traceback,sys,os,io
+
 from urllib2 import HTTPError,urlopen
 """
 url = "http://www1.folha.uol.com.br/fsp/dinheiro/fi28079905.htm"
@@ -31,8 +32,6 @@ def run_raw(url_gen,label,folder):
     crawl(url_gen,pages)
     write_to_file(pages,folder+"/raw/class_"+label)
 
-
-import sys,os,io
 def write_to_file(list_pages,directory):
     sys.stdout.write("Starting [Writing to File]...\n")
     if not os.path.exists(directory):
@@ -62,7 +61,7 @@ def crawl(url_gen,pages):
             #traceback.print_exc()
             #traceback.print_tb(sys.exc_traceback, limit=1, file=sys.stdout)
             formatted_lines = traceback.format_exc().splitlines()
-            print("%s at %s" %(formatted_lines[-1],url.strip()))
+            sys.stderr.write("%s at %s" %(formatted_lines[-1],url.strip()))
             page = BeautifulSoup("HTTP Error 404: Not Found at <a href='%s'>%s</a>" %(url,url))
         pages.append(page)
     sys.stdout.write("Completed [Crawling]...\n")
@@ -70,12 +69,27 @@ def crawl(url_gen,pages):
 def parse_html(page):
     try:
         tds = page.findAll("td")
-        content = tds[-2]
+        content = tds[-2] # throws IndexError if tds empty
         for td_ind in range(1,len(tds)):
             content = tds[-1*td_ind]
             if content.find("b"):
-                print(-1*td_ind)
+                #print(-1*td_ind)
                 break
+        table = page.find("table", {"id": "main"})
+        if table is None:
+            pass
+            #print("----------------------")
+        else:
+            tds2 = table.findAll("td")
+            content2 = tds2[-2]
+            for td_ind in range(1,len(tds2)):
+                content2 = tds2[-1*td_ind]
+                if content2.find("b"):
+                    #print(-1*td_ind)
+                    break
+            #if content != content2:
+                #print(tds2)
+                #print("*******************")
     except IndexError:
         try:
             content = page.find("div", {"id": "articleNew"})
