@@ -32,6 +32,13 @@ def get_pages(raw_dir,parsed_dir,divide,debug=False):
 def write_parsed_page(infilename,outfilename,debug=False):
     with io.open(infilename, 'r') as infile:
         page = BeautifulSoup(infile)
+    try:
+        title = " ".join(str(page.html.head.title.string).split())
+        title = title.strip(u"Folha de S.Paulo").strip().strip("-").strip()
+    except AttributeError:
+        sys.stderr.write("Title AttributeError at %s\n" %outfilename)
+        title = ""
+    #print(str(page.html.head.title.string))
     clean_page(page)
     if debug:
         sys.stdout.write("[CLEAN PAGE] %s\n" %page)
@@ -45,10 +52,8 @@ def write_parsed_page(infilename,outfilename,debug=False):
     #unicode_content = content.renderContents().decode('utf-8').strip("|\n ?")
     unicode_content = content.text.strip("|\n ?")
     nl_free_content = unicode_content.replace(u"\n",u" ")
-    if nl_free_content.strip() is "" or  nl_free_content.strip() is None:
-        sys.stderr.write("Bos %s\n" %outfilename)
-        return
     with io.open(outfilename, 'w') as outfile:
+        outfile.write("%s " %title)
         outfile.write(nl_free_content)
     if debug:
         sys.stdout.write("[CLEANED CONTENT] %s\n" %content)

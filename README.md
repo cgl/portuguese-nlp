@@ -271,6 +271,9 @@ RUN13
 
 python main/clean.py --raw_dir data/raw --parsed_dir data/parsed/full-text --divide 2> /tmp/err.txt
 
+tags are removed (was content.renderContents().decode('utf-8').strip("|\n ?") --> content.text)
+TFIDF + words to keep 130
+
 .*[<>\+\-\#=\$[0-9]].*
 191 180
 
@@ -292,6 +295,7 @@ Weighted Avg.    0.9       0.1        0.9       0.9       0.9        0.89
 RUN14
 
 143 135
+TFIDF + words to keep 100
 
 === Detailed Accuracy By Class ===
 
@@ -305,3 +309,30 @@ Weighted Avg.    0.913     0.087      0.914     0.913     0.913      0.907
    a   b   <-- classified as
  481  35 |   a = class_irr
   54 458 |   b = class_rel
+
+***************************************************************************
+***************************************************************************
+RUN15
+
+python main/clean.py --raw_dir data/raw --parsed_dir data/parsed/full-title --divide 2> /tmp/err.txt
+java  weka.core.converters.TextDirectoryLoader -Dfile.encoding=utf-8 -dir /Users/cagil/work/portuguese-nlp/data/parsed/full-title > /Users/cagil/work/portuguese-nlp/data/versions/v15_str_all.arff
+
+with titles
+
+TFIDF + words to keep 130
+
+.*[<>\+\-\#=\$[0-9]].*
+144 --> 135
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.94      0.09       0.913     0.94      0.926      0.917    class_irr
+                 0.91      0.06       0.938     0.91      0.924      0.917    class_rel
+Weighted Avg.    0.925     0.075      0.925     0.925     0.925      0.917
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 485  31 |   a = class_irr
+  46 466 |   b = class_rel
