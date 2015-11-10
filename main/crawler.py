@@ -1,3 +1,7 @@
+# Author Cagil
+# Edit Log 21 Oct 2015
+# no ignore during decoding
+# e.g page = BeautifulSoup(response.read().decode('utf-8'))
 from BeautifulSoup import BeautifulSoup
 import codecs,traceback,sys,os,io
 
@@ -36,7 +40,7 @@ def write_to_file(list_pages,directory):
     sys.stdout.write("Starting [Writing to File]...\n")
     if not os.path.exists(directory):
         os.makedirs(directory)
-    for ind,page in enumerate(list_pages):
+    for ind,page in list_pages:
         with io.open(os.path.join(directory,str(ind)+".txt"), 'w') as outfile:
             if type(page) is tuple:
                 page = page[0]
@@ -46,27 +50,34 @@ def write_to_file(list_pages,directory):
 #url_gen = read_file_gen(filename)
 def crawl(url_gen,pages):
     sys.stdout.write("Starting [Crawling]...\n")
-    for url in url_gen:
+    for ind,url in enumerate(url_gen):
         try:
             response = urlopen(url.strip())
             if response.code == 200:
-                page = BeautifulSoup(response.read().decode('utf-8', 'ignore'))
+                page = BeautifulSoup(response.read()) #.decode('utf-8', 'ignore'))
                 if not page:
                     page = BeautifulSoup("Empty page at <a href='%s'>%s</a>" %(url,url))
-                    sys.stdout.write("Empty page at %s\n" % url)
+                    sys.stdout.write("[%d]Empty page at %s\n" % (ind,url))
             else:
                 page = BeautifulSoup("HTTP Code %i received at <a href='%s'>%s</a>" %(response.code,url,url))
-                sys.stdout.write("HTTP Code %i received at <a href='%s'>%s</a>" %(response.code,url,url))
+                sys.stdout.write("[%d]HTTP Code %i received at <a href='%s'>%s</a>" %(ind,response.code,url,url))
         except HTTPError:
             #traceback.print_exc()
             #traceback.print_tb(sys.exc_traceback, limit=1, file=sys.stdout)
             formatted_lines = traceback.format_exc().splitlines()
-            sys.stderr.write("%s at %s" %(formatted_lines[-1],url.strip()))
+            sys.stderr.write("[%d]%s at %s\n" %(ind,formatted_lines[-1],url.strip()))
             page = BeautifulSoup("HTTP Error 404: Not Found at <a href='%s'>%s</a>" %(url,url))
-        pages.append(page)
+        pages.append((ind,page))
+        sys.stdout.write("%d %s\n" %(ind,url.strip()))
     sys.stdout.write("Completed [Crawling]...\n")
 
 def parse_html(page):
+    try:
+        table = page.find("table", {"id": "main"})
+        if table is not None:
+            page = table
+    except:
+        print("***************")
     try:
         tds = page.findAll("td")
         content = tds[-2] # throws IndexError if tds empty
@@ -75,21 +86,6 @@ def parse_html(page):
             if content.find("b"):
                 #print(-1*td_ind)
                 break
-        table = page.find("table", {"id": "main"})
-        if table is None:
-            pass
-            #print("----------------------")
-        else:
-            tds2 = table.findAll("td")
-            content2 = tds2[-2]
-            for td_ind in range(1,len(tds2)):
-                content2 = tds2[-1*td_ind]
-                if content2.find("b"):
-                    #print(-1*td_ind)
-                    break
-            #if content != content2:
-                #print(tds2)
-                #print("*******************")
     except IndexError:
         try:
             content = page.find("div", {"id": "articleNew"})

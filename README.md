@@ -33,7 +33,7 @@ export CLASSPATH=$CLASSPATH:$weka_home/weka.jar:$weka_home/libsvm.jar:$JAVA_HOME
 
 java  weka.core.converters.TextDirectoryLoader -Dfile.encoding=utf-8 -dir raw > str_test_training.arff
 
-java  -Xmx1024m weka.filters.unsupervised.attribute.StringToWordVector  –b -i str_test_training.arff -o test_training.arff -r str_test_training.arff -s test_test.arff -R 2 -W 5000 -C -T -I -N 1 -L -M 2
+java  -Xmx1024m weka.filters.unsupervised.attribute.StringToWordVector  -b -i str_test_training.arff -o test_training.arff -r str_test_training.arff -s test_test.arff -R 2 -W 5000 -C -T -I -N 1 -L -M 2
 
  java -Xmx1024m weka.filters.unsupervised.attribute.StringToWordVector -b -i str_test_training.arff -o test_training.arff -r str_test_training.arff -s test_test.arff -R 2 -W 5000 -C -T -I -N 1 -L -M 2 -tokenizer "weka.core.tokenizers.NGramTokenizer -min 2 -max 3"
 
@@ -76,6 +76,9 @@ IDF True
 TF  True
 Outputwordcounts True
 lowercase True
+
+weka.filters.unsupervised.attribute.StringToWordVector -R first-last -W 1000 -prune-rate -1.0 -C -T -I -N 0 -L -stemmer weka.core.stemmers.NullStemmer -M 1 -tokenizer "weka.core.tokenizers.WordTokenizer -delimiters \" \\r\\n\\t.,;:\\\'\\\"()?!\""
+
 
 ***************************************************************************
 
@@ -319,7 +322,7 @@ java  weka.core.converters.TextDirectoryLoader -Dfile.encoding=utf-8 -dir /Users
 
 with titles
 
-TFIDF + words to keep 130
+TFIDF + words to keep 100
 
 .*[<>\+\-\#=\$[0-9]].*
 144 --> 135
@@ -336,3 +339,125 @@ Weighted Avg.    0.925     0.075      0.925     0.925     0.925      0.917
    a   b   <-- classified as
  485  31 |   a = class_irr
   46 466 |   b = class_rel
+
+***************************************************************************
+***************************************************************************
+RUN16
+
+python main/clean.py --raw_dir data/raw --parsed_dir data/parsed/full-main --divide 2> /tmp/err.txt
+
+java  weka.core.converters.TextDirectoryLoader -Dfile.encoding=utf-8 -dir /Users/cagil/work/portuguese-nlp/data/parsed/full-main > /Users/cagil/work/portuguese-nlp/data/versions/v16_str_all.arff
+
+with main
+
+.*[<>\+\-\#=\$[0-9]].*
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.942     0.084      0.919     0.942     0.93       0.921    class_irr
+                 0.916     0.058      0.94      0.916     0.928      0.921    class_rel
+Weighted Avg.    0.929     0.071      0.929     0.929     0.929      0.921
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 486  30 |   a = class_irr
+  43 469 |   b = class_rel
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.942     0.084      0.919     0.942     0.93       0.921    class_irr
+                 0.916     0.058      0.94      0.916     0.928      0.921    class_rel
+Weighted Avg.    0.929     0.071      0.929     0.929     0.929      0.921
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 486  30 |   a = class_irr
+  43 469 |   b = class_rel
+
+
+***************************************************************************
+***************************************************************************
+RUN17 - 21 October 2015
+
+. ~/work/virtuals/brazil/bin/activate
+cd main
+python clean.py --raw_dir ../data/raw_v2 --parsed_dir ../data/parsed/full-main_v2 --divide 2> /tmp/err.txt
+
+
+java  weka.core.converters.TextDirectoryLoader -Dfile.encoding=utf-8 -dir /Users/cagil/work/portuguese-nlp/data/parsed/full-main_v2 > /Users/cagil/work/portuguese-nlp/data/versions/v17_str_all.arff
+
+weka.filters.unsupervised.attribute.StringToWordVector -R first-last -W 100 -prune-rate -1.0 -C -T -I -N 0 -L -S -stemmer weka.core.stemmers.NullStemmer -M 1 -stopwords /Users/cagil/work/portuguese-nlp/stoplist.txt -tokenizer "weka.core.tokenizers.WordTokenizer -delimiters \" \\r\\n\\t.,;:\\\'\\\"()?!\""
+
+weka.filters.unsupervised.attribute.StringToWordVector -R first-last -W 100 -prune-rate -1.0 -C -T -I -N 0 -L -S -stemmer weka.core.stemmers.NullStemmer -M 1 -stopwords /Users/cagil/work/portuguese-nlp/stoplist.txt -tokenizer "weka.core.tokenizers.WordTokenizer -delimiters \" \\r\\n\\t.,;:\\\'\\\"()?!\""
+
+with main
+
+.*[<>\+\-\#=\$[0-9]].*
+
+sonuçlar ve model dosyada kod 17
+***************************************************************************
+***************************************************************************
+RUN18 - 21 October 2015
+
+RAW: not cleaned
+
+java  weka.core.converters.TextDirectoryLoader -Dfile.encoding=utf-8 -dir /Users/cagil/work/portuguese-nlp/data/v2/raw > /Users/cagil/work/portuguese-nlp/data/versions/v18_str_all.arff
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 480  44 |   a = class_irr
+  60 446 |   b = class_rel
+0.902
+0.896
+
+cleaned
+java  weka.core.converters.TextDirectoryLoader -Dfile.encoding=utf-8 -dir /Users/cagil/work/portuguese-nlp/data/parsed/v2 > /Users/cagil/work/portuguese-nlp/data/versions/v18_parsed_str_all.arff
+
+F-Measure
+0.929 class_irr
+0.925 class_rel
+
+
+
+***************************************************************************
+***************************************************************************
+RUN19 - 22 October 2015
+
+Scheme:weka.classifiers.trees.RandomForest -I 80 -K 0 -S 1 -D
+weka.classifiers.trees.RandomForest -I 70 -K 0 -S 1 -D
+
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances         294               96.3934 %
+Incorrectly Classified Instances        11                3.6066 %
+Kappa statistic                          0.9276
+Mean absolute error                      0.1987
+Root mean squared error                  0.2416
+Relative absolute error                 39.7267 %
+Root relative squared error             48.2933 %
+Total Number of Instances              305     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.963     0.035      0.969     0.963     0.966      0.991    class_irr
+                 0.965     0.037      0.958     0.965     0.961      0.991    class_rel
+Weighted Avg.    0.964     0.036      0.964     0.964     0.964      0.991
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 157   6 |   a = class_irr
+   5 137 |   b = class_rel
+
+
+How to move the class att to the end: https://youtu.be/jSZ9jQy1sfE?t=9m10s

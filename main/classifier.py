@@ -1,3 +1,5 @@
+# Author Cagil
+# Last edit 26 Feb 2015
 import nltk,random,pickle
 tokenizer = nltk.data.load('tokenizers/punkt/portuguese.pickle')
 from nltk.tokenize import word_tokenize
