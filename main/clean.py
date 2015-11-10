@@ -1,6 +1,12 @@
-from crawler import read_file_gen, parse_html
+# Author Cagil
+# Edit 28 Apr 2015
+# Edit Log 21 Oct 2015
+# Unescape added, it is optional
 import argparse,os,sys,io
 from BeautifulSoup import BeautifulSoup,Comment
+UNESCAPE = True
+import HTMLParser
+h = HTMLParser.HTMLParser()
 def main():
     parser = argparse.ArgumentParser(description = "Parses & removes unnecessary html tags from raw classifier files")
     parser.add_argument("--raw_dir", required = False, default=None ,type=str , help = "Raw data dir")
@@ -8,11 +14,12 @@ def main():
     #parser.add_argument("--clean", required = False, default=False ,type=bool , help = "Output Dir")
     parser.add_argument("--divide", required = False, default=True,action='store_false', dest='boolean_switch', help = "Parsed data dir")
     parser.add_argument("--debug", required = False, default=False,action='store_true', dest='debug', help = "Parsed data dir")
-
     args = parser.parse_args()
     #print(args.class1)
     if args.raw_dir and args.parsed_dir:
         get_pages(args.raw_dir,args.parsed_dir,args.boolean_switch,debug=args.debug)
+    else:
+        sys.stderr.write("Error")
 
 def get_pages(raw_dir,parsed_dir,divide,debug=False):
     classes = gen_walk(raw_dir)
@@ -30,15 +37,19 @@ def get_pages(raw_dir,parsed_dir,divide,debug=False):
         sys.stdout.write("Completed [Writing to File: %s]\n" %label)
 
 def write_parsed_page(infilename,outfilename,debug=False):
-    with io.open(infilename, 'r') as infile:
+    with io.open(infilename, 'r',encoding="latin1") as infile:
         page = BeautifulSoup(infile)
     try:
-        title = " ".join(str(page.html.head.title.string).split())
+        title_text = page.html.head.title.string.split()
+        title = " ".join(title_text)
         title = title.strip(u"Folha de S.Paulo").strip().strip("-").strip()
     except AttributeError:
         sys.stderr.write("Title AttributeError at %s\n" %outfilename)
         title = ""
-    #print(str(page.html.head.title.string))
+    except TypeError:
+        sys.stderr.write("Title TypeError at %s\n" %outfilename)
+        title = u""
+        print(page.html.head.title)
     clean_page(page)
     if debug:
         sys.stdout.write("[CLEAN PAGE] %s\n" %page)
@@ -53,7 +64,10 @@ def write_parsed_page(infilename,outfilename,debug=False):
     unicode_content = content.text.strip("|\n ?")
     nl_free_content = unicode_content.replace(u"\n",u" ")
     with io.open(outfilename, 'w') as outfile:
-        outfile.write("%s " %title)
+        if UNESCAPE:
+            title = h.unescape(title)
+            nl_free_content = h.unescape(nl_free_content)
+        outfile.write("%s\n" %title)
         outfile.write(nl_free_content)
     if debug:
         sys.stdout.write("[CLEANED CONTENT] %s\n" %content)
@@ -62,6 +76,29 @@ def write_parsed_page(infilename,outfilename,debug=False):
         sys.stdout.write("[OUTFILENAME]%s\n" %outfilename)
         sys.stdout.write("************************************************************\n")
         sys.stdout.write("************************************************************\n")
+
+def parse_html(page):
+    try:
+        table = page.find("table", {"id": "main"})
+        if table is not None:
+            page = table
+    except:
+        print("***************")
+    try:
+        tds = page.findAll("td")
+        content = tds[-2] # throws IndexError if tds empty
+        for td_ind in range(1,len(tds)):
+            content = tds[-1*td_ind]
+            if content.find("b"):
+                #print(-1*td_ind)
+                break
+    except IndexError:
+        try:
+            content = page.find("div", {"id": "articleNew"})
+        except:
+            sys.stderr.write("Error line 56")
+            return None
+    return content
 
 def clean_page(page):
     scripts = page.findAll("script")
