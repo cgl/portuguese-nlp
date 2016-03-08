@@ -1,0 +1,9 @@
+(ROOT (S (NP (N' (N Professores) (PP (P de_) (NP (ART a) (N' (N USP) (PP (P de) (NP (N' (N Ribeir?o) (N aderem) (N ?) (N greve)))))))))))
+(ROOT (S (NP (N' (N Professores) (PP (P de_) (NP (ART a) (N' (N USP) (PP (P de) (NP (N' (N Ribeir?o) (N aderem) (N ?) (N greve)))))))))))
+(ROOT (S (VP (PP (P de_) (NP (ART a) (N' (N REPORTAGEM) (A LOCAL)))))))
+(ROOT (S (NP (N' (N DA) (N FOLHA) (N RIBEIR?O)))))
+SENTENCE_SKIPPED_OR_UNPARSABLE
+(ROOT (S (S (NP (N' (N' (N Docentes) (PP (P de_) (NP (ART a) (N' (N USP) (N \*() (N Universidade) (N de) (N S?o) (N Paulo) (N )*/) (N de) (N Ribeir?o) (N Preto) (N \*() (N 314) (N km))))) (PP (P de) (NP (N' (N SP) (A )*/)))))) (VP (VP (VP (VP (V decidiram) (AP (ADV ontem) (A aderir))) (PP (P' (P a) (P partir) (P de)) (NP (N' (AP (ADV hoje) (A ?)) (N' (N greve) (A iniciada)))))) (PP (P por_) (NP (ART os) (N colegas)))) (PP (P de) (VP (V S?o) (NP (N Paulo)))))) (PNT .)))
+(ROOT (S (S (NP (ART A) (N' (N' (N paralisa??o) (A ,*/)) (AP (V aprovada) (PP (P por) (NP (N' (N unanimidade) (PP (P em) (NP (N' (N assembl?ia) (A ,*/)))))))))) (VP (V ?) (NP (ART um) (N' (N protesto) (PP (P contra) (NP (ART a) (N' (N reforma) (PP (P de_) (NP (ART a) (N' (N Previd?ncia) (CP (PP (P em) (NP (N' (N discuss?o) (N no) (N Congresso) (N .*/)))) (S (NP (ART A) (N' (N USP) (PP (P de) (NP (N Ribeir?o))))) (VP (V tem) (NP (CARD 690) (N professores))))))))))))))) (PNT .)))
+(ROOT (S (S (S (S (PP (P Em) (NP (N' (N assembl?ia) (AP (ADV ontem) (A ,*/))))) (S (NP (ART os) (N' (N professores) (PP (P de_) (NP (ART a) (N' (N USP) (A paulista)))))) (VP (V decidiram) (VP (V manter) (NP (ART a) (N' (N greve) (A iniciada))))))) (S (VP (V na) (NP (N' (ORD segunda) (N' (N .*/) (PP (P Para) (NP (ART o) (N' (N diretor) (PP (P de_) (NP (ART a) (N' (N' (N Adusp) (A \*()) (N' (N associa??o) (PP (P de_) (NP (ART os) (N' (N docentes) (N )*/) (N Cesar) (N Minto) (N ,*/))))))))))))))))) (S (NP (ART o) (N movimento)) (V cresceu))) (PNT .)))
+SENTENCE_SKIPPED_OR_UNPARSABLE
