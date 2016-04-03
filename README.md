@@ -9,6 +9,7 @@ We used [LX Parser](http://lxcenter.di.fc.ul.pt/tools/en/LXParserEN.html), a Con
 Some bash scripting for LX-Tokenizer:
 
 ```bash
+  mkdir data/tokenized
   for file in $(find data/input/ -type f -printf "%f\n");
     do
       cat data/input/$file | Tokenizer/Tokenizer/run-Tokenizer.sh > data/tokenized/$file ;
@@ -18,9 +19,11 @@ Some bash scripting for LX-Tokenizer:
 Some java for parsing:
 
 ```bash
+  mkdir data/parsed
   for file in $(find data/tokenized/ -type f -printf "%f\n");
       do
   	    java -Xmx1000m -cp stanford-parser-2010-11-30/stanford-parser.jar edu.stanford.nlp.parser.lexparser.LexicalizedParser -tokenized -sentences newline -outputFormat oneline -uwModel edu.stanford.nlp.parser.lexparser.BaseUnknownWordModel cintil.ser.gz data/tokenized/$file > data/parsed/$file 2>>data/log_parse.txt ;
+  	    echo "Completed $file"
       done
 ```
 
