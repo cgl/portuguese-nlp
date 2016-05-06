@@ -1,13 +1,16 @@
-import argparse
+import argparse,codecs
 
-def extract_event(filename):
+def extract_event(filename,keyword="protesto"):
+    ''' Extracts events
+    '''
     lines = []
-    with open(filename) as file:
+    with codecs.open(filename,encoding="utf-8") as file:
         for  line in file.readlines():
             if not line.startswith("SENTENCE_SKIPPED"):
-                lines.append(line)
-                if line.find("greve") >= 0:
-                    print(line)
+                if line.find(keyword) >= 0:
+                    #print(line)
+                    lines.append(line.strip())
+    return lines
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
