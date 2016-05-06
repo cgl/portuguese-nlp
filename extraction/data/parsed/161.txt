@@ -1,8 +1,0 @@
-(ROOT (S (NP (N' (N Grupo) (PP (P de) (NP (CARD 50) (N gays))))) (VP (V faz) (NP (N manifesta??o)))))
-(ROOT (S (NP (N' (N Grupo) (PP (P de) (NP (CARD 50) (N gays))))) (VP (V faz) (NP (N manifesta??o)))))
-(ROOT (S (VP (PP (P de_) (NP (ART a) (N' (N Reportagem) (A Local)))))))
-SENTENCE_SKIPPED_OR_UNPARSABLE
-SENTENCE_SKIPPED_OR_UNPARSABLE
-(ROOT (S (NP (CARD' (ADV' (ADV Cerca) (ADV de)) (CARD 50)) (N homossexuais)) (VP (V' (V realizaram) (ADV ontem)) (NP (N' (N' (N ?) (N tarde) (N ,*/) (N na) (N pra?a)) (CP (PP (P de_) (NP (ART a) (N' (N Rep?blica) (N \*() (N regi?o) (N central) (N de) (N S?o) (N Paulo) (N )) (N ,*/)))) (S (NP (ART uma) (N' (N manifesta??o) (PP (P em) (NP (N' (N protesto) (PP (P contra) (NP (ART o) (N' (N assassinato) (PP (P de) (NP (N' (N' (N Edson) (A Neris)) (PP (P de_) (NP (ART a) (N' (N Silva) (A ,*/))))))))))))))) (VP (VP (V morto) (VP (V no) (NP (N' (ORD ?ltimo) (N' (N domingo) (PP (P por) (NP (ART um) (N' (N grupo) (PP (P de) (NP (N' (N skinheads) (A ,*/)))))))))))) (CONJP (CONJ porque) (S (VP (V estava) (PP (P de) (NP (N' (N' (N m?os) (A dadas)) (PP (P com) (NP (ART um) (N' (N namorado) (A .*/))))))))))))))))))
-(ROOT (S (VP (V Foi) (VP (V divulgada) (NP (ART uma) (N' (N carta) (A denunciando))))) (NP (ART o) (N' (N preconceito) (N no) (N Brasil) (N .*/)))))
-(ROOT (S (S (S (VP (V Horas) (PP (P antes) (NP (N' (N ,*/) (N na) (N madrugada) (N ,*/)))))) (S (NP (CARD dois) (N homossexuais)) (VP (V foram) (NP (NP (N' (N mortos) (A na))) (NP (N' (N' (N regi?o) (A central)) (PP (P de_) (NP (ART a) (N' (N cidade) (A .*/)))))))))) (S (NP (ART As) (N v?timas)) (VP (V eram) (NP (CARD dois) (N' (N travestis) (A .*/)))))))
