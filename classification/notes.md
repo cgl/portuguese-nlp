@@ -5,7 +5,10 @@
     weka_home=/Applications/weka-3-6-12-oracle-jvm.app/Contents/Java ; export CLASSPATH=$CLASSPATH:$weka_home/weka.jar:$weka_home/libsvm.jar:$JAVA_HOME/bin
     cp /Applications/weka-3-6-12-oracle-jvm.app/Contents/Java/weka.jar ~/work/portuguese-nlp/classification/
     cd ~/work/portuguese-nlp/classification/
-    java weka.classifiers.meta.FilteredClassifier -i -t data/versions/v18_parsed_str_all.arff -F "weka.filters.unsupervised.attribute.StringToWordVector -R first-last -W 100 -prune-rate -1.0 -C -T -I -N 0 -L -S -stemmer weka.core.stemmers.NullStemmer -M 1 -stopwords /Users/cagil/work/portuguese-nlp/stoplist.txt" -W weka.classifiers.trees.RandomForest -- -I 70 -K 0 -S 1 -D
+    java weka.classifiers.meta.FilteredClassifier -i -t data/versions/v18_parsed_str_all.arff \ 
+      -F "weka.filters.unsupervised.attribute.StringToWordVector -R first-last -W 100 -prune-rate -1.0 -C -T -I -N 0 -L -S \
+      -stemmer weka.core.stemmers.NullStemmer -M 1 -stopwords /Users/cagil/work/portuguese-nlp/stoplist.txt" \
+      -W weka.classifiers.trees.RandomForest -- -I 70 -K 0 -S 1 -D
     
             === Detailed Accuracy By Class ===
       
