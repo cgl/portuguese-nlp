@@ -23,3 +23,12 @@
          a   b   <-- classified as
        499  17 |   a = class_irr
         37 463 |   b = class_rel
+
+
+180 437 arası alakasız dosyalar çıkarıldıktan sonra.
+
+
+    java weka.core.converters.TextDirectoryLoader -Dfile.encoding=utf-8  \
+    -dir data/v2/parsed > data/versions/v19_parsed_str_all.arff
+
+
