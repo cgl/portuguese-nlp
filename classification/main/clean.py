@@ -10,7 +10,7 @@ import HTMLParser
 h = HTMLParser.HTMLParser()
 def main():
     parser = argparse.ArgumentParser(description = "Parses & removes unnecessary html tags from raw classifier files")
-    parser.add_argument("--raw_dir", required = False, default=None ,type=str , help = "Raw data dir")
+    parser.add_argument("--raw_dir", required = False, default=None ,type=str , help = "Raw data dir. Should include at least one label folder. eg. irr/ or rel/ ")
     parser.add_argument("--parsed_dir", required = False, default=None ,type=str , help = "Parsed data dir")
     #parser.add_argument("--clean", required = False, default=False ,type=bool , help = "Output Dir")
     parser.add_argument("--divide", required = False, default=False,action='store_false', dest='boolean_switch', help = "Parsed data dir")
@@ -47,17 +47,24 @@ def get_pages(raw_dir,parsed_dir,divide,debug=False):
                 i = (i + 1) % 4 #2
             infilename = os.path.join(raw_dir,label,raw_filename)
             outfilename = os.path.join(parsed_dir,path,label,raw_filename)
-            write_parsed_page_alt(infilename,outfilename)
+            write_parsed_page_alt(infilename,outfilename,debug=debug)
             #write_parsed_page(infilename,outfilename,debug=debug)
         sys.stdout.write("Last file for [%s] written to file: %s\n" %(label,outfilename))
         sys.stdout.write("Completed [Writing to File: %s]\n" %label)
 
-def write_parsed_page_alt(infilename,outfilename):
+def write_parsed_page_alt(infilename,outfilename,debug=False):
     content,title = parse_page_alternative(infilename)
     if content is None or content is u"":
         sys.stderr.write("Empty result return for %s.\n" %infilename)
         return
     write_to_file(outfilename,title,content)
+    if debug:
+        sys.stdout.write("[CLEANED CONTENT] %s\n" %content)
+        #sys.stdout.write("[UNICODE CONTENT] %s\n" %unicode_content)
+        #sys.stdout.write("[INFILENAME]%s\n" %infilename)
+        #sys.stdout.write("[OUTFILENAME]%s\n" %outfilename)
+        sys.stdout.write("************************************************************\n")
+        sys.stdout.write("************************************************************\n")
 
 def write_parsed_page(infilename,outfilename,debug=False):
     content,title = parse_page(infilename) # may be empty
