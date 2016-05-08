@@ -88,7 +88,9 @@ def write_parsed_page_alt(infilename,outfilename,debug=False):
         sys.stderr.write("Empty result return for %s.\n" %infilename)
         return
     elif not check_encoding_string(content):
-        print("File is not Portuguese %s" %infilename)
+        if debug:
+            print("File is not Portuguese %s" %infilename)
+            print("[DELETED CONTENT] %s\n" %content)
         return
     write_to_file(outfilename,title,content)
     if debug:
