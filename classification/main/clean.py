@@ -59,7 +59,7 @@ def write_parsed_page_alt(infilename,outfilename,debug=False):
         return
     write_to_file(outfilename,title,content)
     if debug:
-        sys.stdout.write("[CLEANED CONTENT] %s\n" %content)
+        print("[CLEANED CONTENT] %s\n" %content)
         #sys.stdout.write("[UNICODE CONTENT] %s\n" %unicode_content)
         #sys.stdout.write("[INFILENAME]%s\n" %infilename)
         #sys.stdout.write("[OUTFILENAME]%s\n" %outfilename)
