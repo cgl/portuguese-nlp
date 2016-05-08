@@ -10,15 +10,30 @@ import HTMLParser
 h = HTMLParser.HTMLParser()
 def main():
     parser = argparse.ArgumentParser(description = "Parses & removes unnecessary html tags from raw classifier files")
-    parser.add_argument("--raw_dir", required = False, default=None ,type=str , help = "Raw data dir. Should include at least one label folder. eg. irr/ or rel/ ")
+    parser.add_argument("--raw_dir", required = False, default=None ,type=str ,
+                        help = "Raw data dir. Should include at least one label folder. eg. irr/ or rel/ ")
     parser.add_argument("--parsed_dir", required = False, default=None ,type=str , help = "Parsed data dir")
     #parser.add_argument("--clean", required = False, default=False ,type=bool , help = "Output Dir")
-    parser.add_argument("--divide", required = False, default=False,action='store_false', dest='boolean_switch', help = "Parsed data dir")
-    parser.add_argument("--debug", required = False, default=False,action='store_true', dest='debug', help = "Parsed data dir")
+    parser.add_argument("--divide", required = False, default=False,action='store_false', dest='boolean_switch',
+                        help = "Parsed data dir")
+    parser.add_argument("--debug", required = False, default=False,action='store_true', dest='debug',
+                        help = "Parsed data dir")
+    parser.add_argument("--check_dir", required = False, default=None ,type=str , dest='check_dir',
+                        help = "given a nested directory name checks if the files inside is Portuguese")
+
     args = parser.parse_args()
     #print(args.class1)
     if args.raw_dir and args.parsed_dir:
-        get_pages(args.raw_dir,args.parsed_dir,args.boolean_switch,debug=args.debug)
+        if os.path.exists(args.raw_dir): # and os.path.exists(args.parsed_dir):
+            get_pages(args.raw_dir,args.parsed_dir,args.boolean_switch,debug=args.debug)
+        else:
+            print("No such directory")
+    elif args.check_dir:
+        if os.path.exists(args.check_dir):
+            print("Checking directory %s" %args.check_dir)
+            check_encoding(args.check_dir)
+        else:
+            print("No such directory")
     else:
         sys.stderr.write("Error")
 
@@ -27,12 +42,27 @@ def check_encoding(input_dir):
     for dirname,_,filenames in os.walk(input_dir):
       for filename in filenames:
         full_name = os.path.join(dirname,filename)
-        if not full_name.endswith(".DS_Store"):
-            with codecs.open(full_name,"r","utf-8") as inputfile:
+        content = []
+        check_encoding_file(full_name)
+
+def check_encoding_file(full_name):
+    if not full_name.endswith(".DS_Store") and not full_name.endswith(".meta"):
+        with codecs.open(full_name,"r","utf-8") as inputfile:
+        #with io.open(full_name,"r") as inputfile:
+            try:
                 content = inputfile.read()
                 content = h.unescape(content)
-                if max(content.count(u"í"),content.count(u"á"), content.count(u"é"), content.count(u"ã")) < 1:
-                    print full_name
+                if not check_encoding_string(content):
+                    print("%s is not Portuguese" %(full_name))
+                    return False
+            except UnicodeDecodeError:
+                pass #print("Couldn't read %s" %full_name)
+        return True
+
+def check_encoding_string(content):
+    if max(content.count(u"í"),content.count(u"á"), content.count(u"é"), content.count(u"ã")) < 1:
+        return False
+    return True
 
 def get_pages(raw_dir,parsed_dir,divide,debug=False):
     classes = gen_walk(raw_dir)
@@ -40,7 +70,7 @@ def get_pages(raw_dir,parsed_dir,divide,debug=False):
         i = 0 ; path = ""
         create_dirs(parsed_dir,label,divide)
         for raw_filename in gen_walk_inner(sub_path):
-            if raw_filename.startswith("."):
+            if raw_filename.startswith(".") or raw_filename.endswith(".meta"):
                   continue
             if divide:
                 path = "test"  if i < 1 else "training"
@@ -56,6 +86,9 @@ def write_parsed_page_alt(infilename,outfilename,debug=False):
     content,title = parse_page_alternative(infilename)
     if content is None or content is u"":
         sys.stderr.write("Empty result return for %s.\n" %infilename)
+        return
+    elif not check_encoding_string(content):
+        print("File is not Portuguese %s" %infilename)
         return
     write_to_file(outfilename,title,content)
     if debug:
