@@ -144,7 +144,7 @@ def write_to_file(outfilename,title,content):
         with io.open(outfilename, 'w') as outfile:
             if UNESCAPE:
                 title = h.unescape(title)
-                nl_free_content = h.unescape(content)
+                content = h.unescape(content)
             outfile.write("%s\n" %title)
             outfile.write(content)
     except TypeError:
