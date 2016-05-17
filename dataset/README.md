@@ -28,4 +28,19 @@ Number of news per year:
 
 Test clean:
 
+    python classification/main/clean.py --check_dir /tmp/brazil/data/2012/03
     python classification/main/clean.py --raw_dir /tmp/brazil/data/2012/03 --parsed_dir /tmp/03/
+    
+
+Run parse:
+
+    ```bash
+    for year in `ls /tmp/brazil/data`;
+      do 
+        for month in `ls /tmp/brazil/data/$year`
+          do 
+            mkdir -p /tmp/brazil/parsed_data/$year/$month; 
+            python classification/main/clean.py --raw_dir /tmp/brazil/data/$year/$month --parsed_dir /tmp/brazil/parsed_data/$year/$month; 
+          done; 
+      done
+    ```
