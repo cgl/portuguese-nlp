@@ -44,7 +44,7 @@ def check_encoding(input_dir):
       for filename in filenames:
         full_name = os.path.join(dirname,filename)
         content = []
-        if os.path.getsize(fpath) > 0:
+        if os.path.getsize(full_name) > 0:
             check_encoding_file(full_name)
         else:
             print("%s is empty" %(full_name))
