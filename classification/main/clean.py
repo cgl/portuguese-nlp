@@ -44,7 +44,10 @@ def check_encoding(input_dir):
       for filename in filenames:
         full_name = os.path.join(dirname,filename)
         content = []
-        check_encoding_file(full_name)
+        if os.path.getsize(fpath) > 0:
+            check_encoding_file(full_name)
+        else:
+            print("%s is empty" %(full_name))
         count+=1
     print("Checked %s files" %count)
 
@@ -87,7 +90,7 @@ def get_pages(raw_dir,parsed_dir,divide,debug=False):
             write_parsed_page_alt(infilename,outfilename,debug=debug)
             #write_parsed_page(infilename,outfilename,debug=debug)
         sys.stdout.write("Last file for [%s] written to file: %s\n" %(label,outfilename))
-        sys.stdout.write("Completed [Writing to File: %s]\n" %label)
+        #sys.stdout.write("Completed [Writing to File: %s]\n" %label)
 
 def write_parsed_page_alt(infilename,outfilename,debug=False):
     content,title = parse_page_alternative(infilename)
