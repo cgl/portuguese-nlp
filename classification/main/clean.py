@@ -39,11 +39,14 @@ def main():
 
 # given a nested directory name checks if the files inside is Portuguese
 def check_encoding(input_dir):
+    count=0
     for dirname,_,filenames in os.walk(input_dir):
       for filename in filenames:
         full_name = os.path.join(dirname,filename)
         content = []
         check_encoding_file(full_name)
+        count+=1
+    print("Checked %s files" %count)
 
 def check_encoding_file(full_name):
     if not full_name.endswith(".DS_Store") and not full_name.endswith(".meta"):
