@@ -86,7 +86,7 @@ def get_pages(raw_dir,parsed_dir,divide,debug=False):
                 path = "test"  if i < 1 else "training"
                 i = (i + 1) % 4 #2
             infilename = os.path.join(raw_dir,label,raw_filename)
-            import ipdb ; ipdb.set_trace()
+            import pdb ; pdb.set_trace()
             outfilename = os.path.join(parsed_dir,path,label,raw_filename)
             write_parsed_page_alt(infilename,outfilename,debug=debug)
             #write_parsed_page(infilename,outfilename,debug=debug)
