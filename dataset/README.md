@@ -25,3 +25,7 @@ Number of news per year:
   2014 20095
   2015 5526
 ```
+
+Test clean:
+
+    python classification/main/clean.py --raw_dir /tmp/brazil/data/2012/03 --parsed_dir /tmp/03/
