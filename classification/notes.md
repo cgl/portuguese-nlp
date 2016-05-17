@@ -31,4 +31,33 @@
     java weka.core.converters.TextDirectoryLoader -Dfile.encoding=utf-8  \
     -dir data/v2/parsed > data/versions/v19_parsed_str_all.arff
 
+Old setting from v18, let's try it with v21(best f-measure setting so far)
+
+    java weka.core.converters.TextDirectoryLoader -Dfile.encoding=utf-8  \
+    > -dir data/v1/parsed/v2/ > data/versions/v20_parsed_str_all.arff
+    
+    java weka.classifiers.meta.FilteredClassifier -i -t data/versions/v20_parsed_str_all.arff  -F \
+    "weka.filters.unsupervised.attribute.StringToWordVector -R first-last -W 60 -prune-rate -1.0 -C -T -I -N 0 -L -S \
+    -stemmer weka.core.stemmers.NullStemmer -M 1 -stopwords stoplistv2.txt"  -W weka.classifiers.trees.RandomForest -- -I 70\
+    -K 0 -S 1 -D #v29
+    
+    === Detailed Accuracy By Class ===
+    
+                   TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                     0.971     0.064      0.94      0.971     0.955      0.984    class_irr
+                     0.936     0.029      0.969     0.936     0.952      0.984    class_rel
+    Weighted Avg.    0.954     0.047      0.954     0.954     0.954      0.984
+    
+    
+    === Confusion Matrix ===
+    
+       a   b   <-- classified as
+     501  15 |   a = class_irr
+      32 467 |   b = class_rel
+
+
+V3 is the V2 - 12 news that are does not include protest news.
+
+    java weka.core.converters.TextDirectoryLoader -Dfile.encoding=utf-8  -dir data/v1/parsed/v3/ \
+    > data/versions/v21_parsed_str_all.arff
 
