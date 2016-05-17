@@ -51,8 +51,12 @@ def check_encoding_file(full_name):
         #with io.open(full_name,"r") as inputfile:
             try:
                 content = inputfile.read()
-                content = h.unescape(content)
-                if not check_encoding_string(content):
+                if check_encoding_string(h.unescape(content)):
+                    UNESCAPE = True
+                elif check_encoding_string(h.unescape(content.encode("latin1"))):
+                    LATIN = True
+                    print("%s is Latin encoded" %(full_name))
+                else:
                     print("%s is not Portuguese" %(full_name))
                     return False
             except UnicodeDecodeError:
@@ -87,6 +91,11 @@ def write_parsed_page_alt(infilename,outfilename,debug=False):
     if content is None or content is u"":
         sys.stderr.write("Empty result return for %s.\n" %infilename)
         return
+    if check_encoding_string(content):
+        pass
+    elif check_encoding_string(content.encode("latin1")):
+        content = content.encode("latin1")
+        title = title.encode("latin1")
     elif not check_encoding_string(content):
         if debug:
             print("File is not Portuguese %s" %infilename)
@@ -97,23 +106,6 @@ def write_parsed_page_alt(infilename,outfilename,debug=False):
         print("[CLEANED CONTENT] %s\n" %content)
         #sys.stdout.write("[UNICODE CONTENT] %s\n" %unicode_content)
         #sys.stdout.write("[INFILENAME]%s\n" %infilename)
-        sys.stdout.write("[OUTFILENAME]%s\n" %outfilename)
-        sys.stdout.write("************************************************************\n")
-        sys.stdout.write("************************************************************\n")
-
-def write_parsed_page(infilename,outfilename,debug=False):
-    content,title = parse_page(infilename) # may be empty
-    if content is None:
-        sys.stdout.write("Trying other way around for %s\n" %infilename)
-        content,title = parse_page_alternative(infilename)
-        if content is None or content is u"":
-            sys.stderr.write("Empty result return for %s.\n" %infilename)
-            return
-    write_to_file(outfilename,title,content)
-    if debug:
-        sys.stdout.write("[CLEANED CONTENT] %s\n" %content)
-        #sys.stdout.write("[UNICODE CONTENT] %s\n" %unicode_content)
-        sys.stdout.write("[INFILENAME]%s\n" %infilename)
         sys.stdout.write("[OUTFILENAME]%s\n" %outfilename)
         sys.stdout.write("************************************************************\n")
         sys.stdout.write("************************************************************\n")
@@ -135,18 +127,6 @@ def parse_page_alternative(infilename):
     content = "\n".join([line for line in list if line.strip() is not u"" and len(line.split(" ")) > 3 ])
     return content,title
 
-def parse_page(infilename):
-    page = get_soup_page(infilename)
-    title = get_title(page,infilename)
-    clean_page(page)
-    content = parse_html(page)
-    try:
-        clean_more(content)
-    except AttributeError:
-        sys.stderr.write("Content gives Att Error, %s\n" %infilename)
-        return None,None
-    return content.text.strip("|\n ?"),title
-
 def get_soup_page(infilename):
     try:
         with io.open(infilename, 'r') as infile:
@@ -155,30 +135,6 @@ def get_soup_page(infilename):
         with io.open(infilename, 'r',encoding="latin1") as infile:
             page = BeautifulSoup(infile)
     return page
-
-def parse_html(page):
-    try:
-        table = page.find("table", {"id": "main"})
-        if table is not None:
-            page = table
-    except:
-        print("***************")
-    try:
-        tds = page.findAll("td")
-        content = tds[-2] # throws IndexError if tds empty
-        for td_ind in range(1,len(tds)):
-            content = tds[-1*td_ind]
-            if content.find("b"):
-                #print(-1*td_ind)
-                break
-    except IndexError:
-        try:
-            content = page.find("div", {"id": "articleNew"})
-        except:
-            sys.stderr.write("Error line 56")
-            return None
-    return content
-
 
 def write_to_file(outfilename,title,content):
     try:
@@ -249,6 +205,61 @@ def create_dirs(parsed_dir,label,divide):
         directory = os.path.join(parsed_dir,label)
         if not os.path.exists(directory):
             os.makedirs(directory)
+
+###########################
+
+def parse_page(infilename):
+    page = get_soup_page(infilename)
+    title = get_title(page,infilename)
+    clean_page(page)
+    content = parse_html(page)
+    try:
+        clean_more(content)
+    except AttributeError:
+        sys.stderr.write("Content gives Att Error, %s\n" %infilename)
+        return None,None
+    return content.text.strip("|\n ?"),title
+
+def parse_html(page):
+    try:
+        table = page.find("table", {"id": "main"})
+        if table is not None:
+            page = table
+    except:
+        print("***************")
+    try:
+        tds = page.findAll("td")
+        content = tds[-2] # throws IndexError if tds empty
+        for td_ind in range(1,len(tds)):
+            content = tds[-1*td_ind]
+            if content.find("b"):
+                #print(-1*td_ind)
+                break
+    except IndexError:
+        try:
+            content = page.find("div", {"id": "articleNew"})
+        except:
+            sys.stderr.write("Error line 56")
+            return None
+    return content
+
+def write_parsed_page(infilename,outfilename,debug=False):
+    content,title = parse_page(infilename) # may be empty
+    if content is None:
+        sys.stdout.write("Trying other way around for %s\n" %infilename)
+        content,title = parse_page_alternative(infilename)
+        if content is None or content is u"":
+            sys.stderr.write("Empty result return for %s.\n" %infilename)
+            return
+    write_to_file(outfilename,title,content)
+    if debug:
+        sys.stdout.write("[CLEANED CONTENT] %s\n" %content)
+        #sys.stdout.write("[UNICODE CONTENT] %s\n" %unicode_content)
+        sys.stdout.write("[INFILENAME]%s\n" %infilename)
+        sys.stdout.write("[OUTFILENAME]%s\n" %outfilename)
+        sys.stdout.write("************************************************************\n")
+        sys.stdout.write("************************************************************\n")
+
 
 if __name__ == "__main__":
     main()
