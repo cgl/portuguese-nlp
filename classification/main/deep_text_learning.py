@@ -169,6 +169,7 @@ def add_arguments(folder,label):
             data['text'].append(infile.read())
     sf = gl.SFrame(data)
     dt = DeepTextAnalyzer(vec_model)
+    vec_model = word2vec.Word2Vec.load_word2vec_format('/tmp/model.txt',binary=False)
     sf['vectors'] = sf['text'].apply(lambda p: dt.txt2avg_vector(p, is_html=False))
     size = len(data['filenames'])
     if label:
@@ -182,8 +183,6 @@ def train_classifier():
 
     irr_folder="classification/data/v4/class_irr/" ; folder=irr_folder
     rel_folder="classification/data/v4/test2/" ; folder=rel_folder
-
-    vec_model = word2vec.Word2Vec.load_word2vec_format('/tmp/model.txt',binary=False)
 
     sf = add_arguments(rel_folder,1)
     sf1 = add_arguments(irr_folder,0)
@@ -211,8 +210,17 @@ def train_classifier():
 def test_classifier(cls1):
     test_folder = "/tmp/temp/"
     dataset = add_arguments(test_folder,None)
-    result_dataset = cls1.classify(dataset)
+    result171_dataset = cls1.classify(dataset)
+
+    triggers = add_trigger_feature()
 
     for ind in range(0,dataset.num_rows()):
         if result_dataset['class'][ind]:
             print("http://mann.cmpe.boun.edu.tr/folha_data/%s %s" %(dataset['filenames'][ind].replace("_","/"),result_dataset['probability'][ind]))
+
+def add_trigger_feature():
+    filename = "classification/data/trigger_tokens.txt"
+    with codecs.open(filename, "r", encoding="utf8") as infile:
+        trigger_str = infile.read()
+    triggers = list(set(trigger_str.split(",")))
+    return triggers
