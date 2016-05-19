@@ -168,8 +168,8 @@ def add_arguments(folder,label):
         with codecs.open(os.path.join(folder, fname),"r",encoding="utf8") as infile:
             data['text'].append(infile.read())
     sf = gl.SFrame(data)
-    dt = DeepTextAnalyzer(vec_model)
     vec_model = word2vec.Word2Vec.load_word2vec_format('/tmp/model.txt',binary=False)
+    dt = DeepTextAnalyzer(vec_model)
     sf['vectors'] = sf['text'].apply(lambda p: dt.txt2avg_vector(p, is_html=False))
     size = len(data['filenames'])
     if label:
