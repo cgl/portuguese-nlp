@@ -178,7 +178,7 @@ def add_arguments(folder,label):
     return sf
 
 
-def main():
+def train_classifier():
 
     irr_folder="classification/data/v4/class_irr/" ; folder=irr_folder
     rel_folder="classification/data/v4/test2/" ; folder=rel_folder
@@ -206,6 +206,9 @@ def main():
     """
 
     cls1 = gl.classifier.create(sf, target="rel",features=['vectors','1gram features'])
+    return cls1
+
+def test_classifier(cls1):
     test_folder = "/tmp/temp/"
     dataset = add_arguments(test_folder,None)
     result_dataset = cls1.classify(dataset)
