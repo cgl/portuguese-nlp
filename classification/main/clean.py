@@ -8,6 +8,17 @@ from BeautifulSoup import BeautifulSoup,Comment
 UNESCAPE = True
 import HTMLParser
 h = HTMLParser.HTMLParser()
+'''
+for year in `ls /tmp/brazil/data`;
+  do
+    for month in `ls /tmp/brazil/data/$year`
+      do
+        mkdir -p /tmp/brazil/parsed_data/$year/$month;
+        python classification/main/clean.py --raw_dir /tmp/brazil/data/$year/$month --parsed_dir /tmp/brazil/parsed_data/$year/$month;
+      done
+  done
+'''
+
 def main():
     parser = argparse.ArgumentParser(description = "Parses & removes unnecessary html tags from raw classifier files")
     parser.add_argument("--raw_dir", required = False, default=None ,type=str ,
