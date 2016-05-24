@@ -87,22 +87,6 @@ def add_arguments(sframe,folder,label,vec_model):
 
 
 def train_classifier(sf):
-    """
-    train_set = sf
-    train_set, test_set = sf.random_split(0.8, seed=5)
-    clsv = gl.classifier.create(train_set, target="rel",features=['vectors'])
-    cls = gl.classifier.create(train_set, target="rel",features=['1gram features'])
-    cls1 = gl.classifier.create(train_set, target="rel",features=['vectors','1gram features'])
-    cls2 = gl.classifier.create(train_set, target="rel",features=['vectors','1gram features','2gram features'])
-
-    linear_model = gl.linear_regression.create(train_set, target='rel',features=['vectors'])
-    linear_model.evaluate(test_set)
-
-
-    for mdl in [clsv,cls,cls1,cls2]:
-        mdl.evaluate(test_set)
-    """
-
     cls1 = gl.classifier.create(sf, target="rel",features=['vectors','1gram features'])
     return cls1
 
@@ -110,12 +94,15 @@ def test_classifier(cls1,vec_model):
     test_folder = "/tmp/temp/"
     dataset = add_arguments(None,test_folder,None,vec_model)
     result171_dataset = cls1.classify(dataset)
-    print_positives_and_confidence(dataset,result171_dataset)
+    return dataset,result171_dataset
+
+def print_url(dataset,result171_dataset,ind):
+    print("http://mann.cmpe.boun.edu.tr/folha_data/%s %s" %(dataset['filenames'][ind].replace("_","/"),result171_dataset['probability'][ind]))
 
 def print_positives_and_confidence(dataset,result171_dataset):
     for ind in range(0,result171_dataset.num_rows()):
         if result171_dataset['class'][ind]:
-            print("http://mann.cmpe.boun.edu.tr/folha_data/%s %s" %(dataset['filenames'][ind].replace("_","/"),result171_dataset['probability'][ind]))
+            print_url(dataset,result171_dataset,ind)
 
 def count_positives_with_trigger(dataset,result171_dataset):
     triggers = add_trigger_feature()
@@ -153,15 +140,49 @@ def add_trigger_feature():
     triggers = list(set(trigger_str.split(",")))
     return triggers
 
+def add_dev(sf,vec_model):
+    dev_irr = "classification/data/v4_dev/class_irr/"
+    dev_rel ="classification/data/v4_dev/class_rel/"
+    sf = add_arguments(sf,dev_irr,0,vec_model)
+    sf = add_arguments(sf,dev_rel,1,vec_model)
+    return sf
+
+def performance(sf):
+    train_set, test_set = sf.random_split(0.8, seed=5)
+    cls1 = gl.classifier.create(train_set, target="rel",features=['vectors','1gram features'])
+    results = cls1.evaluate(test_set)
+    print(results)
+    """
+    train_set = sf
+    train_set, test_set = sf.random_split(0.8, seed=5)
+    clsv = gl.classifier.create(train_set, target="rel",features=['vectors'])
+    cls = gl.classifier.create(train_set, target="rel",features=['1gram features'])
+    cls1 = gl.classifier.create(train_set, target="rel",features=['vectors','1gram features'])
+    cls2 = gl.classifier.create(train_set, target="rel",features=['vectors','1gram features','2gram features'])
+
+    linear_model = gl.linear_regression.create(train_set, target='rel',features=['vectors'])
+    linear_model.evaluate(test_set)
+
+    for mdl in [clsv,cls,cls1,cls2]:
+        mdl.evaluate(test_set)
+    """
+
+
 def main():
-    vec_model = word2vec.Word2Vec.load_word2vec_format('/tmp/model.txt',binary=False)
+    vec_model = word2vec.Word2Vec.load_word2vec_format('word2vec_model.txt',binary=False)
     irr_folder="classification/data/v4/class_irr/" ; folder=irr_folder
     rel_folder="classification/data/v4/test2/" ; folder=rel_folder
     sf = add_arguments(None,rel_folder,1,vec_model)
     sf = add_arguments(sf,irr_folder,0,vec_model)
 
     cls1 = train_classifier(sf)
-    test_classifier(cls1,vec_model)
+    #test_classifier(cls1,vec_model)
+
+    df = add_dev(sf,vec_model)
+    cls2 = train_classifier(df)
+
+    dataset,result171_dataset = test_classifier(cls2,vec_model)
+    print_positives_and_confidence(dataset,result171_dataset)
 
 if __name__=='__main__':
     main()
