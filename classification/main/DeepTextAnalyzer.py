@@ -8,7 +8,7 @@ from numpy import average
 import graphlab as gl
 import numpy as np
 import gensim
-from TrainSentences import txt2words
+from classification.main.TrainSentences import txt2words
 from gensim.models import word2vec
 
 class DeepTextAnalyzer(object):
@@ -164,3 +164,6 @@ def main():
 
     cls1 = train_classifier(sf)
     test_classifier(cls1,vec_model)
+
+if __name__=='__main__':
+    main()
