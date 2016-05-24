@@ -24,6 +24,12 @@ If you want to add new documents:
 
     cd classification/
     python main/crawler.py --class_irr data/urls/development_irr.txt --class_rel data/urls/development_rel.txt --output_dir data/test_24_may
+    
+Clean the documents:
+
+    python main/clean.py --check_dir data/test_24_may/raw
+    python main/clean.py --raw_dir data/test_24_may/raw --parsed_dir data/test_24_may/parsed
+
 
 Try [Weka Documentation!](/docs/weka.md)
 
