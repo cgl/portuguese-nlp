@@ -162,6 +162,8 @@ for sen in sentences:
 """
 
 def add_arguments(sframe,folder,label,vec_model):
+    if sframe is None:
+        sframe = gl.SFrame()
     data = {'filenames':[], 'text': [] } #, 'vectors': [], 'boW': [], 'rel': []}
     for fname in os.listdir(folder):
         data['filenames'].append(fname)
@@ -175,7 +177,7 @@ def add_arguments(sframe,folder,label,vec_model):
         sf['rel'] = [label]*size
     sf['1gram features'] = gl.text_analytics.count_ngrams(sf['text'], 1)
     sf['2gram features'] = gl.text_analytics.count_ngrams(sf['text'], 2)
-    return sframe.append(sf1)
+    return sframe.append(sf)
 
 
 
@@ -199,25 +201,21 @@ def train_classifier(sf):
     cls1 = gl.classifier.create(sf, target="rel",features=['vectors','1gram features'])
     return cls1
 
-def test_classifier(vec_model):
-
-    cls1 = train_classifier(vec_model)
+def test_classifier(cls1,vec_model):
     test_folder = "/tmp/temp/"
-    dataset = add_arguments(test_folder,None,vec_model)
+    dataset = add_arguments(None,test_folder,None,vec_model)
     result171_dataset = cls1.classify(dataset)
+    print_positives_and_confidence(dataset,result171_dataset)
 
+def print_positives_and_confidence(dataset,result171_dataset):
+    for ind in range(0,result171_dataset.num_rows()):
+        if result171_dataset['class'][ind]:
+            print("http://mann.cmpe.boun.edu.tr/folha_data/%s %s" %(dataset['filenames'][ind].replace("_","/"),result171_dataset['probability'][ind]))
+
+def count_positives_with_trigger(dataset,result171_dataset):
     triggers = add_trigger_feature()
-
-    count = 0 ; positives=0 ; shape= 100 # dataset.shape[0]
-    for ind in range(0,shape):
-            if result171_dataset["class"][ind]:
-                    positives+=1
-                    if check_trigger_exist(dataset['1gram features'][ind]):
-                            count+=1
-                            print("[%s] %s" %(ind,result171_dataset["probability"][ind]))
-    print("%s/%s" %(count,positives))
-
-    for ind in range(0,10): #dataset.shape[0]
+    count = 0 ; positives=0
+    for ind in range(0,result171_dataset.num_rows()):
         if result171_dataset["class"][ind]:
             positives+=1
             if check_trigger_exist(dataset['1gram features'][ind]):
@@ -225,9 +223,15 @@ def test_classifier(vec_model):
                 print("[%s] %s" %(ind,result171_dataset["probability"][ind]))
     print("%s/%s" %(count,positives))
 
+def count_positives_with_mortes(result171_dataset): # dataset.shape[0]
+    count = 0 ; positives=0
     for ind in range(0,dataset.num_rows()):
-        if result_dataset['class'][ind]:
-            print("http://mann.cmpe.boun.edu.tr/folha_data/%s %s" %(dataset['filenames'][ind].replace("_","/"),result_dataset['probability'][ind]))
+        if result171_dataset["class"][ind]:
+            positives+=1
+            if "mortes" in dataset['1gram features'][ind].keys():
+                count+=1
+                print("[%s] %s" %(ind,result171_dataset["probability"][ind]))
+    print("%s/%s" %(count,positives))
 
 def check_trigger_exist(grams):
     flag=False
@@ -248,6 +252,8 @@ def main():
     vec_model = word2vec.Word2Vec.load_word2vec_format('/tmp/model.txt',binary=False)
     irr_folder="classification/data/v4/class_irr/" ; folder=irr_folder
     rel_folder="classification/data/v4/test2/" ; folder=rel_folder
-    sf = gl.SFrame()
-    sf = add_arguments(sf,rel_folder,1,vec_model)
-    sf = add_arguments(irr_folder,0,vec_model)
+    sf = add_arguments(None,rel_folder,1,vec_model)
+    sf = add_arguments(sf,irr_folder,0,vec_model)
+
+    cls1 = train_classifier(sf)
+    test_classifier(cls1,vec_model)

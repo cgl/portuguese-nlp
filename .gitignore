@@ -1,3 +1,6 @@
+#project
+classification/data*
+
 # macos
 .DS_Store
 
