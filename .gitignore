@@ -38,3 +38,6 @@ proguard/
 *.jar
 *.war
 *.ear
+
+# emacs
+\#*#
