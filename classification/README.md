@@ -19,4 +19,4 @@ This is the command line code for testing:
 
 python main/crawler.py --class1 data/test/relevant.txt --class2 data/test/irrelevant.txt --output data/test
 
-Try [Weka Documentation!](docs/weka.md)
+Try [Weka Documentation!](/docs/weka.md)
