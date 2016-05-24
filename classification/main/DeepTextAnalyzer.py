@@ -9,6 +9,7 @@ import graphlab as gl
 import numpy as np
 import gensim
 from TrainSentences import txt2words
+from gensim.models import word2vec
 
 class DeepTextAnalyzer(object):
     def __init__(self, word2vec_model):
