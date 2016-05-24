@@ -2,6 +2,7 @@ from nltk.corpus import stopwords
 from bs4 import BeautifulSoup
 from pprint import pprint
 from gensim.models import word2vec
+import re
 
 #BASE_DIR = "/home/graphlab_create/data/blogs" # NOTE: Update BASE_DIR to your own directory path
 class TrainSentences(object):
