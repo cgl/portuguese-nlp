@@ -161,33 +161,25 @@ for sen in sentences:
     print("%s %s" %(i," ".join(sentence)))
 """
 
-def add_arguments(folder,label):
+def add_arguments(sframe,folder,label,vec_model):
     data = {'filenames':[], 'text': [] } #, 'vectors': [], 'boW': [], 'rel': []}
     for fname in os.listdir(folder):
         data['filenames'].append(fname)
         with codecs.open(os.path.join(folder, fname),"r",encoding="utf8") as infile:
             data['text'].append(infile.read())
     sf = gl.SFrame(data)
-    vec_model = word2vec.Word2Vec.load_word2vec_format('/tmp/model.txt',binary=False)
     dt = DeepTextAnalyzer(vec_model)
     sf['vectors'] = sf['text'].apply(lambda p: dt.txt2avg_vector(p, is_html=False))
     size = len(data['filenames'])
-    if label:
+    if label is not None:
         sf['rel'] = [label]*size
     sf['1gram features'] = gl.text_analytics.count_ngrams(sf['text'], 1)
     sf['2gram features'] = gl.text_analytics.count_ngrams(sf['text'], 2)
-    return sf
+    return sframe.append(sf1)
 
 
-def train_classifier():
 
-    irr_folder="classification/data/v4/class_irr/" ; folder=irr_folder
-    rel_folder="classification/data/v4/test2/" ; folder=rel_folder
-
-    sf = add_arguments(rel_folder,1)
-    sf1 = add_arguments(irr_folder,0)
-    sf = sf.append(sf1)
-
+def train_classifier(sf):
     """
     train_set = sf
     train_set, test_set = sf.random_split(0.8, seed=5)
@@ -207,16 +199,43 @@ def train_classifier():
     cls1 = gl.classifier.create(sf, target="rel",features=['vectors','1gram features'])
     return cls1
 
-def test_classifier(cls1):
+def test_classifier(vec_model):
+
+    cls1 = train_classifier(vec_model)
     test_folder = "/tmp/temp/"
-    dataset = add_arguments(test_folder,None)
+    dataset = add_arguments(test_folder,None,vec_model)
     result171_dataset = cls1.classify(dataset)
 
     triggers = add_trigger_feature()
 
+    count = 0 ; positives=0 ; shape= 100 # dataset.shape[0]
+    for ind in range(0,shape):
+            if result171_dataset["class"][ind]:
+                    positives+=1
+                    if check_trigger_exist(dataset['1gram features'][ind]):
+                            count+=1
+                            print("[%s] %s" %(ind,result171_dataset["probability"][ind]))
+    print("%s/%s" %(count,positives))
+
+    for ind in range(0,10): #dataset.shape[0]
+        if result171_dataset["class"][ind]:
+            positives+=1
+            if check_trigger_exist(dataset['1gram features'][ind]):
+                count+=1
+                print("[%s] %s" %(ind,result171_dataset["probability"][ind]))
+    print("%s/%s" %(count,positives))
+
     for ind in range(0,dataset.num_rows()):
         if result_dataset['class'][ind]:
             print("http://mann.cmpe.boun.edu.tr/folha_data/%s %s" %(dataset['filenames'][ind].replace("_","/"),result_dataset['probability'][ind]))
+
+def check_trigger_exist(grams):
+    flag=False
+    for token in grams.keys():
+        if token.strip().decode('latin1') in triggers:
+            print(token)
+            flag=True
+    return flag
 
 def add_trigger_feature():
     filename = "classification/data/trigger_tokens.txt"
@@ -224,3 +243,11 @@ def add_trigger_feature():
         trigger_str = infile.read()
     triggers = list(set(trigger_str.split(",")))
     return triggers
+
+def main():
+    vec_model = word2vec.Word2Vec.load_word2vec_format('/tmp/model.txt',binary=False)
+    irr_folder="classification/data/v4/class_irr/" ; folder=irr_folder
+    rel_folder="classification/data/v4/test2/" ; folder=rel_folder
+    sf = gl.SFrame()
+    sf = add_arguments(sf,rel_folder,1,vec_model)
+    sf = add_arguments(irr_folder,0,vec_model)
