@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from TrainSentences import txt2words
+
 import os,io,traceback,codecs
-import gensim
-import re
-import nltk
+import re,nltk
 from numpy import average
 import graphlab as gl
 import numpy as np
-import gensim
-from classification.main.TrainSentences import txt2words
 from gensim.models import word2vec
 
 class DeepTextAnalyzer(object):
