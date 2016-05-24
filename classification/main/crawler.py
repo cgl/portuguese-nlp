@@ -112,15 +112,15 @@ def wc(filename):
 import argparse
 def main():
     parser = argparse.ArgumentParser(description = "Crawler and parser for Portuguese NLP")
-    parser.add_argument("--class1", required = False, type=read_file_gen, help = "A text file: Urls of the True class files")
-    parser.add_argument("--class2", required = False, type=read_file_gen, help = "A text file: Urls of the False class files")
+    parser.add_argument("--class_rel", required = False, type=read_file_gen, help = "A text file: Urls of the True class files")
+    parser.add_argument("--class_irr", required = False, type=read_file_gen, help = "A text file: Urls of the False class files")
     parser.add_argument("--output_dir", required = False, default="data" ,type=str , help = "Output Dir")
     args = parser.parse_args()
     #print(args.class1)
-    if args.class1:
-        run_raw(args.class1,"rel",args.output_dir)
-    if args.class2:
-        run_raw(args.class2,"irr",args.output_dir)
+    if args.class_rel:
+        run_raw(args.class_rel,"rel",args.output_dir)
+    if args.class_irr:
+        run_raw(args.class_irr,"irr",args.output_dir)
 
 if __name__ == "__main__":
     main()
