@@ -38,6 +38,9 @@ Some bash:
     cd ~/Downloads/Duru05/full_main/
     for a in [1-5]*.ann; do   echo $a;  mv $a `printf d%04d.%s ${a%.*} ${a##*.}`; done
     for a in [1-5]*.txt; do   echo $a;  mv $a `printf d%04d.%s ${a%.*} ${a##*.}`; done
+    for a in d[0-5]*.txt.ann; do   echo $a; mv $a `printf %s.%s ${a%.*.*} ${a##*.}` ; done
+    for a in d[0-5]*.txt.txt; do   echo $a;  mv $a `printf %s.%s ${a%.*.*} ${a##*.}` ; done
+
     cp -r ~/work/portuguese-nlp/classification/data/v1/parsed/v4/class_irr ~/work/portuguese-nlp/classification/data/v5/
     mkdir ~/work/portuguese-nlp/classification/data/v5/class_rel
     find ~/Downloads/Duru05/full_main/ -name "*.txt" -exec cp {} ~/work/portuguese-nlp/classification/data/v5/class_rel/ \;
