@@ -57,3 +57,12 @@ Merge folders
 2005_01_01_1.html
 2005_01_01_21.html
 ```
+
+## logs
+
+    cp -r /ai/home/acelebi/folca/data /tmp/brazil/
+    tar -zcpf /tmp/brazil/raw_data.tar.gz /tmp/brazil/data
+    # on TerraNova
+    scp guest7@balina.ku.edu.tr:/tmp/brazil/raw_data.tar.gz ~/brazil/
+    tar xzf ~/brazil/raw_data.tar.gz -C ~/brazil/
+    
