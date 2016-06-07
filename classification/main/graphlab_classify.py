@@ -71,6 +71,7 @@ def performance(sf):
     """
 
 def main():
+    vec_model = word2vec.Word2Vec.load_word2vec_format('word2vec_model.txt',binary=False)
     cls = gl.load_model("my_classifier")
     dataset,result171_dataset = test_classifier(cls,vec_model)
     print_positives_and_confidence(dataset,result171_dataset)
