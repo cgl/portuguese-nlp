@@ -1,6 +1,7 @@
 import graphlab as gl
 from gensim.models import word2vec
 import codecs
+from graphlab_train import add_arguments
 
 def test_classifier(cls1,vec_model):
     test_folder = "/home/cagil/brazil/all_files_parsed/" # "/tmp/temp/"
