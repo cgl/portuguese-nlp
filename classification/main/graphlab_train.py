@@ -104,8 +104,9 @@ def main():
                         help = "Training directory with irr/ and rel/ folders ex: classification/data/v5/")
 
     args = parser.parse_args()
-    if args.training_dir:
+    if args.training_dir or args.dataset_dir:
         vec_model = word2vec.Word2Vec.load_word2vec_format('word2vec_model.txt',binary=False)
+    if args.training_dir:
         irr_folder = os.path.join(args.training_dir,"class_irr")
         rel_folder = os.path.join(args.training_dir,"class_rel")
         sf = add_arguments(None,rel_folder,1,vec_model)
