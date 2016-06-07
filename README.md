@@ -2,7 +2,7 @@
 Nlp work on Brazil Portuguese newswire text
 
 You can see the dataset [here](http://mann.cmpe.boun.edu.tr/folha_data/)
-You can find the reports [here](/docs/reportErc.md)
+You can find the reports [here](/docs/report_erc.md)
 
 We have x number of newswire articles collected between years 1994-2016. We first apply some preprocessing to the dataset. Since the articles are in html format, we first clean the tags and rename all files such as:
 
