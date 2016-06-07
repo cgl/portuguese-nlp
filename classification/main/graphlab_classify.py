@@ -1,6 +1,6 @@
 import graphlab as gl
 from gensim.models import word2vec
-import codecs
+import codecs,argparse
 
 def count_positives_with_trigger(dataset,result171_dataset):
     triggers = add_trigger_feature()
@@ -70,9 +70,17 @@ def print_positives_and_confidence(dataset,result171_dataset):
             print_url(dataset,result171_dataset,ind)
 
 def main():
+    parser = argparse.ArgumentParser(description = "Parses & removes unnecessary html tags from raw classifier files")
+    parser.add_argument("--dataset_dir", required = True, default=None ,type=str ,
+                        help = "Dataset directory ex: my_dataset_test ")
+    #parser.add_argument("--training_dir", required = False, default=None ,type=str ,
+                        help = "Training directory with irr/ and rel/ folders ex: classification/data/v5/")
+
+    args = parser.parse_args()
+
     vec_model = word2vec.Word2Vec.load_word2vec_format('word2vec_model.txt',binary=False)
     cls = gl.load_model("my_classifier")
-    dataset = gl.load_sframe("my_dataset")
+    dataset = gl.load_sframe(args.dataset_dir)
     result171_dataset = test_classifier(cls,dataset,vec_model)
     print_positives_and_confidence(dataset,result171_dataset)
 
