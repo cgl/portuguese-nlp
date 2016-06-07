@@ -11,8 +11,9 @@ We have x number of newswire articles collected between years 1994-2016. We firs
 
 and collect them all in one folder.
 
-[Preprocessing on dataset](/dataset/README.md)
-[Annotations](https://docs.google.com/spreadsheets/d/1TBNl7NblA2Ykz1VneMGfvcL8cHkZGpl58aup3gh2E9U/edit?usp=sharing)
+- [Preprocessing on dataset](/dataset/README.md)
+- [Annotations](https://docs.google.com/spreadsheets/d/1TBNl7NblA2Ykz1VneMGfvcL8cHkZGpl58aup3gh2E9U/edit?usp=sharing)
+- [Training set - Building](/docs/training_set_preperation.md)
 
 ## More
 
