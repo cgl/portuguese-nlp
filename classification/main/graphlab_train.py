@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from TrainSentences import txt2words
 
-import os,io,traceback,codecs
+import os,io,traceback,codecs,argparse
 import re,nltk
 from numpy import average
 import graphlab as gl
@@ -97,25 +97,32 @@ def add_dev(sf,vec_model):
     return sf
 
 def main():
-    vec_model = word2vec.Word2Vec.load_word2vec_format('word2vec_model.txt',binary=False)
-    irr_folder="classification/data/v5/class_irr/"
-    rel_folder="classification/data/v5/class_rel/"
-    sf = add_arguments(None,rel_folder,1,vec_model)
-    sf = add_arguments(sf,irr_folder,0,vec_model)
+    parser = argparse.ArgumentParser(description = "Parses & removes unnecessary html tags from raw classifier files")
+    parser.add_argument("--dataset_dir", required = False, default=None ,type=str ,
+                        help = "Dataset directory ex: /home/cagil/brazil/all_files_parsed/ ")
+    parser.add_argument("--training_dir", required = False, default=None ,type=str ,
+                        help = "Training directory with irr/ and rel/ folders ex: classification/data/v5/")
 
-    cls1 = train_classifier(sf)
-    #test_classifier(cls1,vec_model)
+    args = parser.parse_args()
+    if args.training_dir:
+        vec_model = word2vec.Word2Vec.load_word2vec_format('word2vec_model.txt',binary=False)
+        irr_folder = os.path.join(args.training_dir,"class_irr")
+        rel_folder = os.path.join(args.training_dir,"class_rel")
+        sf = add_arguments(None,rel_folder,1,vec_model)
+        sf = add_arguments(sf,irr_folder,0,vec_model)
 
-    df = add_dev(sf,vec_model)
-    cls2 = train_classifier(df)
-    cls2.save("my_classifier")
+        cls1 = train_classifier(sf)
+        #test_classifier(cls1,vec_model)
 
-    #build dataset
-    dataset_folder = "/home/cagil/brazil/all_files_parsed/" # "/tmp/temp/"
-    dataset = add_arguments(None,dataset_folder,None,vec_model)
-    dataset.save("my_dataset")
-    #dataset,result171_dataset = test_classifier(cls2,vec_model)
-    #print_positives_and_confidence(dataset,result171_dataset)
+        df = add_dev(sf,vec_model)
+        cls2 = train_classifier(df)
+        cls2.save("my_classifier")
+    #builds dataset
+    if args.dataset_dir:
+        #dataset_folder = "/home/cagil/brazil/all_files_parsed/" #"/tmp/temp/"
+        dataset_folder = args.dataset_dir
+        dataset = add_arguments(None,dataset_folder,None,vec_model)
+        dataset.save("my_dataset")
 
 if __name__=='__main__':
     main()
