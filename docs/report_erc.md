@@ -1,10 +1,10 @@
 ## Reports
 
-### Workers Protests
+### 1.Workers Protests
 
 ![Alt text](relative/path/to/img.jpg?raw=true "Title")
 
-### Workers Protests
+### 2.Workers Protests
 Events marked as strikes are classified as workers protests.
 
 ### Total Number of Events
