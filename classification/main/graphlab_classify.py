@@ -71,10 +71,9 @@ def print_positives_and_confidence(dataset,result171_dataset):
 
 def main():
     parser = argparse.ArgumentParser(description = "Parses & removes unnecessary html tags from raw classifier files")
-    parser.add_argument("--dataset_dir", required = True, default=None ,type=str ,
+    parser.add_argument("--dataset_dir", required = True, default=None ,type=str,
                         help = "Dataset directory ex: my_dataset_test ")
-    #parser.add_argument("--training_dir", required = False, default=None ,type=str ,
-                        help = "Training directory with irr/ and rel/ folders ex: classification/data/v5/")
+    #parser.add_argument("--training_dir", required = False, default=None ,type=str , help = "Training directory with irr/ and rel/ folders ex: classification/data/v5/")
 
     args = parser.parse_args()
 
