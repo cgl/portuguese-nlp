@@ -109,6 +109,11 @@ def main():
     df = add_dev(sf,vec_model)
     cls2 = train_classifier(df)
     cls2.save("my_classifier")
+
+    #build dataset
+    dataset_folder = "/home/cagil/brazil/all_files_parsed/" # "/tmp/temp/"
+    dataset = add_arguments(None,dataset_folder,None,vec_model)
+    dataset.save("my_dataset")
     #dataset,result171_dataset = test_classifier(cls2,vec_model)
     #print_positives_and_confidence(dataset,result171_dataset)
 

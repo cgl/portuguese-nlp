@@ -1,21 +1,6 @@
 import graphlab as gl
 from gensim.models import word2vec
 import codecs
-from graphlab_train import add_arguments
-
-def test_classifier(cls1,vec_model):
-    test_folder = "/home/cagil/brazil/all_files_parsed/" # "/tmp/temp/"
-    dataset = add_arguments(None,test_folder,None,vec_model)
-    result171_dataset = cls1.classify(dataset)
-    return dataset,result171_dataset
-
-def print_url(dataset,result171_dataset,ind):
-    print("http://mann.cmpe.boun.edu.tr/folha_data/%s %s" %(dataset['filenames'][ind].replace("_","/"),result171_dataset['probability'][ind]))
-
-def print_positives_and_confidence(dataset,result171_dataset):
-    for ind in range(0,result171_dataset.num_rows()):
-        if result171_dataset['class'][ind]:
-            print_url(dataset,result171_dataset,ind)
 
 def count_positives_with_trigger(dataset,result171_dataset):
     triggers = add_trigger_feature()
@@ -72,11 +57,23 @@ def performance(sf):
     for mdl in [clsv,cls,cls1,cls2]:
         mdl.evaluate(test_set)
     """
+def test_classifier(cls1,dataset,vec_model):
+    result171_dataset = cls1.classify(dataset)
+    return result171_dataset
+
+def print_url(dataset,result171_dataset,ind):
+    print("http://mann.cmpe.boun.edu.tr/folha_data/%s %s" %(dataset['filenames'][ind].replace("_","/"),result171_dataset['probability'][ind]))
+
+def print_positives_and_confidence(dataset,result171_dataset):
+    for ind in range(0,result171_dataset.num_rows()):
+        if result171_dataset['class'][ind]:
+            print_url(dataset,result171_dataset,ind)
 
 def main():
     vec_model = word2vec.Word2Vec.load_word2vec_format('word2vec_model.txt',binary=False)
     cls = gl.load_model("my_classifier")
-    dataset,result171_dataset = test_classifier(cls,vec_model)
+    dataset = gl.load_sframe("my_dataset")
+    result171_dataset = test_classifier(cls,dataset,vec_model)
     print_positives_and_confidence(dataset,result171_dataset)
 
 if __name__=='__main__':
