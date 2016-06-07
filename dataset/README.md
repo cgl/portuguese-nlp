@@ -66,3 +66,11 @@ Merge folders
     scp guest7@balina.ku.edu.tr:/tmp/brazil/raw_data.tar.gz ~/brazil/
     tar xzf ~/brazil/raw_data.tar.gz -C ~/brazil/
     
+    data_root=/home/cagil/brazil
+    year=2004
+    for month in `ls $data_root/data/$year`;         
+      do            
+        mkdir -p /tmp/parsed_data/$year/$month;            
+        python classification/main/clean.py --raw_dir $data_root/data/$year/$month --parsed_dir /tmp/parsed_data/$year/$month;          
+      done;
+    
