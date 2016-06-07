@@ -91,7 +91,7 @@ def train_classifier(sf):
     return cls1
 
 def test_classifier(cls1,vec_model):
-    test_folder = "/tmp/temp/"
+    test_folder = "/home/cagil/brazil/all_files_parsed/" # "/tmp/temp/"
     dataset = add_arguments(None,test_folder,None,vec_model)
     result171_dataset = cls1.classify(dataset)
     return dataset,result171_dataset
@@ -170,8 +170,8 @@ def performance(sf):
 
 def main():
     vec_model = word2vec.Word2Vec.load_word2vec_format('word2vec_model.txt',binary=False)
-    irr_folder="classification/data/v4/class_irr/" ; folder=irr_folder
-    rel_folder="classification/data/v4/test2/" ; folder=rel_folder
+    irr_folder="classification/data/v5/class_irr/"
+    rel_folder="classification/data/v5/class_rel/"
     sf = add_arguments(None,rel_folder,1,vec_model)
     sf = add_arguments(sf,irr_folder,0,vec_model)
 
@@ -180,9 +180,9 @@ def main():
 
     df = add_dev(sf,vec_model)
     cls2 = train_classifier(df)
-
-    dataset,result171_dataset = test_classifier(cls2,vec_model)
-    print_positives_and_confidence(dataset,result171_dataset)
+    cls2.save("my_classifier_file.txt")
+    #dataset,result171_dataset = test_classifier(cls2,vec_model)
+    #print_positives_and_confidence(dataset,result171_dataset)
 
 if __name__=='__main__':
     main()
