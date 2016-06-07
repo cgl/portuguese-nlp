@@ -70,10 +70,8 @@ def performance(sf):
         mdl.evaluate(test_set)
     """
 
-
-
 def main():
-    cls = graphlab.load_model("my_classifier")
+    cls = gl.load_model("my_classifier")
     dataset,result171_dataset = test_classifier(cls,vec_model)
     print_positives_and_confidence(dataset,result171_dataset)
 
