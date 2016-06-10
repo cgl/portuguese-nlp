@@ -126,7 +126,7 @@ def main():
     #builds dataset
     if args.dataset_parsed_dir:
         #dataset_folder = "/home/cagil/brazil/all_files_parsed/" #"/tmp/temp/" # brazil/2005_parsed
-        dataset_folder = args.dataset_dir
+        dataset_folder = args.dataset_parsed_dir
         dataset = add_arguments(None,dataset_folder,None,vec_model)
         dataset.save("graphlab/my_dataset")
 
