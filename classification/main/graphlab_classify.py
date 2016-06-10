@@ -75,7 +75,8 @@ def main():
                         help = "Dataset directory ex: my_dataset_test or my_dataset ")
     parser.add_argument("--classified_dir", required = True, default=None ,type=str,
                         help = "Directory for dataset after classification ex: result_dataset")
-    parser.add_argument("--print", required = False, default=False ,type=boolean_switch , help = "")
+    parser.add_argument("--print", required = False, default=False ,type=boolean_switch , dest='print_results',
+                        help = "")
 
     args = parser.parse_args()
     if args.dataset_dir:
@@ -88,7 +89,7 @@ def main():
         dataset.save(args.classified_dir)
     elif args.classified_dir:
         result171_dataset = gl.load_sframe(args.classified_dir)
-    if args.print:
+    if args.print_results:
         print_positives_and_confidence(result171_dataset,result171_dataset)
 
 if __name__=='__main__':
