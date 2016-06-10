@@ -111,12 +111,11 @@ def main():
         rel_folder = os.path.join(args.training_dir,"class_rel")
         sf = add_arguments(None,rel_folder,1,vec_model)
         sf = add_arguments(sf,irr_folder,0,vec_model)
-
+        sf.save("my_training_dataset")
         cls1 = train_classifier(sf)
         #test_classifier(cls1,vec_model)
 
         df = add_dev(sf,vec_model)
-        df.save("my_training_dataset")
         cls2 = train_classifier(df)
         cls2.save("my_classifier")
     #builds dataset
