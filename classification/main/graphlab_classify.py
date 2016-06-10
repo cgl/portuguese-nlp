@@ -84,7 +84,7 @@ def main():
         cls = gl.load_model("my_classifier")
         dataset = gl.load_sframe(args.dataset_dir)
         result171_dataset = test_classifier(cls,dataset,vec_model)
-        dataset.add_column(result171_dataset.select_column("class"),"rel")
+        dataset.add_column(result171_dataset.select_column("class"),"class")
         dataset.add_column(result171_dataset.select_column("probability"),"probability")
         dataset.save(args.classified_dir)
     elif args.classified_dir:
