@@ -3,7 +3,7 @@ import argparse,codecs
 
 # result_dataset = gl.load_sframe("graphlab/my_dataset_test") # "my_dataset
 def save_positive_results_with_event_type_and_date(result_dataset):
-        csvfile = "classification/data/extraction_fields.csv"
+        csvfile = "classification/data/extraction_fields.tsv"
         with codecs.open(csvfile,"r",encoding="utf8") as infile:
             lines = infile.readlines()
         #types = set()
