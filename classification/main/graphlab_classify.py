@@ -75,7 +75,7 @@ def main():
                         help = "Dataset directory ex: my_dataset_test or my_dataset ")
     parser.add_argument("--classified_dir", required = True, default=None ,type=str,
                         help = "Directory for dataset after classification ex: result_dataset")
-    parser.add_argument("--print", required = False, default=False ,type=boolean_switch , dest='print_results',
+    parser.add_argument("--print", required = False ,action='store_true', dest='print_results',
                         help = "")
 
     args = parser.parse_args()
