@@ -111,19 +111,19 @@ def main():
         rel_folder = os.path.join(args.training_dir,"class_rel")
         sf = add_arguments(None,rel_folder,1,vec_model)
         sf = add_arguments(sf,irr_folder,0,vec_model)
-        sf.save("my_training_dataset")
+        sf.save("graphlab/my_training_dataset")
         cls1 = train_classifier(sf)
         #test_classifier(cls1,vec_model)
 
         df = add_dev(sf,vec_model)
         cls2 = train_classifier(df)
-        cls2.save("my_classifier")
+        cls2.save("graphlab/my_classifier")
     #builds dataset
     if args.dataset_dir:
         #dataset_folder = "/home/cagil/brazil/all_files_parsed/" #"/tmp/temp/"
         dataset_folder = args.dataset_dir
         dataset = add_arguments(None,dataset_folder,None,vec_model)
-        dataset.save("my_dataset")
+        dataset.save("graphlab/my_dataset")
 
 if __name__=='__main__':
     main()

@@ -81,7 +81,7 @@ def main():
     args = parser.parse_args()
     if args.dataset_dir:
         vec_model = word2vec.Word2Vec.load_word2vec_format('word2vec_model.txt',binary=False)
-        cls = gl.load_model("my_classifier")
+        cls = gl.load_model("graphlab/my_classifier")
         dataset = gl.load_sframe(args.dataset_dir)
         result171_dataset = test_classifier(cls,dataset,vec_model)
         dataset.add_column(result171_dataset.select_column("class"),"class")
