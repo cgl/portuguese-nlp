@@ -116,6 +116,7 @@ def main():
         #test_classifier(cls1,vec_model)
 
         df = add_dev(sf,vec_model)
+        df.save("my_training_dataset")
         cls2 = train_classifier(df)
         cls2.save("my_classifier")
     #builds dataset
