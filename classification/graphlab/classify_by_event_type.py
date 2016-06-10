@@ -24,7 +24,7 @@ def save_positive_results_with_event_type_and_date(result_dataset):
         labels = [0]*521
 
         for line in lines[5:]:
-            fields = line.split(",")
+            fields = line.split("\t")
             labels[int(fields[0].strip())] = types[fields[2].strip().lower()]
 
         #for ind in range(0,521):
