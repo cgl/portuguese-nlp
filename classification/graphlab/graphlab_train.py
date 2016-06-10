@@ -73,7 +73,12 @@ def add_arguments(sframe,folder,label,vec_model):
     for fname in os.listdir(folder):
         data['filenames'].append(fname)
         with codecs.open(os.path.join(folder, fname),"r",encoding="utf8") as infile:
-            data['text'].append(infile.read())
+            try:
+                myfile = infile.read()
+            except UnicodeDecodeError:
+                print("UnicodeDecodeError %s" %os.path.join(folder, fname))
+                myfile = "none"
+            data['text'].append(myfile)
     sf = gl.SFrame(data)
     dt = DeepTextAnalyzer(vec_model)
     sf['vectors'] = sf['text'].apply(lambda p: dt.txt2avg_vector(p, is_html=False))
