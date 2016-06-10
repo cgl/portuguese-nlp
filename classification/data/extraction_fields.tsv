@@ -1,0 +1,788 @@
+	Event		Participants	Participants	Organiser	Organiser	Neighbourhood or district	City	Place1	Number of Dead (participants):		Participants’ ethnicity/race	Participants’ ethnicity/race	Participant’s ideology	Participant’s ideology		Place2	Place3	Place 3	Number of participants:	Number of Casualties (participants):	Cause
+# of doc	Protest, strike, armed struggle, occupation, rebellion,		Trigger	workers, teachers, poor, peasant, favelado, students, women, youth,Envirenmentalist	Trigger 	Labor Union, political party, illegal party, student organization, NGO,  religious organization, occupational organizations, drug traffic,  peasant organization	Ör:Tarlabaşı	Ör:İstanbul	fabrika, sokak, üniversite, mahalle, adliye, siyasi parti, devlet kuruluşu, tiyatro,dernek, işyeri,praça, building, fazenda	trigger	number	mix, white, black, indian, asian	trigger (ipucu veren bir kelime varsa metinde trigger olarak T kodu ile ekleyelim yoksa bu field boş olabilir)	leftwing, rightwing, religious, feminist, envirenmentalist, uncertain	trigger (ipucu veren bir kelime varsa metinde trigger olarak T kodu ile ekleyelim yoksa bu field boş olabilir)	LGBT	Rural	Favela (Favela'nın isminin T kodu)	Favela'nın ismi	number, hundreds, thousands		
+0	E2	Strike	T4	workers	T6	union		Rio de Janeiro									Rural					
+1	E2	Protest	T5,T6,T7		T8		Butantan	Sao Paulo														
+2	E1	Strike	T2	teachers				Sao Paulo														
+3	E1	Rebellion	T16					Sao Paulo	T6	E4	T11											
+4	E2	Strike	T13	workers	T9	union		São José	T11													
+5	E1	Protest	T2	students				Sao Paulo	T7,T14													
+6	E1	Protest	T2	workers			centro	Sao Paulo														em reação ao "affair" carnavalesco entre o presidente Itamar Franco e a modelo Lílian Ramos
+7	E2	Protest	T3	favelado			zona sul	Sao Paulo	T6									T4 	favela da Paz			em protesto pela morte do estudante Sérgio Fernando da Silva, 12, atropelado na última terça-feira
+8	E5	Protest	T2	students			Jardim Educandário	Sao Paulo	T5													
+9	E1	Protest	T3	workers	T23	union	Liberdade	Sao Paulo	T6													
+9	E4	Protest	T13	workers			Liberdade	Sao Paulo	T25													
+9	E5	Protest	T15	teachers	T26	union		Sao Paulo	T16,T18													
+9	E7	Protest	T19	teachers	T26	union		Sao Paulo	T21													
+10	E1	Protest	T3					São José do Rio Preto	T15													
+11	E1	Rebellion	T1				zona leste	Sao Paulo	T12													
+12	E1	Strike	T2	workers	T4	union																
+13	E3	Protest	T9,T10		T11	union	Pinheiros	Sao Paulo														
+14	E2	Strike	T3	workers	T7	union		Ribeirão Preto												600		
+14	E3	Strike			T7	union		Ribeirão Preto, Ituverava, Batatais, Sertãozinho, Itápolis, São Simão, Mococa, Araraquara, São Carlos e São Joaquim da Barra.														
+15	E1	Strike	T3		T2	union		Sao Paulo														contra os atrasos no pagamento de consultas e internações
+15	E2	Strike	T4					Paraiba														
+15	E3	Protest	T6					Aracaju														
+16	E1	Strike	T2,T12	workers	T10	union																
+16	E3	Protest	T5	workers					T7											T9		
+17	E3	Occupation	T9	teachers				Araçagi	T11											T9		por melhores salários
+17	E4	Strike	T9	teachers	T14	union		Araçagi														
+18	E2	Strike	T3					Sao Paulo														
+18	E3	Strike	T6					Sao Paulo														
+18	E4	Strike	T10					Sao Paulo														uma resposta à política do governo estadual para o ensino
+19	E2	Strike	T4	workers																		
+19	E3	Protest	T13	workers	T14	union		Sao Paulo	T10,T11											T16		
+20	E2	Protest	T4	teachers				Sao Paulo												T4		
+20	E3	Strike	T8																			reivindicam 27% de aumento salarial imediato e a abertura das negociações
+20	E4	Occupation							T9													
+20	E5	Protest	T12	workers				Sao Paulo	T15											T14		
+21	E3	Strike	T6	workers,teachers					T2													
+22	E2	Occupation	T3	students				Sao Paulo	T8											T5		
+22	E3	Strike	T11	workers,teachers																		
+22	E5	Protest	T19	workers				Campinas	T16													
+23	E2	Rebellion	T3				Carandiru	Sao Paulo												T3		
+24	E2	Protest	T3	workers	T4,T5	union		Sao Paulo														contra a CBF por ela ter boicotado a vinda da seleção brasileira de futebol à cidade
+25	E2	Strike	T4	workers	T10	union																exigindo a votação de quatro projetos que reorganizam carreiras e salários
+26	E2	Protest	T6	teachers,students				Sao Paulo	T11,T13											T10		
+27	E2	Protest	T5	workers	T8	union			T6													
+28	E1	Rebellion	T2					Sorocaba	T3													
+29	E2	Protest	T4		T9	union	T8	T7								LGBT						em protestos contra assassinatos ocorridos nos últimos meses
+30	E2	Protest	T1	envirenmentalist	T7															T3		contra desmatamento
+31	E1	Protest	T2,T7,T8	envirenmentalist				Novo Horizonte	T5													contra a poluição e a pesca predatória no rio Tietê
+32	E2	Protest	T3,T7	women				Recife												T3		contra a falta de recursos para a Casa de Passagem da cidade
+33	E3	Protest	T8	workers	T11	union	Guarulhos	Sao Paulo	T10													
+33	E2	Strike	T2	workers			Guarulhos	Sao Paulo	T6													
+34	E1	Protest			T1	NGO			T2													contra a decisão do STF de absolver Collor
+35	E2	Strike	T4	workers	T12	union			T5											T16		
+35	E3	Protest	T7	workers			Guarulhos	Sao Paulo														
+36	E3	Protest	T3	workers				Sao Paulo	T6													
+37	E2	Protest	T3					Cidreira												T3		
+38	E2	Protest	T4					Santana do Parnaíba	T8													pedem conserto de ponte em bairro isolado
+39	E2	Protest	T8	workers				Belo Horizonte														
+39	E3	Strike	T10	workers				Juiz de Fora														
+40	E1	Protest	T2	woman	T3	NGO						black	T4									
+41	E2	Occupation	T4	students					T7											T4		para protestar contra o fim do subsídio para vale transporte e refeições
+42	E1	Strike	T3	teachers																		
+42	E2	Protest	T4	teachers	T5	union														T4		contra o impasse nas negociações salariais
+43	E1	Protest	T3	workers				Recife														
+44	E1	Strike	T2	workers	T8	union		Sao Paulo														
+45	E1,E3	Protest	T1		T14	union		Natal	T2													
+46	E1	Protest	T1		T8	union		Sao Paulo	T4													
+47	E2	Protest	T4	workers				Sao Paulo	T8													pela morte de colegas durante a rebelião no Complexo Penitenciário de Hortolândia
+47	E3	Protest	T23	workers				Araraquara														
+47	E4	Protest	T12	workers				São José do Rio Preto														
+47	E5	Protest	T15	workers				Sorocaba	T16													
+47	E6	Protest	T21	workers				Presidente Prudente														
+48	E2	Protest	T4	peasant	T13				T16													
+48	E5	Protest	T18	peasant				Mirante do Paranapanema														
+49	E1	Strike	T1	workers	T11	union		Sao Paulo														
+50	E1	Strike	T1	workers	T25	union		Sao Paulo														
+50	E6	Strike	T24					Brasília														
+51	E2	Protest	T9	workers	T9			Sao Paulo	T8											T12		
+52	E2	Protest	T1				zona leste	São José dos Campos	T5											T3		contra a morte do estudante Flávio Miranda Costa Silva, 17
+53	E2	protest	T4		T10,T11,T12,T13,T14			Sao Paulo														
+54	E2	Rebellion	T4					Uberlândia	T5											T4		
+55	E3	protest	T8				zona norte	Rio de Janeiro	T12													
+56	E1	Protest	T2	students	T12	student organization	centro	Campinas	T4													
+57	E1	Protest	T9	students,teachers			centro	Campinas	T14													
+58	E2	Protest	T3	peasant	T4	NGO			T7													
+59	E2	protest	T2					São Mateus	T5											T3		
+60	E2 	protest	T1,T4	peasant	T10			Dourados	T7			indian	T9									contra a demarcação de área indígena
+61	E1,E2	protest	T4	poor				Camaquã	T2											T5		
+61	E4	protest	T15	peasant				Sarandi	T25											T15		
+62	E1	protest	T7		T1	NGO		Presidente Prudente	T20					T7								
+62	E4	strike	T15																			
+63	E1	protest	T2	workers	T3	union		Campinas														contra as demissões
+64	E2	protest	T3		T4	NGO			T7													
+65	E4	rebellion	T15					Sao Paulo	T11													
+66	E1	protest	T12		T3	NGO		Andradina	T14,T16											T11		
+66	E6	protest			T21	NGO		Itabuna														
+67	E2	occupation	T3	students				Belém	T7													
+67	E4	protest	T11	students	T20	NGO,political party,union,religious organizations			T13,T15											T11		
+67	E6	strike	T21,T23	workers,students																		
+68	E2	protest			T5	NGO		Campinas	T8													
+69	E1	protest	T1,T3	workers	T17	union		São Bernardo do Campo												T16		
+69	E3	strike	T12	workers																		
+70	E4	protest	T14	favelado			zona oeste	Rio de Janeiro	T16	T3	T6							T10	Cidade de Deus			
+71	E4	protest			T9	NGO		Belém	T15											T13		
+71	E2	invasion	T3					Rondônia	T5			indian	T3									
+71	E7	occupation	T20					Vilhena	T22			indian	T20							T20		
+72	E1	protest			T2	NGO		Eldorado do Carajás		E2	T7			leftwing	T7							
+73	E5	protest	T12	workers																		
+73	E7	strike	T19	workers																		
+74	E1,E2	protest	T1	workers			Pacaembu, Higienópolis	Sao Paulo,Osasco						leftwing						T4		melhores salários e condições de trabalho
+75	E1	protest			T21	NGO		Campinas	T7					leftwing	sem-teto					T5		
+76	E2	protest	T4	workers	T10	union		São Bernardo	T8											T11		
+77	E2	protest	T10	peasant	T21	NGO		Mirante do Paranapanema						leftwing	T21							
+78	E3	protest	T1				Lapa-Penha	Rio de Janeiro	T7											T4		
+79	E2	protest	T1	workers				Sao Paulo	T10											T4		
+80	E1	protest	T1	workers				Sao Paulo														
+80	E2	strike	T5	workers	T23	union		Sao Paulo	T11													
+81	E1	strike	T1	worker	T4	union																
+82	E2	strike	T4	woman				Rio de Janeiro														para manter pré-escola da Lapa
+83	E1	protest	T1	workers					T3													
+84	E2	protest	T4																			chegada de FHC a Pernambuco
+85	E2	protest			T4	NGO		Cajamar	T9					leftwing	T4							
+86	E1	protest	T4	students,workers	T8	union		Brasília												T13		
+87	E1,E2	protest	T3,T8,T14					Montes Altos				indian	T3,T8,T14	leftwing	T19		aldeia Canabrava-Guajajara					
+87	E5	occupation	T19					São Luís	T21			indian	T3,T8,T14									
+88	E1	protest	T2	peasant	T1	NGO		São Paulo,Brasília		E3	T11			leftwing	T1					T2		
+89	E2	protest	T6					Ibiporã	T4,T9	E4	T15									T17		
+90	E1,E3	protest	T6		T4	NGO		Pontal,Pontal do Paranapanema,Teodoro Sampaio												T6		
+91	E1	protest			T2	NGO		Brasília												T5		
+92	E2	protest	T3,T19					Brasília				indian	T6	leftwing	T19							
+93	E1	rebellion						Sao Paulo														
+93	E3	rebellion						Vila Velha														
+93	E4	rebellion	T14					Campo Grande														
+93	E5	rebellion	T17					Mogi das Cruzes												T17		
+93	E6	rebellion						São Vicente	T23													
+94	E1,E2	rebellion	T2,T8					São Vicente	T3,T9													
+94	E3	rebellion						Taubaté														
+94	E4	rebellion	T19					Vila Velha														
+94	E5	rebellion	T20					São Vicente												T20		
+94	E7	rebellion	T32					Grande Vitória	T29											T32		
+94	E8	rebellion	T34						T35											T34		
+95	E2	strike	T3					Londrina														em protesto contra a decisão do STJD (Superior Tribunal de Justiça Desportiva) de suspender por um ano o Atlético-PR de competições
+96	E1	protest	T2,T4	workers	T12,T16	union		Ribeirão Preto	T3											T13		
+97	E1	protest	T4	workers,teachers				João Pessoa												T10,T11		
+97	E4	strike	T13	workers																		
+97	E5	strike	T19	teachers																		
+98	E3	protest	T15	workers				Recife	T13											T1		
+98	E4	strike	T11	workers																		
+98	E7	strike	T20	workers				Itamaracá														
+99	E2	protest	T3	workers,teachers				João Pessoa												T7		contra os baixos salários
+100	E1	protest	T15	students	T5,T6,T11,T12	student organization	Moema	Sao Paulo	T7	E2				leftwing	T20							
+101	E1	protest	T2	workers	T10	union		Sao Paulo	T25	E5	T18,T19											
+102	E2	occupation	T10		T4	NGO		Itaquiraí						leftwing	T2		T8			T10		"um protesto" contra a desclassificação de 1.108 famílias do cadastro do Incra
+103	E2	strike	T6	teachers	T7	union								leftwing	T3							
+104	E2	protest	T3	workers			central	Sao Paulo	T7											T3		a Guarda Civil Metropolitana teria impedido os camelôs de montar suas barracas na praça da Sé
+105	E2	protest	T7	workers	T10	union		Sao Paulo														
+106	E1	protest	T3,T4	peasant				Marabá						leftwing	T3							
+106	E2	protest	T14		T17	NGO		Marabá						leftwing	T17					T24		
+107	E2	protest	T5,T6	teachers	T10	union		Sao Paulo														
+108	E1	protest	T2	workers				Sao Paulo	T5,T7													
+109	E3	protest	T5	workers			Corcovado	Rio de Janeiro	T7					rightwing	T2							
+110	E2	protest	T7					Sao Paulo	T4					leftwing	T2							
+111	E1	protest	T5	peasant	T1	NGO		Mirante do Paranapanema	T3					leftwing	T6					T5		
+112	E1,E2	protest	T4		T5,T6	NGO		Sao Paulo	T8					leftwing	T6					T4		
+113	E3	occupation	T9					Brasília	T11,T21													
+113	E2	protest	T5		T6,T7	union		Brasília	T18											T5,T22		
+114	E1	protest	T2	students			zona sudoeste	Sao Paulo	T9					leftwing	"Sou da Paz"					T5		
+115	E1	protest	T1		T2	NGO		Florianópolis	T6					leftwing	T2					T1		
+115	E2	protest	T9	peasant	T19,T21	union,NGO			T10					leftwing	T14,T13					T9		
+116	E2	protest	T4,T3,T5	teachers,workers,students			praia de Boa Viagem	Recife						leftwing	T4					T4		
+116	E3	strike	T18		T17	union								leftwing	T14							
+117	E1	protest	T11,T12,T3		T14	NGO	Laranjeiras	Rio de Janeiro	T19	E2	T8			leftwing						T11,T17		contra a violência
+118	E2	protest	T6	workers			zona norte	Rio de Janeiro	T14											T4		
+118	E6	protest	T17	students				Rio de Janeiro														
+119	E2	strike	T6	workers				Florianópolis														
+120	E4	protest	T4,T5	teachers,workers				Sao Paulo	T9											T4		
+120	E5	protest	T14	workers				Sao Paulo														
+120	E6	protest	T17	students	T16	student organization		Sao Paulo	T19,T20											T17		
+121	E2	protest	T1	students				Porto Alegre,Curitiba	T6											T10		
+121	E6	strike	T18	teachers																		
+121	E8	protest	T21	students,workers				Curitiba	T27													
+121	E9	protest	T34,T35,T36	teachers,students,workers			centro	Rio de Janeiro	T32											T41		
+122	E1	protest	T1	peasant	T2	NGO	centro	Rio de Janeiro	T7					leftwing	T14							
+123	E2	protest	T9,T10		T4,T8	union		Campinas														
+124	E1	protest	T1	workers				Foz do Iguaçu	T10													
+125	E2	protest	T4	workers	T9	union	centro	Sao Paulo	T15					leftwing	T9					T11		
+125	E6	protest	T23	workers					T26											T28		
+125	E5	protest						São Bernardo do Campo														
+126	E3	protest	T9,T13	workers			Brás	Sao Paulo	T14											T19		
+127	E2	protest	T4,T13	women	T9				T6,T14											T4		
+128	E2	protest	T11,T7	women	T1	NGO		Jundiaí	T9					leftwing	T1							
+129	E2	protest	T4	students				Belo Horizonte	T8													
+130	E1	strike	T6	workers				Santos,Paranaguá,Recife	T23					leftwing	E5							
+131	E2	strike	T3	teachers	T18			Campo Grande	T9					leftwing						T13		salários atrasados
+132	E1	protest	T4					Campinas	T1					leftwing								salários atrasados
+133	E2	protest			T3	union			T6													
+133	E3	strike	T7	workers				São Caetano														
+134	E3	protest	T1	workers	T9	union		São José, Pindamonhangaba, Taubaté, Jacare						leftwing								trabalhadores afastados
+135	E3	strike	T7						T6													
+136	E1	protest	T1					Campinas														
+137	E2	protest	T5		T9,T10,T11	religious organization,political party,union	centro	Campinas	T6					rightwing	T9							
+138	E2	strike	T3					Campinas	T11													
+139	E2	protest	T4	poor	T10	union	centro	Campinas	T6											T15		
+140	E3	protest	T7				Jaboticabal			E4	T11,T12,T13											
+141	E1	protest	T1	workers	T4			Sao Paulo														
+142	E1	protest	T5				zona norte	Rio de Janeiro	T7													
+143	E1	protest	T2	favelado			morro da Mangueira	Rio de Janeiro		E6	T17							T9 	morro da Mangueira	T8		
+143	E9	protest	T26	favelado				Rio de Janeiro		E8	T29							T27	morro da Mangueira			
+144	E2	protest			T2,T3,T4,T7																	
+145	E3	protest	T7				centro	São José	T4													
+146	E1	rebellion	T16,T2	youth				Tatuapé	T3											T2		
+147	E4	protest	T4	workers				Campinas	T14											T25,T22		
+147	E3	protest	T6	workers				Ribeirão Preto	T8													
+147	E7	protest	T15	workers				Campo Grande												T25		
+147	E5	protest	T18	workers																		
+147	E6	protest	T22	workers				Barreiras														
+148	E2	protest	T4,T7,T8,T10	workers,teachers				Sao Paulo	T13					leftwing						T11		salários atrasados
+149	E1	strike			T1	union		São José	T7,T6					leftwing	T12							
+149	E2	protest			T9,T10	union		São José						leftwing	T12							
+150	E2	protest	T7				Torrão de Ouro 2	São José														
+150	E4	protest	T13				Putim	São José	T14													
+151	E2	protest	T10,T11,T12,T13,T14,T15	workers	T16	union		Brasília												T7		
+152	E2	protest	T5	women					T6					leftwing	T12					T5		
+153	E2	protest	T4					Belo Horizonte	T6			black	T4							T4		
+154	E4	protest	T16	peasant	T1	NGO		Curitiba	T10					leftwing	T15					T16		
+155	E2	protest	T6	students			centro	Campinas	T8,T9											T6		
+156	E2	protest	T6	workers	T7	NGO		Igarassu	T10					leftwing	T1					T6		
+157	E1	strike	T2	workers	T12	union		Sao Paulo						leftwing								reajuste salarial
+158	E2	protest	T3	workers	T11	union		Campinas	T7,T12,T16,T17,T18,T19,T20,T23													
+159	E2	protest	T5	workers	T6	NGO		Recife	T9					leftwing	T6 		zona rural de Moreno			T5		contra o despejo
+160	E1	protest	T4	workers			Baixada	Rio de Janeiro														
+160	E2	strike			T5	union		Rio de Janeiro														
+161	E2	protest	T11				centro	Sao Paulo	T4	E3,E4	T8,T14			leftwing	T11	LGBT				T11		
+162	E3	protest	T11		T15,T19,T20,T21	NGO	Lagoa	Rio de Janeiro	T7					envirenmentalist	T15 					T4		acidentes ecológicos
+163	E1	protest	T10	peasants	T2	NGO		Pontal do Paranapanema		E2	T5,T6			leftwing	T2		T13			T10		
+164	E1	protest	T6						T2					leftwing						T6		contra vandalismo
+165	E2	protest	T4		T11,T8,T9,T10	occupational organization,union		Salvador				indian	T1							T4		
+165	E4	protest	T22		T26	NGO			T24			indian	T22				T24					
+166	E1	strike	T7	workers	T10	union		Jacareí						leftwing						T12		campanha salarial
+167	E5	protest	T13	favelados			zona norte	Rio de Janeiro	T15									T8	favela do Jacarezinho			
+167	E10	protest	T22	favelados			Jacarepaguá	Rio de Janeiro		E7	T21							T18	Cidade de Deus			
+168	E2	protest	T3	teachers				Sao Paulo	T6					leftwing						T13		libertação dos três docentes
+169	E2	protest	T5	workers	T12	union		Itapissuma	T9											T5		
+170	E1	strike	T1	workers	T8	union		São José dos Campos														
+171	E2	protest	T1	workers	T5	union		Porto Alegre														
+172	E1	invasion	T7	peasants	T8	NGO		Pontal do Paranapanema	T3					leftwing	T8							
+172	E3	invasion	T13	peasants				Teodoro Sampaio	T10					leftwing	T8					T13		
+173	E1	strike	T1,T6	workers	T8	union		Sao Paulo						leftwing	T8					T1		
+174	E1	protest	T2					Salvador	T4													em protesto contra uma galeria
+175	E3	protest	T7,T30,T31,T32,T33				centro	Sao Paulo	T15,T23					leftwing						T71		contra a globalização
+176	E2	protest	T4	women				Recife						leftwing						T4		baixos salários
+177	E1	protest	T1	workers	T4	union	Brás	São José dos Campos	T8													
+178	E2	protest	T7	workers	T2	union		Anhanguera												T7		
+178	E4	protest	T16					Brasília						leftwing						T16		aumento do salário mínimo
+179	E1	protest	T1		T19,T15	NGO						indian	T1	leftwing								estereótipos de "Uga Uga"
+180	E1	strike	T10	workers	T5,T6	NGO		Tatuí						leftwing	T5							
+181	E1	protest	T1	women	T3	NGO		Ribeirão Preto	T12					feminist	T3							
+182	E2	protest	T4						T12			indian	T4		T13		T7					
+183	E2	protest	T3	workers				Rio de Janeiro	T6											T3		
+184	E2	strike	T6	workers			Guaianazes	Sao Paulo	T9					leftwing						T11		garantir seus direitos
+185	E1	protest	T6		T14,T11	union			T3,T35					leftwing	T4		rural			T9		
+185	E6	invasion	T25	peasants	T4									leftwing	T4		T28					
+186	E1	protest	T3		T4,T11,T13	union,NGO	zona sul	Sao Paulo	T5													
+187	E2	protest	T4					Rondonópolis	T7			indian	T1	leftwing						T4		demarcação
+188	E2	protest			T7			Cuiabá,Nova Olímpia,Pedra Preta	T9					leftwing	T7		T3					
+189	E1	rebellion	T5					Cuiabá	T4											T5		
+190	E1	rebellion	T6					Itirapina	T2	E2	T7											
+191	E1	protest	T1	students	T5	student organization		Campinas												T1		
+192	E2	strike	T4	workers				Campinas	T8					leftwing								campanha salarial
+193	E2	protest	T2		T3	union		Sao Paulo														contra as decisões de racionamento do governo
+194	E2	protest	T5,T6	workers	T16	union	centro	Sao Paulo	T14					leftwing								reajuste de salários
+194	E5	protest	T19	workers				Salvador	T20					leftwing						T19		reajuste de salários
+195	E1	strike	T2,T3	workers				Salvador														
+195	E3	strike	T9	workers										leftwing								reajuste
+195	E4	strike	T16	workers										leftwing								reajuste
+196	E3	protest	T3	favelado			centro	Rio de Janeiro		E2	T10			leftwing				T4 	morro da Providência			contra a morte
+196	E7	armed struggle	T22,T23	favelado			centro	Rio de Janeiro										T4 	morro da Providência			
+197	E2	strike	T2	workers				São Bernardo do Campo												T3		um protesto contra a substituição de funcionários do posto de atendimento bancário do Unibanco, instalado dentro da fábrica, por máquinas automáticas
+198	E2	protest						Foz do Iguaçu	T5											T3		contra a presença na cidade do ex-presidente dos Estados Unidos Bill Clinton
+199	E2	rebellion	T4					Fortaleza	T7											T4		
+200	E1	strike	T2	workers				Sao Paulo												T2		
+200	E2	protest	T6	workers			centro	Sao Paulo	T7													
+201	E1	strike	T2	workers				Rio de Janeiro														suspensão dos salários
+201	E3	protest	T3				Gloria	Rio de Janeiro	T10											T7		para pedir a liberação dos pagamentos
+202	E2	strike	T2	students,teachers				Rio de Janeiro														
+202	E7	protest	T17,T19	students,teachers	T18	NGO		Rio de Janeiro	T23											T20		
+203	E1	strike	T2	teachers										leftwing								reajuste salarial
+204	E1	protest	T11	teachers,students,workers	T8	NGO		Rio de Janeiro	T6,T10					leftwing						T1		saída de reitor
+205	E1	protest	T1		T2	union		Brasília	T6					leftwing						T9		flexibilização da CLT
+206	E2	protest	T1	workers					T5					leftwing						T3		atraso de salário
+207	E1	protest	T3					Sao Paulo	T5											T3		
+207	E2	protest	T8					Sao Paulo	T5													
+207	E3	rebellion	T16					Rondônia		E4	T15											
+208	E1	protest	T2	favelados			Rio Comprido	Rio de Janeiro	T13									T5 , T6 	morros do Querosene,São Carlos	T4		
+209	E1	strike	T2											leftwing								correção salarial
+209	E2	protest	T9	women,workers																		
+210	E1	strike	T2	workers																		em protesto contra a morte dos fiscais
+211	E4,E5,E6	protest	T6	workers	T47	union								leftwing						T6		contra mudança na CLT
+211	E9	strike	T18	workers	T47	union								leftwing						T18		contra mudança na CLT
+211	E10	protest	T23	students,teachers,workers	T47	union		Sao Paulo	T21,T22					leftwing						T23		contra mudança na CLT
+211	E12	protest	T27	workers	T47	union	centro	Sao Paulo	T28					leftwing						T27		contra mudança na CLT
+211	E13	strike	T31	workers	T47	union								leftwing						T31		contra mudança na CLT
+211	E14	protest	T36		T47	union	cento	Campinas	T38					leftwing						T36		contra mudança na CLT
+211	E15	protest	T45	workers	T47	union		Vale do Paraíba						leftwing						T45		contra mudança na CLT
+212	E1	protest	T1				T3	Rio										T2 	morro da Mangueira			
+212	E5	armed struggle	T24					Rio										T15				
+213	E5,E6,E7	protest	T9	peasants	T8	NGO								leftwing	T8							
+213	E8	protest	T14	peasants	T8	NGO		Recife						leftwing	T8							
+213	E9	protest	T20	peasants	T8	NGO			T23					leftwing	T8		T23					
+213	E11	protest	T30	peasants	T60	NGO		Foz do Iguaçu	T32					leftwing	T8					T30		
+213	E14	invasion	T41	peasants	T39	NGO		Duque de Caxias	T43					leftwing	T8		T43			T45		
+213	E16	protest	T48	peasants	T8	NGO		Belém	T50					leftwing	T8					T48		
+214	E2	strike	T5	workers																		
+214	E3	protest	T5	workers					T7													
+215	E2	protest			T5,T7	NGO	Gonzaga	Santos	T13					leftwing								Separação de irmãos com HIV
+216	E1	strike	T2,T3	workers																		
+216	E3	strike	T14	teachers																		
+216	E6	strike	T24	teachers				Belem														
+216	E9	strike	T35	teachers	T33	union														T35		
+216	E12	strike	T44	workers																		
+216	E13	strike	T49	workers																		
+217	E3	protest	T11	favelados					T12											T11		
+217	E2	armed struggle	T5	favelados			Jardim Catarina	São Gonçalo		E1	T2											
+217	E5	armed struggle	T20	favelados			Bonsucesso	Rio de Janeiro		E4	T14							T16 	morro do Adeus			
+217	E8	protest	T27	favelados			Penha	Rio de Janeiro										T28 	favela Vila Cruzeiro			
+218	E2	protest					Leblon,İpanema	Rio de Janeiro		E1	T2											
+219	E2	protest	T7	favelados				Sao Paulo	T8									T3 	favela do Gato			
+220	E2	protest	T4				Tijuca	Rio de Janeiro												T4		
+220	E3	protest																T10 	Complexo do Alemão			
+221	E2	protest	T3	teachers	T10	union		Sao Paulo	T11,T12,T13											T7		
+222	E3	protest	T5					Porto Seguro												T5		
+222	E4	protest	T12						T14													
+223	E3	protest	T5		T10	union		Brasília	T8					leftwing	T10					T12		denúncias de ocupação irregular de terras públicas
+224	E3	protest	T7					Brasília						leftwing	T11					T7		
+224	E4	protest	T12	peasants	T15	NGO								leftwing	T15					T12		reforma agrária e contra a Alca
+225	E2	protest	T10	workers	T6	union	Vila Nova Conceição 	Sao Paulo	T9													
+226	E2	protest	T4	workers																T9		
+227	E1	protest	T1	favelados			zona norte	Rio de Janeiro		E2	T8							T2  	favela Águia de Ouro	T2		
+227	E4	armed struggle	T8,T14	favelados				Rio de Janeiro		E3	T12							T2 	favela Águia de Ouro			
+228	E3	protest	T16	students	T5	NGO	Copacabana	Rio de Janeiro						leftwing						T7		contra a Cúpula de Negócios da América Latina, promovida pelo Fórum Econômico Mundial
+229	E1	protest																				contra o Sony
+230	E2	protest	T8	favelados			zona norte	Rio de Janeiro	T4									T9 	complexo de favelas da Maré			
+230	E3	armed struggle	T12,T13				zona norte	Rio de Janeiro										T9 	complexo de favelas da Maré			
+231	E2	strike	T3	workers										leftwing								contra atraso de 2 meses nos salários
+231	E3	strike	T7	workers	T10	union								leftwing								contra atraso de salários
+232	E1	strike	T5	workers				Rio de Janeiro														
+232	E5	protest	T13	workers			centro	Rio de Janeiro	T16,T19													
+232	E12	strike			T22	union														T25		
+232	E10	strike	T29	workers																		
+232	E11	strike	T34	workers	T33	union														T34		
+233	E1	protest	T2	peasants	T1	NGO								leftwing	T1					T2		
+233	E2	protest	T10	peasants										leftwing	T1							
+234	E1	protest	T3	workers										leftwing								contra demissões
+234	E2	strike	T4,T9	workers				Sao Paulo	T11													
+235	E2	invasion	T9	peasants				Marabá	T11					leftwing	T2		T16			T14		
+236	E1	protest	T2	peasants	T13,T14	NGO		Porto Alegre	T10					leftwing	T13,T14					T6		
+236	E5	protest	T15	peasants	T16	NGO								leftwing	T16							
+236	E6	protest						Vale do Rio dos Sinos									T22					
+237	E2	protest	T6	favelados			Brasília Teimosa	Recife										T6				
+238	E2	protest	T3																			
+239	E1	protest	T1						T4					leftwing	T7					T1		
+239	E2	protest	T6		T7	NGO								leftwing	T7							
+240	E2	protest			T6	NGO		Glória do Oeste	T11					leftwing	T6							contra uma milícia armada
+240	E4	invasion	T13	peasants				Mirassol D" Oeste						leftwing	T5		T16					
+241	E4	protest	T12,T13	workers																T19		
+241	E6	protest	T23	workers				Belo Horizonte	T24											T23		
+241	E13	protest	T47	workers				Curitiba												T47		
+241	E15	protest	T49	workers																T49		
+241	E9	protest	T30	workers	T32	NGO		Sao Paulo												T30		
+241	E11	protest	T37	workers																T37		
+241	E12	protest	T42	workers	T40	NGO			T43											T42		
+242	E2	protest	T3,T9		T11,T12	union,political party		Brasília														
+243	E2	protest	T4	peasants	T3	NGO		Presidente Epitácio						leftwing	T3					T4		
+244	E1	protest	T3	workers																		
+244	E3	strike	T24,T26	workers	T16,T15	union		Brasília														
+244	E6	protest	T20,T21	peasants				Pontal do Paranapanema						leftwing	T20					T21		
+245	E2	strike	T10	teachers				Ribeirão Preto														protesto contra a reforma da Previdência
+246	E2	protest	T5	peasants				Bom Jesus das Selvas	T12					leftwing	T6							
+246	E6	protest	T23	peasants			engenho Prado	Tracunhaém						leftwing	T23							
+247	E1	protest	T2	youth					T8					leftwing	T1							
+248	E3	protest	T8	students				Salvador	T7					leftwing						T8		contra o aumento da tarifa de ônibus
+249	E2	protest	T6	teachers			Laranjeiras	Rio de Janeiro	T7											T6		
+250	E1	protest	T7	students				Marília						leftwing						T7		mais verbas para a educação
+250	E3	protest	T10	workers										leftwing								reajustes salariais
+251	E2	protest	T4					Águas Belas				indian	T4									
+252	E2	protest	T7			Sao Paulo			T8													Alca (Área de Livre Comércio das Américas
+252	E6	protest	T18	peasants	T19	NGO		Brasília						leftwing	T19					T20		Alca (Área de Livre Comércio das Américas
+252	E7	protest	T24,T28	students				Sao Paulo	T25					leftwing						T24		Alca (Área de Livre Comércio das Américas
+252	E10	protest	T30,T36	peasants	T35,T37,T38,T39	NGO	centro	Recife						leftwing	T37,T38,T39					T36		Alca (Área de Livre Comércio das Américas
+253	E2	occupation	T6	youth	T5	NGO		Sao Paulo	T8											T6		para saber a quantidade de negros entre os vendedores
+253	E3	protest	T13	youth			centro	Sao Paulo	T10													
+254	E1	strike	T2	workers	T10	union		Sao Paulo												T3		
+254	E3	protest	T11					Santa Catarina														
+255	E11	invasion	T9	peasants	T10	NGO		Santana do Livramento	T40					leftwing	T9							
+255	E6	protest	T9	peasants	T10	NGO		Arroio Grande,Porto Alegre						leftwing	T9							
+255	E9	invasion	T29	peasants	T30	NGO		Foz do Iguaçu						leftwing	T30		T32					
+256	E1	protest	T2					Sao Paulo	T5			descendente de índios e negros	T2	leftwing								para chamar a atenção das autoridades para a comunidade indígena paulistana
+257	E1	rebellion						Ribeirão Preto	T2													
+258	E3	protest	T10					Altamira				indian	T10									contra a morte de dois índios por pneumonia
+259	E1	protest	T2,T8	workers	T6	NGO		Rio de Janeiro	T10											T7		
+259	E4	occupation	T11	workers				Brasília	T14													
+260	E2	protest	T3		T17,T18	NGO								leftwing						T3		contra a impunidade, a violência policial e o racismo
+260	E3	protest	T12		T8	NGO	centro	Sao Paulo	T10					religious	T12							
+261	E4	invasion			T13	NGO		Pontal do Paranapanema	T16					leftwing	T13							
+261	E6	protest	T21	peasants	T32	NGO		Presidente Prudente,Teodoro Sampaio,Presidente Bernardes,Mirante do Paranapanema,Presidente Venceslau						leftwing	T32					T21		
+261	E7	invasion			T28	NGO								leftwing			T31					
+262	E2	protest																				
+263	E3	protest	T7	students			centro	Fortaleza	T9,T11											T7		
+264	E2	protest	T4	favelados			São Conrado	Rio de Janeiro	T13									T5 	Rocinha			
+265	E2	invasion	T4	students				Manaus												T1		
+265	E5	protest	T14	students				Brasilia														
+266	E2	invasion	T4	workers				Ribeirão Preto	T9											T4		
+266	E3	strike	T10	workers																		
+266	E4	protest	T14	workers			centro	Sao Paulo	T16											T14		
+267	E2	invasion			T5	NGO		Chapadão do Céu,Estrela do Norte						leftwing	T5		T4					
+267	E3	invasion	T14	peasants	T21	NGO		Campestre						leftwing	T21		T16					
+267	E5	protest						Teresina	T24													
+268	E3	strike	T8,T14	teachers,workers																		
+268	E4	invasion	T15	students					T18											T15		
+268	E8	strike	T20	students																		
+269	E1	protest	T6	students	T1	NGO		Florianópolis						leftwing	T1							
+269	E3	protest	T10	students										leftwing								contra o reajuste das tarifas
+270	E2	protest	T9					Porto Alegre	T8													
+271	E1	strike	T3,T5	workers	T1	union		São Paulo,Rio de Janeiro,Florianópolis,Brasília												T3		
+272	E3	protest	T10	students			centro	Salvador												T10		
+272	E4	protest	T11	students				Salvador														
+273	E1	protest			T1,T3	union	Sul Fluminense	Rio de Janeiro	T5													
+274	E2	protest	T4	peasants	T5	NGO		Tracunhaém	T18					leftwing	T4							contra a destruição de 200 barracas
+274	E4	invasion			T11	NGO								leftwing	T11							
+275	E3	protest					centro	Sao Paulo	T10	E2	T5			leftwing	T3							três meses dos ataques a moradores de rua
+276	E1	protest	T12	workers	T5	union	centro	Sao Paulo						leftwing	T2					T6		o pagamento de vencimentos atrasados
+276	E2	protest	T6	workers	T5	union		Sao Paulo	T2					leftwing	T10							cerca de 2.000 funcionários sem receber
+277	E2	protest	T5	workers	T10	union		Sao Paulo														
+278	E2	protest	T3,T7					Sao Paulo						leftwing						T3		contra falta de pagamento
+279	E1	protest	T2																			
+280	E1	protest			T1	politcal party																
+281	E4	protest			T8,T9	NGO			T13,T15,T17,T19	E3	T6			leftwing	T8							pela morte do sindicalista Soares da Costa Filho
+282	E2	protest	T6	peasants	T5	NGO		Uberaba	T9					leftwing	T5							
+282	E4	invasion	T15	peasants	T16	NGO		Campestre						leftwing	T16		T18			T15		
+283	E1	rebellion	T6																			
+283	E2	strike			T2	union																
+284	E2	protest	T8	peasants	T9	NGO		Guarapuava						leftwing	T9					T8		contra os governos estadual e federal
+284	E3	protest		peasants			centro	Guarapuava														
+284	E4	protest	T14	peasants				Curitiba						leftwing						T14		contra demissões nas indústrias do setor agrícola
+285	E1	protest	T1		T6,T7,T8,T9	NGO,union		Sao Paulo	T3,T4											T1		
+286	E3	protest	T9	favelados	T8	NGO		Rio de Janeiro						leftwing	T8					T12		chamar a atenção para os nove anos da chacina em Eldorado do Carajás
+287	E2	strike	T3	workers					T7											T9		
+287	E4	strike	T3	workers																		
+287	E5	protest	T15	workers				Brasília														
+288	E1	protest	T2	peasants				Belém	T6								T3			T9		
+289	E1	protest	T2				Higienópolis	Sao Paulo	T3					envirenmentalist								a prefeitura ter colocado cimento no local onde antes havia as plantas
+290	E1	protest	T2	students				Florianópolis														
+291	E3	occupation	T9	workers			centro	Rio de Janeiro	T13											T9		
+291	E5	strike	T19	workers																		
+292	E4	protest	T7	workers	T23,T24	union			T3					leftwing	T23,T24							
+292	E6	invasion	T14	workers	T23,T24	union			T15					leftwing	T23,T24							reivindicam reajuste salarial de 18%, plano de carreira e paridade salarial entre os funcionário ativos e os aposentados
+293	E2	protest			T7,T12	union		Sao Paulo	T3													contra a corrupção
+293	E4	protest			T14	union			T16													
+294	E2	protest	T6	workers			Lapa	Rio de Janeiro														contra retirada
+295	E1	protest	T1	students				Salvador	T4,T7											T1		contra o reajuste de 46,7% na tarifa do transporte coletivo
+295	E4	protest	T11						T13											T11		
+295	E5	protest	T15	students				Salvador														
+296	E1	strike							T2													
+296	E5	protest	T13	students,workers																T9		
+296	E9	protest	T22,T24	students,workers				Sao Paulo	T23											T22,T24		
+297	E3	invasion	T9					Atalaia do Norte	T6	E4	T10	indian	T9							T9		Em protesto por causa de uma morte
+298	E1	protest			T2	NGO																
+299	E3	protest	T6				zona sul	Sao Paulo	T8													
+300	E1	protest	T1				zona sul	Rio de Janeiro												T1		
+301	E2	protest	T6	peasants					T4					leftwing	T6							
+301	E3	strike	T7	peasants	T5	NGO		São Bernardo do Campo	T11													
+302	E2	protest	T4	workers				Sao Paulo	T8,T10											T13		contra as novas regras determinadas pela gestão José Serra (PSDB
+303	E2	strike			T4				T5													
+303	E3	protest	T6	workers																		
+304	E2	protest	T3,T1						T5													contra o projeto de lei, em tramitação na Casa, que modifica a legislação sobre direitos autorais
+305	E2	protest	T1					Sao Paulo												T5		
+306	E2	invasion			T4	NGO			T7													
+307	E2	protest	T7	workers			centro	Sao Paulo														
+308	E3	strike	T7	teachers,students,workers				Sao Paulo														
+308	E4	protest	T11	students				Sao Paulo	T15											T11		
+309	E2	protest	T7				centro	Sao Paulo	T5	E3	T9											contra a Febem
+310	E2	protest	T5	peasants	T6	NGO		Pontal do Paranapanema	T9					leftwing	T6					T5		
+310	E5	invasion	T21	peasants	T18	NGO								leftwing	T26		T70			T21		
+310	E8	protest			T31	NGO			T35					leftwing	T54							
+310	E10	protest	T37	peasants	T54	NGO								leftwing	T54		T39			T37		
+310	E11	protest			T54	NGO		Salvador	T42					leftwing	T54							
+310	E12	protest	T43	peasants	T54	NGO			T45					leftwing	T54							
+310	E13	protest	T48	peasants	T54	NGO			T49					leftwing	T54					T48		
+310	E14	protest	T53	peasants	T54	NGO		João Pessoa	T56					leftwing	T54							
+310	E15	protest	T62	peasants	T54	NGO		Maceió,Fortaleza						leftwing	T54							
+310	E16	protest			T54	NGO		Eldorado do Carajás	T66					leftwing	T54							
+311	E3	protest	T3	peasants				Birigüi, Coroados,Guararapes												T6		
+311	E5	protest	T14	peasants				Promissão														
+312	E1	protest																				contra a política de câmbio e o tratamento do governo federal para o setor agrícola
+312	E2	strike	T4																			
+313	E2	protest	T3	teachers	T5	union														T3		
+314	E2	protest	T9,T16	workers	T15	union		Ribeirão Preto														
+314	E7	strike	T20	workers																		
+315	E2	protest	T4,T6		T10,T11	NGO		Goiânia							LGTB					T4		contra declarações do artista consideradas homofóbicas
+316	E1	protest	T2																			
+317	E2	protest	T2	workers	T4	NGO																
+318	E1	protest			T1	NGO				E3	T7											
+318	E4	protest	T13																			
+319	E2	strike	T4	workers	T6	union														T19		
+319	E5	protest	T14	workers	T15	union		Sao Paulo												T14		
+320	E2	protest	T7,T23	peasants	T8	NGO			T9					leftwing	T8					T20		
+320	E4	invasion			T8	NGO			T16					leftwing	T8							
+320	E10	protest	T35	peasants	T31	NGO		Recife						leftwing	T8							
+320	E12	protest			T40	NGO								leftwing	T8							
+320	E14	protest	T48	peasants	T40	NGO		Campo Grande	T51					leftwing	T8					T48		
+321	E2	protest	T6	students					T14													
+322	E1	protest	T3				zona norte	Sao Paulo	T6													contra decisão de prorrogar fim de aterro
+323	E2	strike	T5	workers																		
+323	E3	protest	T5	workers			centro		T8													
+324	E2	occupation	T4	workers	T5	NGO		Candeias	T7					leftwing	T5							contra acordos não cumpridos entre agricultores e a Petrobras
+325	E2	protest	T3					Moju	T6											T3		
+326	E2	protest	T8	envirenmentalist			centro	Campo Grande						envirenmentalist	T1							
+327	E1	protest	T1				Guarulhos	Sao Paulo						leftwing	T2							
+328	E1	protest	T1	students																		contra o aumento de 8,8% das tarifas de ônibus locais
+329	E2	strike	T3					Sao Paulo														protesto em solidariedade aos detentos
+330	E1	T2	workers		T5	union		Sao Paulo														
+331	E2	protest	T3	workers				Canoas	T8					leftwing						T3		contra negócio
+332	E1	protest	T4,T6		T5	NGO	Copacabana	Rio de Janeiro	T2													representam pessoas assassinadas no Estado do Rio em 2007
+333	E2	protest	T5		T6	NGO	Copacabana	Rio de Janeiro														
+333	E5	protest	T15		T6	NGO	Copacabana	Rio de Janeiro												T15		
+334	E2	protest	T7	peasants	T6	NGO			T10			indian	T7	leftwing						T5		os impactos ambientais da usina nas terras indígenas
+335	E3	strike	T8	students	T19	union																
+335	E4	invasion	T13,T23	students			zona oeste	Sao Paulo	T14													
+335	E5	strike	T17	workers																		
+336	E2	protest	T3	peasants	T4	NGO		Pinheiro Machado						leftwing	T4							
+337	E2	invasion	T4	students				Campinas	T6													
+337	E3	strike	T8	workers																		
+337	E4	protest			T12	student organization		Araraquara														
+337	E5	strike	T13	students				São Carlos														
+338	E2	protest	T4				zona leste	Sao Paulo	T8													
+339	E2	protest	T4		T6	union				E5	T14											
+339	E3	protest	T8						T11													
+340	E3	protest	T8				Vila Albertina	Sao Paulo												T2		contra chacina com 6 mortos na zona norte de São Paulo
+340	E7	protest	T19,T24															T20 	favela Morro do Piolho	T25		
+341	E3	invasion	T7	students	T16	NGO	centro	Sao Paulo	T10											T6		
+341	E5	invasion							T18													
+341	E6	protest	T25	students				Porto Alegre, Rio, Salvador, Fortaleza e Belo Horizonte												T25		
+342	E2	invasion	T5	students			centro	Rio de Janeiro	T8,T9											T5		
+342	E3	protest	T13	youth					T15											T13		
+343	E2	invasion	T5	students				Rio de Janeiro	T11											T5		
+343	E3	protest	T13	youth					T15											T13		
+344	E1	protest	T2					Sao Paulo	T3,T8													contra a falta de ciclovias
+345	E2	strike	T5	teachers	T17	union		Sao Paulo														
+345	E5	protest	T13	teachers			centro	Sao Paulo														
+345	E7	protest	T23	teachers				Sao Paulo														
+346	E3	invasion	T14	peasants	T13	NGO		Parauapebas	T10					leftwing	T13					T23		
+347	E2	invasion	T10	peasants	T4	NGO		Araçatuba									T7			T10		
+348	E1	protest			T1	political party																
+349	E2	invasion	T5	workers				Ituiutaba	T11					leftwing						T5		atraso no pagamento dos salários dos trabalhadores rurais
+350	E3	strike	T6,T2					Sobradinho														contra as obras de transposição do rio São Francisco
+351	E2	protest	T4				Leblon	Rio de Janeiro												T4		ato de boicote ao IPTU
+351	E3	protest	T8				Vila Isabel	Rio de Janeiro														
+352	E1	protest	T5	teachers	T7	union		Brasília														
+353	E2	protest	T5,T10	workers			Ipanema e Leblon	Rio de Janeiro												T5		reajuste salarial dos policiais
+354	E3	protest	T15				São Conrado	Rio de Janeiro												T14		Ágata Marques dos Santos, 11, atingida por uma bala de fuzil no ombro, dentro de casa, durante uma incursão policial na favela da Rocinha
+355	E2	invasion	T4		T5,T12	NGO	Jardins	Sao Paulo	T8					leftwing	T5					T4		em protesto ao parecer técnico emitido pelo órgão favorável à instalação da usina hidrelétrica Tijuco Alto nos municípios de Ribeira (SP) e Adrianópolis (PR)
+356	E3	invasion	T6,T7		T2	NGO		Santa Cruz das Palmeiras	T9					leftwing	T2					T3		contra liberação de duas variedades do grão pelo governo
+357	E2	protest	T4	students				Sao Paulo	T5											T4		
+358	E3	protest	T9	workers	T5,T6	NGO		Parauapebas						leftwing	T5					T9		
+359	E1	protest	T6									indian	T6				T7					
+360	E1	protest	T1																			"113 Cidadãos Anti-Racistas Contra as Leis Raciais"
+361	E1	protest	T2	workers	T6	union		Sao Paulo	T3													
+362	E4	protest	T13	favelados				Rio de Janeiro										T14 	morro da Providência	T13		contra a morte de três jovens, levados por militares que estavam no morro da Providência
+363	E1	protest	T2	youth																T2		
+364	E2	protest	T9	women				Porto Velho												T20		
+365	E1	protest	T2	students				Salvador												T2		violência sexual de uma aluna da UFBA
+366	E1	protest	T3					Belo Horizonte	T5											T3		uma manifestação pelo banho de sol em público
+367	E1	strike	T3,T9	workers	T16	union		Recife	T11											T17		
+368	E2	invasion	T5	peasants	T6	NGO		Eunápolis	T9											T5		
+369	E4	protest	T8	teachers				Porto Alegre												T10		pedia a adoção do piso nacional dos professores e protestava contra a "criminalização" dos movimentos sociais
+370	E2	strike	T5	workers				Sao Paulo														
+371	E3	protest	T7				zona sul	Sao Paulo	T3													
+372	E2	protest	T7	workers	T2	union		Sao Paulo	T8											T7		
+373	E2	protest	T3																	T3		
+374	E2	strike	T3	workers	T9	union														T3		
+375	E5	protest	T17									indian								T17		A líder indígena paresi Valmireide Zoromará, 42, foi assassinada na sexta-feira na fazenda Boa Sorte, em Diamantino
+376	E4	protest	T12	favelados			zona leste	Sao Paulo	T15									T22 	favela Tiquatira			para exigir novas moradias
+377	E1	protest	T2					Rio de Janeiro														
+377	E3	protest	T7	workers				São Paulo, Rio, Paraná e Distrito Federal														
+378	E2	invasion	T4	peasants	T8	NGO								leftwing	T1		T6			T7		
+379	E3	protest	T7	students			centro	Porto Alegre	T9											T13		
+380	E1	protest	T1						T3			indian										
+381	E1	protest	T1,T7	teachers			centro	Sao Paulo												T6		
+382	E2	protest	T4		T2	NGO	centro	Belo Horizonte			T2			leftwing	T4					T4		
+382	E4	protest	T12		T2	NGO			T14													
+383	E2	invasion	T5,T10	students			zona oeste	Sao Paulo	T6											T16		
+383	E4	invasion	T13	students					T15													em protesto contra decreto estadual
+384	E1	protest	T1	favelados			zona leste	Sao Paulo										T2 	favela Gabriela Mistral			
+385	E2	protest	T3				zona oeste	Sao Paulo	T5					rightwing	T3							
+385	E4	strike	T10,T13	students																		
+386	E2	protest	T10,T9		T5	union	centro	Sao Paulo	T7													contra a restrição de ônibus fretados
+387	E2	protest	T5	workers				Salvador												T5		
+387	E3	protest	T6																			
+388	E2	protest	T4						T8											T10		
+389	E1	protest	T3	workers					T2													
+390	E1	protest	T2	peasants	T3,T4	NGO		Sao Paulo	T5											T6		Reivindicavam a redução da jornada semanal de trabalho
+391	E1	occupation	T4,T2									indian	T4									
+392	E1	protest	T2	workers				Sapucaia do Sul														
+392	E2	strike	T7	workers																		rejeitaram a proposta de reajuste imediato de 9% e um aumento linear de R$ 100 a partir de janeiro
+392	E3	protest	T9																			pedindo a titulação de áreas de comunidades de descendentes de escravos
+393	E2	protest	T3					T6				indian	T2	envirenmentalist			T5					contra desmate
+394	E2	occupation	T4	peasants	T1	NGO		Dourados,Santa Catarina	T7,T9					leftwing	T1							mais agilidade do governo federal em desapropriações e investimentos na reforma agrária
+395	E2	protest	T1	students				Brasília	T7,T3					feminist								contra o machismo
+395	E3	invasion	T11	students					T9													
+396	E1	protest	T2											religious	T2							
+397	E3	protest	T11	favelados			zona leste	Sao Paulo										T14	Jardim Pantanal			Cansados de conviver com alagamentos a cada nova chuva
+398	E1	protest	T2	students								black										contra a atitude dos alunos
+399	E2	protest	T1	favelados			zona sul	Sao Paulo	T8									T7	Cidade Dutra			
+399	E3	protest	T9,T10	favelados														T11 	comunidade Dezenove	T9		
+400	E2	protest	T3	favelados														T4	Jardim Pantanal	T3		contra os alagamentos constantes e a bolsa-aluguel prometida pela prefeitura
+401	E1	protest	T2					Rio de Janeiro														contra a decisão do governo federal de dar proteção a um jovem de 18 anos condenado por participação na morte de João Hélio, 6, durante assalto em 2007
+402	E2	protest	T3				Cidade Ademar	Sao Paulo	T7													pela morte de um homem por afogamento
+403	E1	protest	T2	teachers	T14,T15	union		Sao Paulo												T17		
+403	E3	strike	T8	teachers	T14,T15	union																
+404	E1	strike	T2	workers	T6	union		Ribeirão Preto														
+405	E2	occupation	T3									indian	T3				T5					onde será construída a barragem de Belo Monte
+406	E3	invasion	T7,T6	students	T10	student organization		Brasília	T9											T7		
+406	E6	protest	T18	students																T18		
+407	E1	protest	T6				zona sul	Sao Paulo	T1											T6		em favor da legalização da erva
+408	E2	strike	T6	workers				São José dos Pinhais														contra a falta de avanços na negociação sobre o pagamento da PLR
+409	E2	protest	T4	workers				Ribeirão Preto	T7													protesto pelo que chamam de demora da reitoria em negociar com os grevistas
+410	E2	protest	T5	workers				Ribeirão Preto														o recebimento de salários em cheques sem fundos
+410	E4	protest	T9	workers					T10											T9		os estabelecimentos comerciais não recebem nem trocam mais os cheques emitidos pela empresa
+410	E5	strike	T13	workers	T12	union														T13		
+411	E1	protest	T1,T6						T3			indian	T1							T1		
+412	E1	protest	T2		T1	NGO		Ribeirão Preto	T4,T5					leftwing	T1							
+413	E1	strike	T3	students	T6	union																protesto contra um projeto de lei que, se aprovado, poderia causar a demissão de 120 mil professores
+414	E1	protest	T2					Sao Paulo	T4													protesto pelo final do programa
+415	E2	protest	T1	workers			centro	Sao Paulo												T7		com o objetivo de pressionar o governo a aprovar o projeto de reestruturação da Polícia Civil
+416	E2	protest	T9,T11	workers	T4	union			T7											T11		em protesto contra o aumento da jornada de trabalho dos vendedores e lojistas aos domingos
+417	E1	protest	T3	students				Sao Paulo	T2											T3		contra a realização do "Rodeio das Gordas", ocorrido na festa dos jogos InterUnesp 2010
+418	E1	protest	T1					T4	T3											T5		contra o valor das indenizações pagas pelo consórcio construtor às áreas que serão alagadas e contra o descumprimento de medidas de programas de apoio aos índios kaxararis
+418	E2	protest	T7	workers																		
+419	E2	protest	T4	students	T11	student organization		Sao Paulo	T9											T4		prova do Sistema de Avaliação de Rendimento Escolar (Saresp
+420	E2	protest	T4	students				Ribeirão Preto												T7		
+421	E2	protest	T3	workers																T8		contra o atraso no pagamento dos honorários pelo governo do Estado
+422	E2	protest	T4	workers			centro	Rio de Janeiro	T5											T4		reajuste salarial
+423	E3	protest	T2,T7	workers				Santo Antônio do Descoberto												T7		contra o preço do transporte público e a má qualidade das vias
+424	E1	protest	T5	students	T9	student organization		Sao Paulo	T6											T3		contra o aumento da tarifa do ônibus de R$ 2,70 para R$ 3
+425	E1	protest	T2		T6	NGO	centro	Sao Paulo														contra a alta na tarifa de ônibus
+426	E2	protest	T1	students				Sao Paulo	T4											T6		contra o reajuste da passagem de ônibus de R$ 2,70 para R$ 3 -aumento de 9,43%
+427	E2	strike	T1	workers				Ipojuca	T3											T4,T10		Os trabalhadores pedem pagamento de 100% de horas extras aos sábados e aumento do vale-alimentação de R$ 80 para R$ 160
+428	E1	protest	T7	students	T8,T9,T10	union,NGO,political party		Sao Paulo												T4		contra o reajuste da tarifa de ônibus na cidade
+429	E2	protest	T3	students,workers				Sao Paulo	T6											T7		contra atraso de salários
+430	E1	protest	T3					Ouro Preto														
+431	E1	protest	T2	students				Sao Paulo	T3													para cobrar mais segurança no campus da USP
+432	E3	protest	T5,T12	envirenmentalist	T13	NGO		Caetité						envirenmentalist	T12					T5		a entrada de nove carretas com 90 toneladas de urânio
+433	E1	protest	T1		T4	NGO		Rio de Janeiro,Sao Paulo												T1		as marchas foram uma resposta à violência policial ocorrida em maio, durante a Marcha da Maconha em São Paulo, e também para comemorar a decisão do STF
+433	E3	occupation	T14					Sao Paulo	T12											T11		as marchas foram uma resposta à violência policial ocorrida em maio, durante a Marcha da Maconha em São Paulo, e também para comemorar a decisão do STF
+433	E5	protest						Belo Horizonte, Vitória, Recife, Salvador, Porto Alegre, Florianópolis, Cuiabá, Campo Grande e Curitiba														
+434	E4	strike	T5	workers																		
+434	E3	protest	T5,T17	workers				Sao Paulo,T12	T8													por reajuste salarial
+435	E1	occupation	students					São Carlos	T2													pede melhores condições de trabalho e salário para os servidores, além de garantias estudantis como participações nas decisões do campus
+435	E2	strike	workers																			
+436	E1	strike	workers		T4	union		Ribeirão														Profissionais do HC querem salários iguais aos da Mater e do HE
+437	E3	protest	T10	teachers,workers				Rio de Janeiro	T8											T6		
+437	E6	strike	T17	teachers																		
+438	E1	protest			T2																	contra a "censura" a Crocco
+439	E3	protest	T6	students			Perdizes	Sao Paulo	T10											T3		Decisão de cancelar as aulas ontem por conta do evento gerou reclamação de alunos e docentes da faculdade
+440	E2	protest	T9	workers				Suape	T6,T12											T5		reivindicam melhores salários e condições de trabalho
+441	E1	strike	T2	workers																		
+442	E1	strike	T2	workers																		
+443	E2	protest	T6	students			centro	Sao Paulo												T8		
+443	E5	protest	T15	students																		
+443	E7	strike	T20,T21,T23	students																		contra as prisões de 72 estudantes
+443	E10	invasion	T26	students																		
+444	E1	strike						Brasília														
+444	E4	protest							T10													
+444	E2	protest	T4	workers				Brasília														contra a demissão de dois colegas
+444	E3	strike	T3	workers				Brasília														por melhores condições de trabalho
+445	E2	protest	T6				zona norte	Rio de Janeiro														
+446	E1	strike	T3	workers																		
+446	E3	strike	T7	workers																		
+446	E4	protest	T11	workers			zona oeste	Sao Paulo	T12											T11		
+447	E2	protest			T8	union			T2,T4											T9		
+448	E2	protest	T3	students				Recife												T3		contra aumento da tarifa de ônibus
+449	E1	protest	T5				centro		T3													contra ato do presidente do Legislativo
+450	E1	protest	T5				Copacabana	Rio de Janeiro												T2		
+451	E1	protest	T4											religious	T2,T4							
+452	E2	protest	T3	teachers																		
+453	E2	protest	T4	workers			centro	Sao Paulo	T7,T11											T4		
+454	E2	strike	T7	workers	T5,T6	union			T2								T8			T7		
+455	E2	protest	T1					Itaquera	T3													
+456	E1	protest	T3	envirenmentalist				Sao Paulo	T8					envirenmentlist	T3							
+457	E2	protest	T4	envirenmentalist,peasants	T6,T7,T8	NGO		Rio de Janeiro	T12											T14		
+457	E3	protest	T10		T11	NGO														T10		
+457	E5	strike	T16	envirenmentalist,peasants,students,women																		
+458	E2	protest	T8				Jardim Veloso	Osasco	T5								T6			T8		
+459	E5	protest	T12	peasants	T16	union		Taquaritinga														
+460	E2	protest	T8	workers			centro	Sao Paulo	T4													
+461	E4	protest	T10	workers				Ribeirão Preto	T14,T13													
+461	E6	protest	T18	workers				Rio de Janeiro,Sao Paulo	T19													
+462	E2	protest	T5	peasants	T11	NGO								leftwing	T4					T5		
+462	E3	protest	T8	peasants	T11	NGO			T10													
+463	E1	protest	T2					Ribeirão Preto	T5													
+464	E2	protest	T11	favelados			centro	Sao Paulo										T5 	favela do Moinho			
+465	E2	protest	T1	workers	T8	union	região Sudeste	Sao Paulo	T4													
+466	E1	protest	T2		T3,T4	union,NGO														T2		
+467	E2	protest	T4				centro															
+468	E2	protest	T2				Santana	Sao Paulo	T5													
+469	E2	protest	T3	workers				Alto Boa Vista	T8													
+470	E2	protest	T4	workers				Rio de Janeiro	T3													
+471	E1	protest	T5	workers				Rio de Janeiro														
+472	E2	protest	T3					Sao Paulo														
+473	E1	protest	T2	workers				Santos														
+473	E2	strike	T5	workers				Santos	T9													
+473	E4	protest	T11	workers					T12													
+474	E2	protest	T8	students			Perdizes		T3,T6													
+475	E1	protest	T1	students																		
+475	E2	strike	T4	students				Ribeirão Preto														A falta de professores em universidades públicas
+476	E2	protest	T7	peasants	T5	NGO		Aliança						leftwing	T2		T3			T7		
+477	E2	protest	T3						T6			indian	T1							T3		pela demarcação de terras
+477	E4	protest	T9						T11			indian	T9									
+478	E2	protest	T8	peasants	T5	NGO			T6,T9,T13					leftwing	T5					T8		
+479	E1	protest	T2					Porto Alegre														
+480	E1	protest	T2																			
+480	E2	protest	T5																			
+481	E4	protest	T9,T7,T19	peasants																		
+481	E5	protest	T13																			
+481	E7	occupation	T17									indian	T17				T15					
+482	E2	strike						Salvador														
+483	E2	occupation	T5		T2	NGO		Salvador	T7													
+483	E3	protest	T9																			
+484	E4	protest	T2	student																		
+485	E1	protest	T2					Brasília	T3													
+486	E2	protest	T4				central	Sao Paulo	T10,T14											T4		
+487	E2	occupation	T5,T20					Rio de Janeiro	T8,T14											T10,T13		
+488	E3	occupation	T5	teachers				Rio de Janeiro	T8													
+489	E2	protest			T4	NGO		Sao Paulo	T9													
+489	E5	protest			T4			Florianópolis														
+489	E7	protest	T19		T20,T21	NGO			T22											T19		
+490	E1	protest	T3,T2					São Roque														
+491	E4	protest	T10,T22	peasants	T20	NGO	zona leste,região oeste	Sao Paulo	T13,T14,T16					leftwing	T20			T23 	favela Estaiadinha	T18		
+491	E7	protest	T25				zona oeste	Sao Paulo	T26											T25		
+492	E1	protest	T4,T7	women			zona leste	Sao Paulo	T5											T3		pelo direito de amamentar
+493	E1	protest	T7	women				Rio de Janeiro	T1											T4		pela liberação do topless nas praias cariocas
+494	E2	occupation	T5					Ribeirão Preto	T6											T5		
+495	E2	protest			T5,T6,T7	NGO,political party,student organization																em defesa dos "rolezinhos"
+495	E3	protest			T8	NGO	zona sul		T10													em defesa dos "rolezinhos"
+495	E5	protest			T17,T18	political party		Porto Alegre,Salvador														em defesa dos "rolezinhos"
+496	E1	protest	T6					Rio de Janeiro,Brasilia														contra a repressão da polícia em São Paulo
+496	E2	protest	T4						T5													
+497	E1	protest	T4				centro	Sao Paulo	T14											T4		contra a Copa
+498	E1	protest						Rio de Janeiro														
+498	E3	protest	T6	workers																		A proposta de tarifa zero nos transportes e o "roletaço"
+499	E3	strike	T8	workers				Rio de Janeiro														
+499	E4	protest	T11	workers			İpanema	Rio de Janeiro	T12,T16													
+499	E6	protest	T19				Marechal Hermes	Rio de Janeiro														
+500	E2	protest	T3	favelado					T6,T9									T4 	favela da Congonha	T7		
+501	E3	strike	T6	workers	T9	union		São Carlos														para pressionar prefeitura a reajustar salários em 10%
+502	E2	protest	T3	favelados			zona norte	Sao Paulo	T6									T11	Tremembé	T9		contra falta de água
+503	E1	protest	T2	students	T6	student organization																
+503	E2	protest			T5	student organization																para exigir educação de qualidade no país
+503	E3	protest	T8																			
+503	E4	protest			T10	NGO																
+503	E5	protest	T12																			
+504	E2	protest	T9		T6,T17,T19	NGO	zona oeste	Sao Paulo	T11,T13,T14,T15											T9		contra a Copa do Mundo
+504	E8	occupation			T23	NGO			T25													
+504	E9	occupation							T27													
+505	E2	protest	T3	students	T14	union	centro	Sao Paulo	T7											T12		contra abono da prefeitura
+506	E1	protest	T5	peasants	T7	NGO		Sao Paulo	T9											T6		pela aprovação do Plano Diretor da cidade de São Paulo e a reserva de mais áreas para moradia popular
+506	E4	occupation	T10	peasants			zona leste	Sao Paulo														
+507	E1	protest	T3				Maracanã	Rio de Janeiro	T5											T7		contra a Copa
+507	E3	protest	T12					Porto Alegre												T12		contra a Copa
+507	E3	protest	T11					Brasilia												T11		contra a Copa
+508	E3	protest	T8																			
+509	E1	protest	T2				Vila Prudente	Sao Paulo										T8 	favela da Vila Prudente			A morte de um suspeito de roubo, baleado por um policial militar
+510	E2	protest	T8	favelados				Sao Paulo	T4											T12		contra a morte de um suspeito de roubo na região
+511	E1	strike	T3	workers																		Os servidores pedem pagamento integral de horas extras, melhorias na limpeza das unidades e a presença de guardas para a segurança
+512	E1	protest	T2	student				Campinas														contra Dilma 
+513	E1	strike							T2													
+514	E5	protest	T10	favelados			zona leste	Sao Paulo	T12											T10		após morte em favela
+514	E6	armed struggle					zona leste	Sao Paulo		E2	T5							T15				
+515	E1	protest	T1					Uberlândia, Uberaba														crise no abastecimento de água por causa da seca
+515	E2	protest	T7				periferia	Uberaba	T11											T10		os problemas de abastecimento
+516	E2	protest															T5					Uma propaganda da marca de uísque Johnnie Walker sobre o Dia da Consciência Negra
+517	E2	protest	T5				zona leste	Sao Paulo												T5		ato contra a crise da água
+517	E3	protest	T10		T9	NGO		Sao Paulo	T11											T10		
+518	E1	protest	T1					Sao Paulo	T4													para protestar contra as mais de 12 mil mortes anuais decorrentes da doença
+519	E1	occupation	T1	favelados	T11,T12	union,NGO		Sao Paulo	T7,T9											T5		
+520	E1	protest	T5		T6			São Carlos	T2,T8											T5		cobrando punição aos crimes do Estado na ditadura militar
