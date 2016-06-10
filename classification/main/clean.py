@@ -31,6 +31,8 @@ def main():
                         help = "Parsed data dir")
     parser.add_argument("--check_dir", required = False, default=None ,type=str , dest='check_dir',
                         help = "given a nested directory name checks if the files inside is Portuguese")
+    parser.add_argument("--single_file", required = False, default=None ,type=str , dest='single_file',
+                        help = "given a single file parses the file into test_out.txt")
 
     args = parser.parse_args()
     #print(args.class1)
@@ -45,6 +47,8 @@ def main():
             check_encoding(args.check_dir)
         else:
             print("No such directory")
+    elif args.single_file:
+        write_parsed_page_alt(args.single_file,"test_out.txt")
     else:
         sys.stderr.write("Error")
 
@@ -83,7 +87,17 @@ def check_encoding_file(full_name):
         return True
 
 def check_encoding_string(content):
-    if max(content.count(u"í"),content.count(u"á"), content.count(u"é"), content.count(u"ã")) < 1:
+    try:
+        count = max(content.count(u"í"),content.count(u"á"), content.count(u"é"), content.count(u"ã"))
+    except UnicodeDecodeError:
+        try:
+            content_utf = content.decode("utf8")
+            count = max(content_utf.count(u"í"),content_utf.count(u"á"), content_utf.count(u"é"), content_utf.count(u"ã"))
+        except:
+            traceback.print_exc()
+            sys.stderr.write("Problem in check_encoding_string")
+            count=0
+    if count < 1:
         return False
     return True
 
@@ -122,6 +136,7 @@ def write_parsed_page_alt(infilename,outfilename,debug=False):
         if debug:
             print("File is not Portuguese %s" %infilename)
             print("[DELETED CONTENT] %s\n" %content)
+        sys.stderr.write("Content encoding error in %s (%s...)\n" %(infilename,content[0:50]))
         return
     write_to_file(outfilename,title,content)
     if debug:
