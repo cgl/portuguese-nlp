@@ -520,7 +520,7 @@
 327	E1	protest	T1				Guarulhos	Sao Paulo						leftwing	T2							
 328	E1	protest	T1	students																		contra o aumento de 8,8% das tarifas de ônibus locais
 329	E2	strike	T3					Sao Paulo														protesto em solidariedade aos detentos
-330	E1	T2	workers		T5	union		Sao Paulo														
+330	E1		T2	workers	T5	union		Sao Paulo														
 331	E2	protest	T3	workers				Canoas	T8					leftwing						T3		contra negócio
 332	E1	protest	T4,T6		T5	NGO	Copacabana	Rio de Janeiro	T2													representam pessoas assassinadas no Estado do Rio em 2007
 333	E2	protest	T5		T6	NGO	Copacabana	Rio de Janeiro														
