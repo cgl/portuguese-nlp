@@ -14,6 +14,7 @@ and collect them all in one folder.
 - [Preprocessing on dataset](/dataset/README.md)
 - [Annotations](https://docs.google.com/spreadsheets/d/1TBNl7NblA2Ykz1VneMGfvcL8cHkZGpl58aup3gh2E9U/edit?usp=sharing)
 - [Training set - Building](/docs/training_set_preperation.md)
+- [Classification by Graphlab](/docs/classification_with_graphlab.md)
 
 ## More
 
