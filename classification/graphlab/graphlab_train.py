@@ -103,13 +103,13 @@ def add_dev(sf,vec_model):
 
 def main():
     parser = argparse.ArgumentParser(description = "Trains a classifiers for news and saves it. Also it can build the dataset given the folder.")
-    parser.add_argument("--dataset_dir", required = False, default=None ,type=str ,
+    parser.add_argument("--dataset_parsed_dir", required = False, default=None ,type=str ,
                         help = "Dataset directory ex: /home/cagil/brazil/all_files_parsed/ ")
     parser.add_argument("--training_dir", required = False, default=None ,type=str ,
                         help = "Training directory with irr/ and rel/ folders ex: classification/data/v5/")
 
     args = parser.parse_args()
-    if args.training_dir or args.dataset_dir:
+    if args.training_dir or args.dataset_parsed_dir:
         vec_model = word2vec.Word2Vec.load_word2vec_format('word2vec_model.txt',binary=False)
     if args.training_dir:
         irr_folder = os.path.join(args.training_dir,"class_irr")
@@ -124,8 +124,8 @@ def main():
         cls2 = train_classifier(df)
         cls2.save("graphlab/my_classifier")
     #builds dataset
-    if args.dataset_dir:
-        #dataset_folder = "/home/cagil/brazil/all_files_parsed/" #"/tmp/temp/"
+    if args.dataset_parsed_dir:
+        #dataset_folder = "/home/cagil/brazil/all_files_parsed/" #"/tmp/temp/" # brazil/2005_parsed
         dataset_folder = args.dataset_dir
         dataset = add_arguments(None,dataset_folder,None,vec_model)
         dataset.save("graphlab/my_dataset")
