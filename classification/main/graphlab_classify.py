@@ -70,18 +70,26 @@ def print_positives_and_confidence(dataset,result171_dataset):
             print_url(dataset,result171_dataset,ind)
 
 def main():
-    parser = argparse.ArgumentParser(description = "Parses & removes unnecessary html tags from raw classifier files")
-    parser.add_argument("--dataset_dir", required = True, default=None ,type=str,
-                        help = "Dataset directory ex: my_dataset_test ")
-    #parser.add_argument("--training_dir", required = False, default=None ,type=str , help = "Training directory with irr/ and rel/ folders ex: classification/data/v5/")
+    parser = argparse.ArgumentParser(description = "Classifies given dataset and saves the results.")
+    parser.add_argument("--dataset_dir", required = False, default=None ,type=str,
+                        help = "Dataset directory ex: my_dataset_test or my_dataset ")
+    parser.add_argument("--classified_dir", required = True, default=None ,type=str,
+                        help = "Directory for dataset after classification ex: result_dataset")
+    parser.add_argument("--print", required = False, default=False ,type=boolean_switch , help = "")
 
     args = parser.parse_args()
-
-    vec_model = word2vec.Word2Vec.load_word2vec_format('word2vec_model.txt',binary=False)
-    cls = gl.load_model("my_classifier")
-    dataset = gl.load_sframe(args.dataset_dir)
-    result171_dataset = test_classifier(cls,dataset,vec_model)
-    print_positives_and_confidence(dataset,result171_dataset)
+    if args.dataset_dir:
+        vec_model = word2vec.Word2Vec.load_word2vec_format('word2vec_model.txt',binary=False)
+        cls = gl.load_model("my_classifier")
+        dataset = gl.load_sframe(args.dataset_dir)
+        result171_dataset = test_classifier(cls,dataset,vec_model)
+        dataset.add_column(result171_dataset.select_column("class"),"rel")
+        dataset.add_column(result171_dataset.select_column("probability"),"probability")
+        dataset.save(args.classified_dir)
+    elif args.classified_dir:
+        result171_dataset = gl.load_sframe(args.classified_dir)
+    if args.print:
+        print_positives_and_confidence(result171_dataset,result171_dataset)
 
 if __name__=='__main__':
     main()

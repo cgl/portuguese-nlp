@@ -97,7 +97,7 @@ def add_dev(sf,vec_model):
     return sf
 
 def main():
-    parser = argparse.ArgumentParser(description = "Parses & removes unnecessary html tags from raw classifier files")
+    parser = argparse.ArgumentParser(description = "Trains a classifiers for news and saves it. Also it can build the dataset given the folder.")
     parser.add_argument("--dataset_dir", required = False, default=None ,type=str ,
                         help = "Dataset directory ex: /home/cagil/brazil/all_files_parsed/ ")
     parser.add_argument("--training_dir", required = False, default=None ,type=str ,
