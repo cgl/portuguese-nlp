@@ -86,7 +86,7 @@ def main():
 
     args = parser.parse_args()
     if args.classified_dir:
-        result171_dataset = gl.load_sframe(args.classified_dir)
+        result_dataset = gl.load_sframe(args.classified_dir)
         save_positive_results_with_event_type_and_date(result_dataset)
 
 
