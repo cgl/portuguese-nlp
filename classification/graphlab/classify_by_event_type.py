@@ -50,7 +50,8 @@ def save_positive_results_with_event_type_and_date(result_dataset):
     pos_results['date'] = pos_results['filenames'].apply(lambda x: x[:-5].split('_'))
     pos_results = pos_results.unpack('date')
     pos_results.rename({'date.0':'year', 'date.1':'month','date.2':'day', 'date.3':'index'})
-
+    pos_results['year'] = pos_results['year'].apply(lambda year_str : int(year_str))
+    pos_results['month'] = pos_results['month'].apply(lambda m_str : int(m_str))
     pos_results.save("graphlab/pos_results") ##_2005")
     #month_count = pos_results.groupby(['year','month'], gl.aggregate.COUNT)
 
@@ -74,11 +75,27 @@ def count_monthly(pos_results):
     sframe = pos_results.groupby( key_columns= ['year','month','event_type'], operations = {"count" : gl.aggregate.COUNT('month')}).sort('month')
     return sframe
 
+def print_pretty(pos_results):
+    sframe = count_monthly(pos_results)
+    my_dict = {}
+    for year in pos_results['year'].unique():
+        my_dict[int(year)] = {}
+        for month in range(1,13):
+            my_dict[int(year)][month] = [0]*6
+    for line in out:
+        year = line['X1']['year']
+        month = line['X1']['month']
+        event_type = line['X1']['event_type']
+        count = line['X1']['count']
+        my_dict[year][int(month)][int(event_type)] = count
+    print("\n".join(["%d\t%d\t%s" %(year,month, "\t".join([str(l) for l in my_dict[year][month]]) ) for month in range(1,13) for year in pos_results['year'].unique()]))
+
 def main():
     parser = argparse.ArgumentParser(description = "Classifies given dataset and saves the results.")
     parser.add_argument("--classified_dir", required = False, default=None ,type=str,
                         help = "Directory for dataset after classification ex: result_dataset")
     parser.add_argument("--print", required = False ,action='store_true',dest="print_results",help = "")
+    parser.add_argument("--pprint", required = False ,action='store_true',dest="print_pretty",help = "")
 
     args = parser.parse_args()
     if args.classified_dir:
@@ -88,6 +105,10 @@ def main():
         pos_results = gl.load_sframe("graphlab/pos_results")
         sframe = count_monthly(pos_results)
         sframe.print_rows(sframe.shape[0])
+    elif args.print_pretty:
+        pos_results = gl.load_sframe("graphlab/pos_results")
+        print_pretty(pos_results)
+
 
 
 
