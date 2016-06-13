@@ -160,8 +160,12 @@ def parse_page_alternative(infilename):
         sys.stderr.write("No body in %s\n" %infilename)
         return None,None
     content_raw = ''.join(BeautifulSoup(value).findAll(text=True))
-    list = content_raw.split("\n")
-    content = "\n".join([line for line in list if line.strip() is not u"" and len(line.split(" ")) > 3 ])
+    mylist = content_raw.split("\n")
+    mylist_cleaned = []
+    for item in mylist:
+        if len(item.strip().lstrip()) >2 :
+            mylist_cleaned.append(item.strip().lstrip())
+    content = "\n".join([line for line in mylist_cleaned if line.strip() is not u"" and len(line.split(" ")) > 3 ])
     return content,title
 
 def get_soup_page(infilename):
@@ -200,18 +204,20 @@ def get_title(page,infilename): # can get rid of infilename and exceptions
 def clean_page(page):
     scripts = page.findAll("script")
     [scr.extract() for scr in scripts]
+    styles = page.findAll("style")
+    [scr.extract() for scr in styles]
+    iframes = page.findAll("iframe")
+    [scr.extract() for scr in iframes]
     comments = page.findAll(text=lambda text:isinstance(text, Comment))
     [comment.extract() for comment in comments]
 
 def clean_more(page):
     imgs = page.findAll("img")
     [img.extract() for img in imgs]
-    brs = page.findAll("br")
-    [br.extract() for br in brs]
+    #brs = page.findAll("br")
+    #[br.extract() for br in brs]
     links = page.findAll("a")
     [link.extract() for link in links]
-    comments = page.findAll(text=lambda text:isinstance(text, Comment))
-    [comment.extract() for comment in comments]
 
 def gen_walk(path):
     classes = {}
