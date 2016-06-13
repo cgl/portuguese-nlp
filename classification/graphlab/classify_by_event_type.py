@@ -77,6 +77,7 @@ def count_monthly(pos_results):
 
 def print_pretty(pos_results):
     sframe = count_monthly(pos_results)
+    out = sframe.pack_columns(columns=['year','month','event_type','count'],dtype=dict)
     my_dict = {}
     for year in pos_results['year'].unique():
         my_dict[int(year)] = {}
