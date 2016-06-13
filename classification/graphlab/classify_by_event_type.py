@@ -19,14 +19,14 @@ def save_positive_results_with_event_type_and_date(result_dataset):
     sf = gl.load_sframe("graphlab/my_training_dataset")
 
     # lines[-1].split("\t") = [u'620', u'E1', u'protest', u'', u'', u'T2', u'NGO' ...]
-    size = int(lines[-1].split("\t")[0])
+    size = int(lines[-1].split("\t")[0]) + 1 # latest news index 620 starts from 0 do 620+1
     labels = [0]*size
 
     for line in lines:
             fields = line.split("\t")
             key = fields[2].strip().lower()
             if key:
-                ind = int(fields[0].strip()) - 1
+                ind = int(fields[0].strip())
                 labels[ind] = types[key]
 
     #rel_folder="classification/data/v6/class_rel/"
@@ -89,6 +89,10 @@ def main():
         save_positive_results_with_event_type_and_date(result_dataset)
 
 
-
 if __name__=='__main__':
     main()
+
+"""
+result_dataset = gl.load_sframe("graphlab/result_dataset")
+
+"""
