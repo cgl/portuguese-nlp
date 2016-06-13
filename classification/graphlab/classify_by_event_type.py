@@ -89,7 +89,7 @@ def print_pretty(pos_results):
         event_type = line['X1']['event_type']
         count = line['X1']['count']
         my_dict[year][int(month)][int(event_type)] = count
-    print("\n".join(["%d\t%d\t%s" %(year,month, "\t".join([str(l) for l in my_dict[year][month]]) ) for month in range(1,13) for year in pos_results['year'].unique()]))
+    print("\n".join(["%d %d %s" %(year,month, " ".join([str(l) for l in my_dict[year][month]]) ) for month in range(1,13) for year in pos_results['year'].unique()]))
 
 def main():
     parser = argparse.ArgumentParser(description = "Classifies given dataset and saves the results.")
