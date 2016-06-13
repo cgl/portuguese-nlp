@@ -4,7 +4,7 @@
 # Edit Log 21 Oct 2015
 # Unescape added, it is optional
 import argparse,os,sys,io,traceback, codecs
-from BeautifulSoup import BeautifulSoup,Comment
+from bs4 import BeautifulSoup,Comment
 UNESCAPE = True
 import HTMLParser
 h = HTMLParser.HTMLParser()
@@ -159,7 +159,7 @@ def parse_page_alternative(infilename):
         traceback.print_exc()
         sys.stderr.write("No body in %s\n" %infilename)
         return None,None
-    content_raw = ''.join(BeautifulSoup(value, convertEntities=BeautifulSoup.HTML_ENTITIES).findAll(text=True))
+    content_raw = ''.join(BeautifulSoup(value).findAll(text=True))
     list = content_raw.split("\n")
     content = "\n".join([line for line in list if line.strip() is not u"" and len(line.split(" ")) > 3 ])
     return content,title
@@ -167,10 +167,10 @@ def parse_page_alternative(infilename):
 def get_soup_page(infilename):
     try:
         with io.open(infilename, 'r') as infile:
-            page = BeautifulSoup(infile)
+            page = BeautifulSoup(infile,"html.parser")
     except:
         with io.open(infilename, 'r',encoding="latin1") as infile:
-            page = BeautifulSoup(infile)
+            page = BeautifulSoup(infile,"html.parser")
     return page
 
 def write_to_file(outfilename,title,content):
