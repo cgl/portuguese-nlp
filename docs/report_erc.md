@@ -9,7 +9,7 @@ Events marked as strikes are classified as workers protests.
 ### 2. Total Number of Events
 The distribution of all events in years.
 
-<iframe src="https://docs.google.com/spreadsheets/d/1uZ3o2OMpzH-sDl_gVjMUB46AvwBv0SOpN57jUfXqIs8/pubchart?oid=127726601&amp;format=image"></iframe>
+![Alt text](https://docs.google.com/spreadsheets/d/1uZ3o2OMpzH-sDl_gVjMUB46AvwBv0SOpN57jUfXqIs8/pubchart?oid=127726601&format=image)
 
 ### 3. Protest Events
 The distribution of protes events in years.
