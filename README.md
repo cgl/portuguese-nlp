@@ -1,19 +1,16 @@
 # portuguese-nlp
 Nlp work on Brazil Portuguese newswire text
 
-You can see the dataset [here](http://mann.cmpe.boun.edu.tr/folha_data/)
+You can browse [the dataset online](http://mann.cmpe.boun.edu.tr/folha_data/) and [see annotations on drive ](https://docs.google.com/spreadsheets/d/1TBNl7NblA2Ykz1VneMGfvcL8cHkZGpl58aup3gh2E9U/edit?usp=sharing)
 
-
-
-We have x number of newswire articles collected between years 1994-2016. We first apply some preprocessing to the dataset. Since the articles are in html format, we first clean the tags and rename all files such as:
+We have x number of newswire articles collected between years 1994-2016. After preprocessing the dataset, since the articles are in html format, we first clean the tags and rename all files such as:
 
     folca/data/2005/01/01/19.html --> folca/parsed-data/2005_01_01_19.html
 
 and collect them all in one folder.
 
 - [1. Preprocessing on dataset](/dataset/README.md)
-- [Annotations](https://docs.google.com/spreadsheets/d/1TBNl7NblA2Ykz1VneMGfvcL8cHkZGpl58aup3gh2E9U/edit?usp=sharing)
-- [2. Crawling and Preparing Training Set](/docs/training_set_preperation.md)
+- [2. Crawling and Organizing the Training Set](/docs/training_set_preperation.md)
 - [3. Classification by Graphlab](/docs/classification_with_graphlab.md)
 - [4. Reports](/docs/report_erc.md)
 
