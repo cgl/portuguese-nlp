@@ -1,18 +1,17 @@
 # Classification using Graphlab
 
+Previously : [Crawling and Preparing Training Set](/docs/training_set_preperation.md)
+
 Once the training data is ready in 
 
-      # Build the classifier
-      python classification/graphlab/graphlab_train.py --training_dir classification/data/v5/
-      # Build the dataset
-      python classification/graphlab/graphlab_train.py --dataset_parsed_dir ~/brazil/2005_parsed/ # ~/brazil/all_files_parsed
-      
-      # Classify the dataset
-      python classification/graphlab/graphlab_classify.py --dataset_dir graphlab/my_dataset_2005 --classified_dir graphlab/result_dataset
-      #to print the results:
-      python classification/graphlab/graphlab_classify.py --classified_dir result_dataset --print
-      
-      
+    # Build the classifier
+    python classification/graphlab/graphlab_train.py --training_dir classification/data/latest/
+    # Build the dataset
+    python classification/graphlab/graphlab_train.py --dataset_parsed_dir ~/brazil/2005_parsed/ # ~/brazil/all_files_parsed
+    # Classify the dataset
+    python classification/graphlab/graphlab_classify.py --dataset_dir graphlab/my_dataset_2005 --classified_dir graphlab/result_dataset
+    #to print the results:
+    python classification/graphlab/graphlab_classify.py --classified_dir result_dataset --print
 
 
 # Embeddings
