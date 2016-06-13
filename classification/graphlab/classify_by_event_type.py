@@ -26,7 +26,8 @@ def save_positive_results_with_event_type_and_date(result_dataset):
             fields = line.split("\t")
             key = fields[2].strip().lower()
             if key:
-                labels[int(fields[0].strip())] = types[key]
+                ind = int(fields[0].strip()) - 1
+                labels[ind] = types[key]
 
     #rel_folder="classification/data/v6/class_rel/"
     ef = sf.filter_by([1], "rel") # add_arguments(None,rel_folder,1,vec_model)
