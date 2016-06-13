@@ -22,7 +22,7 @@ def save_positive_results_with_event_type_and_date(result_dataset):
 
     labels = [0]*521
 
-    for line in lines[5:]:
+    for line in lines:
             fields = line.split("\t")
             key = fields[2].strip().lower()
             if key:
