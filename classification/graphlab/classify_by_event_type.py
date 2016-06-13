@@ -17,20 +17,18 @@ def save_positive_results_with_event_type_and_date(result_dataset):
                  u'strike' :5}
 
     sf = gl.load_sframe("graphlab/my_training_dataset")
-    #for ind in range(0,521):
-    #    sf['filenames'][ind]
 
-    labels = [0]*521
+    # lines[-1].split("\t") = [u'620', u'E1', u'protest', u'', u'', u'T2', u'NGO' ...]
+    size = int(lines[-1].split("\t")[0])
+    labels = [0]*size
 
     for line in lines:
             fields = line.split("\t")
             key = fields[2].strip().lower()
             if key:
                 labels[int(fields[0].strip())] = types[key]
-    #for ind in range(0,521):
-    #    labels[int(sf['filenames'][ind][1:-4]))]
 
-    #rel_folder="classification/data/v5/class_rel/"
+    #rel_folder="classification/data/v6/class_rel/"
     ef = sf.filter_by([1], "rel") # add_arguments(None,rel_folder,1,vec_model)
 
     ef['event_type'] = ef['filenames'].apply(lambda p: labels[int(p[1:5])])

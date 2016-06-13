@@ -106,7 +106,7 @@ def main():
     parser.add_argument("--dataset_parsed_dir", required = False, default=None ,type=str ,
                         help = "Dataset directory ex: /home/cagil/brazil/all_files_parsed/ ")
     parser.add_argument("--training_dir", required = False, default=None ,type=str ,
-                        help = "Training directory with irr/ and rel/ folders ex: classification/data/v5/")
+                        help = "Training directory with irr/ and rel/ folders ex: classification/data/v6/")
 
     args = parser.parse_args()
     if args.training_dir or args.dataset_parsed_dir:
