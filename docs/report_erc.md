@@ -5,12 +5,14 @@ Events marked as strikes are classified as workers protests.
 
 ![Chart2](https://docs.google.com/spreadsheets/d/1qxjwbuw_GTJ2lfp0i1YrsslFLLp7xW_FAH7CfJXAWZI/pubchart?oid=625372309&format=image)
 
-[source: Protest events](https://docs.google.com/spreadsheets/d/1GSyqGgTub8NCi69vXCAWlHAv8gmpW9mn-RGRDv2yQuc/edit?usp=sharing)
+<iframe src="https://docs.google.com/spreadsheets/d/1qxjwbuw_GTJ2lfp0i1YrsslFLLp7xW_FAH7CfJXAWZI/pubchart?oid=625372309&amp;format=interactive"></iframe>
+
+[source: Strikes (Chart2)](https://docs.google.com/spreadsheets/d/1qxjwbuw_GTJ2lfp0i1YrsslFLLp7xW_FAH7CfJXAWZI/edit?usp=sharing)
 
 ## 2. Total Number of Events
 
 ### All events
-The distribution of all events in years.
+Number of news on all types of events.
 
 ![Alt text](https://docs.google.com/spreadsheets/d/1uZ3o2OMpzH-sDl_gVjMUB46AvwBv0SOpN57jUfXqIs8/pubchart?oid=127726601&format=image)
 
@@ -18,11 +20,15 @@ The distribution of all events in years.
 
 ### Total # of events normalized by total counts
 
+The distribution of protests, strikes and all types of events (total) in years. The normalization is done using total number of articles.
+
 ![Alt text](https://docs.google.com/spreadsheets/d/1fd0m6cJTazlWtnMqjOz2inAxg_2D3PHYgCY5bqQwcCw/pubchart?oid=127726601&format=image)
 
 [source: Normalized with total counts](https://docs.google.com/spreadsheets/d/1fd0m6cJTazlWtnMqjOz2inAxg_2D3PHYgCY5bqQwcCw/edit?usp=sharing)
 
 ### Total # of events normalized by yearly counts
+
+The distribution of protests, strikes and all types of events (total) in years. The normalization is done using the total number of articles for each different type of event in that year.
 
 ![Chart1](https://docs.google.com/spreadsheets/d/1qxjwbuw_GTJ2lfp0i1YrsslFLLp7xW_FAH7CfJXAWZI/pubchart?oid=851575996&format=image)
 
