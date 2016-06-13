@@ -56,4 +56,11 @@ Move to the server:
     scp -r shark:portuguese-nlp/classification/data/v6 classification/data/
     ln -s classification/data/v6 classification/data/latest
     
-Training set is already cleaned so no need to clean it again. Next is [Classification using Graphlab](/docs/classification_with_graphlab.md)
+Training set is already cleaned so no need to clean it again. 
+
+    mv ~/Downloads/extraction_fields_Duru\ -\ training\ merged.tsv classification/data/extraction_fields.tsv
+
+Last step is downloading the annotations. Do not forget to push theminto the repository.
+
+
+Next is [Classification using Graphlab](/docs/classification_with_graphlab.md)
