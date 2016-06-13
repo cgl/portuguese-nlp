@@ -46,5 +46,6 @@ The events occoured in rural places or organized by peasants.
 * organizer can be CMS
 * participant can be peasant or rural worker
 
+Previous is [3. Classification using Graphlab](/docs/classification_with_graphlab.md)
 
 Back to [Main Page](/README.md)
