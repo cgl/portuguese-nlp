@@ -104,11 +104,11 @@ def get_norm_dict(pos_results,events = [0,1,2,3,4,5]):
             event = line['event_type']
             year = line['X2']['year']
             count = line['X2']['count']
-            count_dict[event][year] = count
+            count_dict[event][year] = float(count)
         total = pos_results.groupby( key_columns= ['year'], operations = {"count" : gl.aggregate.COUNT('year')}).sort(['year'])
         count_dict['total'] = {}
         for line in total:
-            count_dict['total'][line['year']] = line['count']
+            count_dict['total'][line['year']] = float(line['count'])
     return count_dict
 
 
