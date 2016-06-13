@@ -2,12 +2,15 @@
 
 Once the training data is ready in 
 
-      python classification/main/graphlab_train.py --training_dir classification/data/v5/
-      python classification/main/graphlab_train.py --dataset_dir /tmp/temp/
+      # Build the classifier
+      python classification/graphlab/graphlab_train.py --training_dir classification/data/v5/
+      # Build the dataset
+      python classification/graphlab/graphlab_train.py --dataset_parsed_dir ~/brazil/2005_parsed/ # ~/brazil/all_files_parsed
       
-      python classification/main/graphlab_classify.py --dataset_dir my_dataset_2005 --classified_dir result_dataset
+      # Classify the dataset
+      python classification/graphlab/graphlab_classify.py --dataset_dir graphlab/my_dataset_2005 --classified_dir graphlab/result_dataset
       #to print the results:
-      python classification/main/graphlab_classify.py --classified_dir result_dataset --print
+      python classification/graphlab/graphlab_classify.py --classified_dir result_dataset --print
       
       
 
