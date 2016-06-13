@@ -3,7 +3,7 @@ Nlp work on Brazil Portuguese newswire text
 
 You can see the dataset [here](http://mann.cmpe.boun.edu.tr/folha_data/)
 
-You can find the reports [here](/docs/report_erc.md)
+
 
 We have x number of newswire articles collected between years 1994-2016. We first apply some preprocessing to the dataset. Since the articles are in html format, we first clean the tags and rename all files such as:
 
@@ -13,8 +13,9 @@ and collect them all in one folder.
 
 - [1. Preprocessing on dataset](/dataset/README.md)
 - [Annotations](https://docs.google.com/spreadsheets/d/1TBNl7NblA2Ykz1VneMGfvcL8cHkZGpl58aup3gh2E9U/edit?usp=sharing)
-- [2. Organizing Training set](/docs/training_set_preperation.md)
+- [2. Crawling and Preparing Training Set](/docs/training_set_preperation.md)
 - [3. Classification by Graphlab](/docs/classification_with_graphlab.md)
+- [4. Reports](/docs/report_erc.md)
 
 ## More
 
