@@ -9,12 +9,12 @@ Nlp work on Brazil Portuguese newswire text
 Number of news per year:
 
 ```bash
-  folder=~/brazil/data # /ai/home/acelebi/folca/data
-  for year in `ls $folder`;
-    do
-      count=`find $folder/$year -type f -name '*.html' | wc -l` ;
-      printf "%s %s\n" $year $count ;
-    done
+folder=~/brazil/data # /ai/home/acelebi/folca/data
+for year in `ls $folder`;
+  do
+    count=`find $folder/$year -type f -name '*.html' | wc -l` ;
+    printf "%s %s\n" $year $count ;
+  done
   2004 7876
   2005 19368
   2006 18720
@@ -33,21 +33,20 @@ Number of news per year:
 
 Test clean:
 
-  python classification/main/clean.py --check_dir ~/brazil/data/2012/03
-  python classification/main/clean.py --raw_dir ~/brazil/data/2012/03 --parsed_dir /tmp/03/
-    
+    python classification/main/clean.py --check_dir ~/brazil/data/2012/03
+    python classification/main/clean.py --raw_dir ~/brazil/data/2012/03 --parsed_dir /tmp/03/
 
 Run parse:
 
 ```bash
-  for year in `ls $folder`;
-    do 
-      for month in `ls $folder/$year`
-        do 
-          mkdir -p ~/brazil/parsed_data/$year/$month; 
-          python classification/main/clean.py --raw_dir ~/brazil/data/$year/$month --parsed_dir ~/brazil/parsed_data/$year/$month; 
-        done; 
-    done
+for year in `ls $folder`;
+  do 
+    for month in `ls $folder/$year`
+      do 
+        mkdir -p ~/brazil/parsed_data/$year/$month; 
+        python classification/main/clean.py --raw_dir ~/brazil/data/$year/$month --parsed_dir ~/brazil/parsed_data/$year/$month; 
+      done; 
+  done
 ```
 
 Merge folders
