@@ -1,4 +1,4 @@
-# Crawling and Preparing Training Set
+# 2. Crawling and Preparing Training Set
 
 ## Crawling the training set from relevant and irr list of urls
 
@@ -63,6 +63,8 @@ Training set is already cleaned so no need to clean it again.
 Last step is downloading the annotations. Do not forget to push theminto the repository.
 
 
-Next is [Classification using Graphlab](/docs/classification_with_graphlab.md)
+Previous is [1. Preprocessing on dataset](/dataset/README.md)
+
+Next is [3. Classification using Graphlab](/docs/classification_with_graphlab.md)
 
 Back to [Main Page](/README.md)
