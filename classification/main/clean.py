@@ -159,7 +159,7 @@ def parse_page_alternative(infilename):
         traceback.print_exc()
         sys.stderr.write("No body in %s\n" %infilename)
         return None,None
-    content_raw = ''.join(BeautifulSoup(value).findAll(text=True))
+    content_raw = ''.join(BeautifulSoup(value,"html.parser").findAll(text=True))
     mylist = content_raw.split("\n")
     mylist_cleaned = []
     for item in mylist:
