@@ -33,7 +33,7 @@ def save_positive_results_with_event_type_and_date(result_dataset):
     #rel_folder="classification/data/v5/class_rel/"
     ef = sf.filter_by([1], "rel") # add_arguments(None,rel_folder,1,vec_model)
 
-    ef['event_type'] = ef['filenames'].apply(lambda p: labels[int(p[1:-4])])
+    ef['event_type'] = ef['filenames'].apply(lambda p: labels[int(p[1:5])])
 
     # evnt type classifier
     event_type_cls = gl.classifier.create(ef, target="event_type",features=['vectors','1gram features'])
