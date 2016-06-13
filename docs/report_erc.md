@@ -45,3 +45,6 @@ The distribution of leftwing events in years.
 The events occoured in rural places or organized by peasants.
 * organizer can be CMS
 * participant can be peasant or rural worker
+
+
+Back to [Main Page](/README.md)
