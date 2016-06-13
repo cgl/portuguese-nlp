@@ -135,8 +135,11 @@ def main():
         pos_results = gl.load_sframe("graphlab/pos_results")
         my_dict = get_count_dict(pos_results)
         count_dict = get_norm_dict(pos_results,events = [3,5])
-        print("\n".join(["%d-%d %.4f %.4f" %(year,month, my_dict[year][month][3]/count_dict[3][year],my_dict[year][month][5]/count_dict[5][year]) for month in range(1,13) for year in pos_results['year'].unique()]))
-
+        print("\n".join(["%d-%d %.4f %.4f %.4f" %(year,month,
+                                                  my_dict[year][month][3]/count_dict[3][year],
+                                                  my_dict[year][month][5]/count_dict[5][year],
+                                                  sum(my_dict[year][month])/count_dict['total'][year])
+                         for month in range(1,13) for year in pos_results['year'].unique()]))
 
 if __name__=='__main__':
     main()
