@@ -38,7 +38,7 @@ def save_positive_results_with_event_type_and_date(result_dataset):
     # evnt type classifier
     event_type_cls = gl.classifier.create(ef, target="event_type",features=['vectors','1gram features'])
 
-    pos_results = result_dataset.filter_by([1], "rel")
+    pos_results = result_dataset.filter_by([1], "class")
 
     pos_res_res = event_type_cls.classify(pos_results)
 
