@@ -1,7 +1,4 @@
-# Reports
-
-
-![Alt text](relative/path/to/img.jpg?raw=true "Title")
+# 4. Reports
 
 ## 1. Workers Protests
 Events marked as strikes are classified as workers protests.
