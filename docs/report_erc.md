@@ -29,12 +29,14 @@ The distribution of all events in years.
 
 ![Chart1](https://docs.google.com/spreadsheets/d/1qxjwbuw_GTJ2lfp0i1YrsslFLLp7xW_FAH7CfJXAWZI/pubchart?oid=851575996&format=image)
 
-[source: Normalized with yearly counts](
+[source: Normalized with yearly counts](https://docs.google.com/spreadsheets/d/1qxjwbuw_GTJ2lfp0i1YrsslFLLp7xW_FAH7CfJXAWZI/edit?usp=sharing)
 
 ## 3. Protest Events
 The distribution of protest events in years.
 
 ![Protests](https://docs.google.com/spreadsheets/d/1GSyqGgTub8NCi69vXCAWlHAv8gmpW9mn-RGRDv2yQuc/pubchart?oid=851575996&format=image)
+
+[source: Protest events](https://docs.google.com/spreadsheets/d/1GSyqGgTub8NCi69vXCAWlHAv8gmpW9mn-RGRDv2yQuc/edit?usp=sharing)
 
 ## 4. Leftwing Events
 The distribution of leftwing events in years.
