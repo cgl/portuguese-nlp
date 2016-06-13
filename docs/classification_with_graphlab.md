@@ -13,7 +13,12 @@ Once the training data is ready in
     #to print the results:
     python classification/graphlab/graphlab_classify.py --classified_dir result_dataset --print
 
+Classification by event type:
 
+    python classification/graphlab/classify_by_event_type.py --classified_dir graphlab/result_dataset
+    python classification/graphlab/classify_by_event_type.py --print
+
+    
 # Embeddings
 
 [Word Embeddings](https://github.com/erickrf/nlpnet/blob/master/docs/models.rst#word-embeddings-portuguese) (Portuguese)
