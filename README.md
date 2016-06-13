@@ -11,10 +11,10 @@ We have x number of newswire articles collected between years 1994-2016. We firs
 
 and collect them all in one folder.
 
-- [Preprocessing on dataset](/dataset/README.md)
+- [1. Preprocessing on dataset](/dataset/README.md)
 - [Annotations](https://docs.google.com/spreadsheets/d/1TBNl7NblA2Ykz1VneMGfvcL8cHkZGpl58aup3gh2E9U/edit?usp=sharing)
-- [Training set - Building](/docs/training_set_preperation.md)
-- [Classification by Graphlab](/docs/classification_with_graphlab.md)
+- [2. Organizing Training set](/docs/training_set_preperation.md)
+- [3. Classification by Graphlab](/docs/classification_with_graphlab.md)
 
 ## More
 
