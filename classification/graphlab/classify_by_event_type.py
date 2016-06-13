@@ -1,6 +1,12 @@
 import graphlab as gl
 import argparse,codecs
 
+types = {u'armed struggle' : 0,
+             u'invasion' : 1,
+             u'occupation': 2,
+             u'protest' : 3,
+             u'rebellion': 4,
+             u'strike' :5}
 # result_dataset = gl.load_sframe("graphlab/my_dataset_test") # "my_dataset
 def save_positive_results_with_event_type_and_date(result_dataset):
     csvfile = "classification/data/extraction_fields.tsv"
@@ -9,12 +15,6 @@ def save_positive_results_with_event_type_and_date(result_dataset):
     #types = set()
     #for line in lines[5:]:
     #        types.add(line.split(",")[2].strip().lower())
-    types = {u'armed struggle' : 0,
-                 u'invasion' : 1,
-                 u'occupation': 2,
-                 u'protest' : 3,
-                 u'rebellion': 4,
-                 u'strike' :5}
 
     sf = gl.load_sframe("graphlab/my_training_dataset")
 
@@ -23,11 +23,11 @@ def save_positive_results_with_event_type_and_date(result_dataset):
     labels = [0]*size
 
     for line in lines:
-            fields = line.split("\t")
-            key = fields[2].strip().lower()
-            if key:
-                ind = int(fields[0].strip())
-                labels[ind] = types[key]
+        fields = line.split("\t")
+        key = fields[2].strip().lower()
+        if key:
+            ind = int(fields[0].strip())
+            labels[ind] = types[key]
 
     #rel_folder="classification/data/v6/class_rel/"
     ef = sf.filter_by([1], "rel") # add_arguments(None,rel_folder,1,vec_model)
@@ -52,41 +52,43 @@ def save_positive_results_with_event_type_and_date(result_dataset):
     pos_results.rename({'date.0':'year', 'date.1':'month','date.2':'day', 'date.3':'index'})
 
     pos_results.save("graphlab/pos_results") ##_2005")
-
     #month_count = pos_results.groupby(['year','month'], gl.aggregate.COUNT)
 
-def by_year_month(pos_results):
-    sframe = gl.SFrame()
-    for year in pos_results['year'].unique():
-        filtered = pos_results.filter_by([year], "year")
-        filtered_count = filtered.groupby(['year','month'], gl.aggregate.COUNT)
-        sframe = sframe.append(filtered_count)
 
-def by_year_month_event_type(event_key):
+# given an event_key counts the number of events per month
+def by_year_month_event_type(pos_results,event_key):
     sframe = gl.SFrame()
     for year in pos_results['year'].unique():
         filtered = pos_results.filter_by([event_key],"event_type").filter_by([year], "year")
-        filtered_count = filtered.groupby(['year','month'], {"count" : gl.aggregate.COUNT})
-        sframe = sframe.append(filtered_count)
+        #filtered_count = filtered.groupby(['year','month'], {"count" : gl.aggregate.COUNT})
+        filtered_count = filtered.groupby( key_columns= ['year','month','event_type'], operations = {"count" : gl.aggregate.COUNT('month')})
+        sframe = sframe.append(filtered_count.sort('month'))
     return sframe
 
-def bu_ne():
-    year_month_all = by_year_month()
-
+def count_monthly(pos_results):
+    """
     sframe = gl.SFrame()
     for event_type,event_key in types.items():
-        sframe = sframe.append(by_year_month_event_type(event_key))
+        sframe = sframe.append(by_year_month_event_type(pos_results,event_key))
+    """
+    sframe = pos_results.groupby( key_columns= ['year','month','event_type'], operations = {"count" : gl.aggregate.COUNT('month')}).sort('month')
+    return sframe
 
 def main():
     parser = argparse.ArgumentParser(description = "Classifies given dataset and saves the results.")
     parser.add_argument("--classified_dir", required = True, default=None ,type=str,
                         help = "Directory for dataset after classification ex: result_dataset")
-    #parser.add_argument("--print", required = False ,action='store_true', dest='print_results',help = "")
+    parser.add_argument("--print", required = False ,action='store_true',help = "")
 
     args = parser.parse_args()
     if args.classified_dir:
         result_dataset = gl.load_sframe(args.classified_dir)
         save_positive_results_with_event_type_and_date(result_dataset)
+    if args.print:
+        pos_results = gl.load_sframe("graphlab/pos_results")
+        sframe = count_monthly(pos_results)
+        sframe.print_rows(sframe.shape[0])
+
 
 
 if __name__=='__main__':
