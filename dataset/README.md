@@ -2,6 +2,8 @@
 Nlp work on Brazil Portuguese newswire text
 
 
+## 1. Preprocessing 
+
 ### Dataset
 
 Number of news per year:
@@ -25,6 +27,8 @@ Number of news per year:
   2014 20095
   2015 5526
 ```
+
+### Preprocess
 
 Test clean:
 
@@ -58,7 +62,7 @@ Merge folders
 2005_01_01_21.html
 ```
 
-## logs
+### logs
 
     cp -r /ai/home/acelebi/folca/data /tmp/brazil/
     tar -zcpf /tmp/brazil/raw_data.tar.gz /tmp/brazil/data
@@ -73,4 +77,7 @@ Merge folders
         mkdir -p /tmp/parsed_data/$year/$month;            
         python classification/main/clean.py --raw_dir $data_root/data/$year/$month --parsed_dir /tmp/parsed_data/$year/$month;          
       done;
-    
+
+Next is [2. Crawling and Preparing Training Set](/docs/training_set_preperation.md)
+
+Back to [Main Page](/README.md)
