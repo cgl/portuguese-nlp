@@ -78,13 +78,13 @@ def main():
     parser = argparse.ArgumentParser(description = "Classifies given dataset and saves the results.")
     parser.add_argument("--classified_dir", required = True, default=None ,type=str,
                         help = "Directory for dataset after classification ex: result_dataset")
-    parser.add_argument("--print", required = False ,action='store_true',help = "")
+    parser.add_argument("--print", required = False ,action='store_true',dest="print_results",help = "")
 
     args = parser.parse_args()
     if args.classified_dir:
         result_dataset = gl.load_sframe(args.classified_dir)
         save_positive_results_with_event_type_and_date(result_dataset)
-    if args.print:
+    if args.print_results:
         pos_results = gl.load_sframe("graphlab/pos_results")
         sframe = count_monthly(pos_results)
         sframe.print_rows(sframe.shape[0])
