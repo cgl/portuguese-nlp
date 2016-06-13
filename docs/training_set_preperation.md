@@ -39,6 +39,15 @@ Some bash:
     for a in d[0-5]*.txt.ann; do   echo $a; mv $a `printf %s.%s ${a%.*.*} ${a##*.}` ; done
     for a in d[0-5]*.txt.txt; do   echo $a;  mv $a `printf %s.%s ${a%.*.*} ${a##*.}` ; done
 
-    cp -r ~/work/portuguese-nlp/classification/data/v1/parsed/v4/class_irr ~/work/portuguese-nlp/classification/data/v5/
-    mkdir ~/work/portuguese-nlp/classification/data/v5/class_rel
-    find ~/Downloads/Duru05/full_main/ -name "*.txt" -exec cp {} ~/work/portuguese-nlp/classification/data/v5/class_rel/ \;
+    mkdir -p ~/work/portuguese-nlp/classification/data/v6/class_rel
+    cp -r ~/work/portuguese-nlp/classification/data/v1/parsed/v4/class_irr ~/work/portuguese-nlp/classification/data/v6/
+    find ~/Downloads/Duru06/full_main/ -name "*.txt" -exec cp {} ~/work/portuguese-nlp/classification/data/v6/class_rel/ \;
+    ln -s ~/work/portuguese-nlp/classification/data/v6 ~/work/portuguese-nlp/classification/data/latest
+    scp -r ~/work/portuguese-nlp/classification/data/v6 shark:portuguese-nlp/classification/data/
+    
+    #[on TerraNova]    
+    cd ~/brazil/portuguese-nlp
+    scp -r shark:portuguese-nlp/classification/data/v6 classification/data/
+    ln -s classification/data/v6 classification/data/latest
+    
+Training set is already cleaned so no need to clean it again. Next is [Classification using Graphlab](/docs/classification_with_graphlab.md)
