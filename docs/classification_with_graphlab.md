@@ -1,4 +1,4 @@
-# Classification using Graphlab
+# 3. Classification using Graphlab
 
 Previously : [Crawling and Preparing Training Set](/docs/training_set_preperation.md)
 
@@ -31,4 +31,9 @@ Classification by event type:
       mv /tmp/models.txt ~/brazil/portuguese-nlp/word2vec_model.txt
 
 For more info [Evaluating word embeddings and a revised corpus for part-of-speech tagging in Portuguese](http://link.springer.com/article/10.1186/s13173-014-0020-x)
-      
+
+Previous is [2. Crawling and Preparing Training Set](/docs/training_set_preperation.md)
+
+Next is [4. Reports](/docs/report_erc.md)
+
+Back to [Main Page](/README.md)
