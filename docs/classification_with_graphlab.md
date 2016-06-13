@@ -1,9 +1,11 @@
 # Classification using Graphlab
 
+Previously : [Crawling and Preparing Training Set](/docs/training_set_preperation.md)
+
 Once the training data is ready in 
 
       # Build the classifier
-      python classification/graphlab/graphlab_train.py --training_dir classification/data/v5/
+      python classification/graphlab/graphlab_train.py --training_dir classification/data/latest/
       # Build the dataset
       python classification/graphlab/graphlab_train.py --dataset_parsed_dir ~/brazil/2005_parsed/ # ~/brazil/all_files_parsed
       
