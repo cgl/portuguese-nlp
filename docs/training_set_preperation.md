@@ -1,6 +1,6 @@
 # Crawling and Preparing Training Set
 
-Usage
+## Crawling the training set from relevant and irr list of urls
 
 Below gives the raw pages as a list:
 
@@ -31,7 +31,9 @@ Clean the documents:
 
 Try [Weka Documentation!](/docs/weka.md)
 
-Some bash:
+## Extracting the training set from brat folder
+
+First clean the files in brat folder:
 
     cd ~/Downloads/Duru05/full_main/
     for a in [1-5]*.ann; do   echo $a;  mv $a `printf d%04d.%s ${a%.*} ${a##*.}`; done
@@ -39,12 +41,16 @@ Some bash:
     for a in d[0-5]*.txt.ann; do   echo $a; mv $a `printf %s.%s ${a%.*.*} ${a##*.}` ; done
     for a in d[0-5]*.txt.txt; do   echo $a;  mv $a `printf %s.%s ${a%.*.*} ${a##*.}` ; done
 
+Filter the .txt files and copy to data folder:
+
     mkdir -p ~/work/portuguese-nlp/classification/data/v6/class_rel
     cp -r ~/work/portuguese-nlp/classification/data/v1/parsed/v4/class_irr ~/work/portuguese-nlp/classification/data/v6/
     find ~/Downloads/Duru06/full_main/ -name "*.txt" -exec cp {} ~/work/portuguese-nlp/classification/data/v6/class_rel/ \;
     ln -s ~/work/portuguese-nlp/classification/data/v6 ~/work/portuguese-nlp/classification/data/latest
     scp -r ~/work/portuguese-nlp/classification/data/v6 shark:portuguese-nlp/classification/data/
-    
+
+Move to the server:
+
     #[on TerraNova]    
     cd ~/brazil/portuguese-nlp
     scp -r shark:portuguese-nlp/classification/data/v6 classification/data/
