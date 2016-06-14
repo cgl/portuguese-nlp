@@ -130,7 +130,7 @@ def main():
     elif args.print_pretty == 0:
         pos_results = gl.load_sframe("graphlab/pos_results")
         my_dict = get_count_dict(pos_results)
-        print("\n".join(["%d %d %s" %(year,month, " ".join([str(l) for l in my_dict[year][month]]) ) for year in pos_results['year'].unique()  for month in range(1,13) ]))
+        print("\n".join(["%d-%d %s" %(year,month, " ".join([str(l) for l in my_dict[year][month]]) ) for year in pos_results['year'].unique().sort()  for month in range(1,13) ]))
     elif args.print_pretty == 1:
         pos_results = gl.load_sframe("graphlab/pos_results")
         my_dict = get_count_dict(pos_results)
