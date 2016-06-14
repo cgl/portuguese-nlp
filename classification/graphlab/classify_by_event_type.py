@@ -117,7 +117,7 @@ def main():
     parser.add_argument("--classified_dir", required = False, default=None ,type=str,
                         help = "Directory for dataset after classification ex: result_dataset")
     parser.add_argument("--print", required = False ,action='store_true',dest="print_results",help = "")
-    parser.add_argument("--pprint", required = False , type=int ,dest="print_pretty",help = "")
+    parser.add_argument("--pprint", required = False , default=10, type=int ,dest="print_pretty",help = "")
 
     args = parser.parse_args()
     if args.classified_dir:
@@ -127,16 +127,27 @@ def main():
         pos_results = gl.load_sframe("graphlab/pos_results")
         sframe = count_monthly(pos_results)
         sframe.print_rows(sframe.shape[0])
-    elif args.print_pretty == 0:
+    if args.print_pretty < 10:
         pos_results = gl.load_sframe("graphlab/pos_results")
         my_dict = get_count_dict(pos_results)
-        print("\n".join(["%d-%d %s" %(year,month, " ".join([str(l) for l in my_dict[year][month]]) ) for year in pos_results['year'].unique().sort()  for month in range(1,13) ]))
-    elif args.print_pretty == 1:
-        pos_results = gl.load_sframe("graphlab/pos_results")
-        my_dict = get_count_dict(pos_results)
-        count_dict = get_norm_dict(pos_results,events = [3,5])
-        print("\n".join(["%d-%d %.4f %.4f %.4f" %(year,month,
+
+        if args.print_pretty == 0:
+            print("\n".join(["%d-%d %s" %(year,month, " ".join([str(l) for l in my_dict[year][month]]) ) for year in pos_results['year'].unique().sort()  for month in range(1,13) ]))
+        elif args.print_pretty == 1:
+            count_dict = get_norm_dict(pos_results,events = [3,5])
+            print("\n".join(["%d-%d %.4f %.4f %.4f" %(year,month,
                                                   my_dict[year][month][3]/count_dict[3][year],
+                                                  my_dict[year][month][5]/count_dict[5][year],
+                                                  sum(my_dict[year][month])/count_dict['total'][year])
+                         for month in range(1,13) for year in pos_results['year'].unique()]))
+        elif args.print_pretty == 2:
+            count_dict = get_norm_dict(pos_results,events = [3,5])
+            print("\n".join(["%d-%d %.4f %.4f %.4f %.4f %.4f %.4f %.4f" %(year,month,
+                                                  my_dict[year][month][0]/count_dict[0][year],
+                                                  my_dict[year][month][1]/count_dict[1][year],
+                                                  my_dict[year][month][2]/count_dict[2][year],
+                                                  my_dict[year][month][3]/count_dict[3][year],
+                                                  my_dict[year][month][4]/count_dict[4][year],
                                                   my_dict[year][month][5]/count_dict[5][year],
                                                   sum(my_dict[year][month])/count_dict['total'][year])
                          for month in range(1,13) for year in pos_results['year'].unique()]))
