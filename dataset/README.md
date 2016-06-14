@@ -55,7 +55,7 @@ Merge folders
   mydir=~/brazil/
   cd $mydir/parsed_data/
   mkdir ${mydir}/all_files_parsed
-  find . -name '*.html' -size +1024c -printf '%P\0' | pax -0rws ':/:_:g' ${mydir}/all_files_parsed
+  find . -name '*.html' -size +512c -printf '%P\0' | pax -0rws ':/:_:g' ${mydir}/all_files_parsed
   ls ${mydir}/all_files_parsed/ | head
 2005_01_01_0.html
 2005_01_01_19.html
