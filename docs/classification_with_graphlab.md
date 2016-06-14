@@ -7,9 +7,9 @@ Once the training data is ready in
     # Build the classifier
     python classification/graphlab/graphlab_train.py --training_dir classification/data/latest/
     # Build the dataset
-    python classification/graphlab/graphlab_train.py --dataset_parsed_dir ~/brazil/2005_parsed/ # ~/brazil/all_files_parsed
+    python classification/graphlab/graphlab_train.py --dataset_parsed_dir ~/brazil/all_files_parsed # ~/brazil/2005_parsed/ 
     # Classify the dataset
-    python classification/graphlab/graphlab_classify.py --dataset_dir graphlab/my_dataset_2005 --classified_dir graphlab/result_dataset
+    python classification/graphlab/graphlab_classify.py --dataset_dir graphlab/my_dataset --classified_dir graphlab/result_dataset
     #to print the results:
     python classification/graphlab/graphlab_classify.py --classified_dir result_dataset --print
 
