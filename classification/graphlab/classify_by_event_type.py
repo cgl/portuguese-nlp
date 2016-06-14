@@ -141,7 +141,7 @@ def main():
                                                   sum(my_dict[year][month])/count_dict['total'][year])
                          for month in range(1,13) for year in pos_results['year'].unique()]))
         elif args.print_pretty == 2:
-            count_dict = get_norm_dict(pos_results,events = [3,5])
+            count_dict = get_norm_dict(pos_results)
             print("\n".join(["%d-%d %.4f %.4f %.4f %.4f %.4f %.4f %.4f" %(year,month,
                                                   my_dict[year][month][0]/count_dict[0][year],
                                                   my_dict[year][month][1]/count_dict[1][year],
@@ -150,7 +150,7 @@ def main():
                                                   my_dict[year][month][4]/count_dict[4][year],
                                                   my_dict[year][month][5]/count_dict[5][year],
                                                   sum(my_dict[year][month])/count_dict['total'][year])
-                         for month in range(1,13) for year in pos_results['year'].unique()]))
+                             for month in range(1,13) for year in pos_results['year'].unique().sort()]))
 
 if __name__=='__main__':
     main()
