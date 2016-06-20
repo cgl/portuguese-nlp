@@ -100,7 +100,7 @@ def get_norm_dict(pos_results,events = [0,1,2,3,4,5]):
         filtered = pos_results.filter_by([event_key],"event_type")
         sframe = filtered.groupby( key_columns= ['year','event_type'], operations = {"count" : gl.aggregate.COUNT('year')}).sort(['year'])
         out = sframe.pack_columns(columns=['year','count'],dtype=dict)
-        event = line['event_type']
+        event =  out[0]['event_type']
         for year in pos_results['year'].unique():
             count_dict[event][year] = 0
         for line in out:
